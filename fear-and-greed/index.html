@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fear & Greed Index Widget</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+
+      /* Font logic (helps inside Notion embeds too) */
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #111;
+    }
+
+    /* Extra-aggressive inheritance for embed weirdness */
+    * {
+      font-family: inherit !important;
+      box-sizing: border-box;
+    }
+
+    #wrap {
+      padding: 8px;
+    }
+
+    /* Make image responsive while keeping your intended max width */
+    .fg-link {
+      display: inline-block;
+      text-decoration: none;
+    }
+    .fg-img {
+      width: 500px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <a class="fg-link" href="https://www.bitdegree.org/cryptocurrency-prices/fear-and-greed-index" target="_blank" rel="noopener noreferrer">
+      <img
+        class="fg-img"
+        src="https://assets.bitdegree.org/fear-and-greed-index/current.png"
+        alt="BitDegree Crypto Fear and Greed Index"
+      />
+    </a>
+  </div>
+</body>
+</html>
