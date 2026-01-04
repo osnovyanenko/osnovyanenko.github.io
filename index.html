@@ -4,165 +4,268 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Valentine — Home</title>
-	<meta name="description" content="Personal homepage" />
-	<style>
-		:root {
-			--bg: #0b0f14;
-			--card: rgba(255,255,255,0.06);
-			--text: rgba(255,255,255,0.92);
-			--muted: rgba(255,255,255,0.70);
-			--border: rgba(255,255,255,0.12);
-			--link: #78a6ff;
-			--max: 920px;
-		}
-		* { box-sizing: border-box; }
-		html, body { height: 100%; }
-		body {
-			margin: 0;
-			font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-			background: radial-gradient(1000px 600px at 15% 10%, rgba(120,166,255,0.25), transparent 60%),
-						radial-gradient(900px 500px at 85% 20%, rgba(255,120,216,0.18), transparent 55%),
-						var(--bg);
-			color: var(--text);
-			line-height: 1.55;
-		}
-		a { color: var(--link); text-decoration: none; }
-		a:hover { text-decoration: underline; }
+	<meta name="description" content="Marketing Partner for Founders & CEOs" />
 
-		.wrapper {
+	<style>
+		:root{
+			--bg: #070A10;
+			--text: rgba(255,255,255,0.92);
+			--muted: rgba(255,255,255,0.68);
+			--link: #8fb0ff;
+			--accent: #78a6ff;
+			--accent2: #ff78d8;
+
+			--max: 1080px;
+		}
+
+		*{ box-sizing:border-box; }
+		html,body{ height:100%; }
+		body{
+			margin:0;
+			font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+			color: var(--text);
+			background:
+				radial-gradient(900px 500px at 12% 10%, rgba(120,166,255,0.22), transparent 60%),
+				radial-gradient(900px 500px at 88% 18%, rgba(255,120,216,0.16), transparent 55%),
+				var(--bg);
+			line-height:1.5;
+		}
+
+		a{ color: var(--link); text-decoration:none; }
+		a:hover{ text-decoration:underline; }
+
+		.container{
 			max-width: var(--max);
 			margin: 0 auto;
-			padding: 48px 20px;
+			padding: 28px 20px 70px;
 		}
 
-		header {
-			display: flex;
-			justify-content: space-between;
+		/* Top nav */
+		.nav{
+			display:flex;
+			align-items:center;
+			justify-content:space-between;
+			gap:16px;
+			padding: 10px 0 24px;
+		}
+		.brand{
+			display:flex;
+			flex-direction:column;
+			gap:2px;
+		}
+		.brand strong{ font-size:16px; letter-spacing:-0.01em; }
+		.brand span{ font-size:13px; color: var(--muted); }
+
+		.navlinks{
+			display:flex;
+			gap:18px;
+			flex-wrap:wrap;
+			font-size:14px;
+		}
+		.navlinks a{ color: rgba(255,255,255,0.86); }
+
+		/* Hero */
+		.hero{
+			padding: 26px 0 10px;
+		}
+
+		.heroGrid{
+			display:grid;
+			grid-template-columns: 1.05fr 1fr;
+			gap: 42px;
 			align-items: center;
-			gap: 12px;
-			padding: 14px 16px;
-			border: 1px solid var(--border);
-			background: var(--card);
-			border-radius: 14px;
-			backdrop-filter: blur(10px);
 		}
-		.brand {
-			display: flex;
-			flex-direction: column;
-			gap: 2px;
-		}
-		.brand strong { font-size: 16px; }
-		.brand span { color: var(--muted); font-size: 13px; }
 
-		nav a {
-			margin-left: 14px;
-			font-size: 14px;
-			color: var(--text);
+		.heroMedia{
+			position: relative;
+		}
+
+		.heroMedia::before{
+			content:"";
+			position:absolute;
+			inset:-14px;
+			border-radius: 26px;
+			background: linear-gradient(135deg, rgba(120,166,255,0.22), rgba(255,120,216,0.14));
+			filter: blur(16px);
 			opacity: 0.9;
+			z-index: 0;
 		}
 
-		main { margin-top: 22px; }
-
-		.hero {
-			padding: 26px 18px;
-			border: 1px solid var(--border);
-			background: var(--card);
-			border-radius: 18px;
-		}
-		.hero h1 {
-			margin: 0 0 8px 0;
-			font-size: 28px;
-			letter-spacing: -0.02em;
-		}
-		.hero p { margin: 0; color: var(--muted); max-width: 70ch; }
-
-		.grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-			gap: 14px;
-			margin-top: 14px;
-		}
-		.card {
-			padding: 16px;
-			border: 1px solid var(--border);
-			background: rgba(255,255,255,0.04);
-			border-radius: 16px;
-		}
-		.card h2 {
-			margin: 0 0 6px 0;
-			font-size: 15px;
-		}
-		.card p {
-			margin: 0;
-			font-size: 14px;
-			color: var(--muted);
+		.heroImage{
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			aspect-ratio: 4 / 3;
+			border-radius: 22px;
+			overflow: hidden;
+			background: rgba(255,255,255,0.06);
 		}
 
-		footer {
-			margin-top: 22px;
+		.heroImage img{
+			width:100%;
+			height:100%;
+			object-fit: cover;
+			display:block;
+		}
+
+		.kicker{
+			display:inline-flex;
+			align-items:center;
+			gap:10px;
 			color: var(--muted);
 			font-size: 13px;
-			text-align: center;
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+		}
+		.kickerDot{
+			width:10px; height:10px; border-radius:50%;
+			background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
+			box-shadow: 0 0 22px rgba(120,166,255,0.35);
 		}
 
-		.badge {
-			display: inline-block;
-			padding: 2px 8px;
-			border: 1px solid var(--border);
-			border-radius: 999px;
-			font-size: 12px;
+		h1{
+			margin: 10px 0 12px;
+			font-size: 44px;
+			line-height: 1.05;
+			letter-spacing: -0.03em;
+		}
+
+		.lede{
+			margin: 0 0 18px;
 			color: var(--muted);
+			font-size: 16px;
+			max-width: 60ch;
+		}
+
+		.ctaRow{
+			display:flex;
+			gap:12px;
+			flex-wrap:wrap;
+			align-items:center;
+			margin-top: 16px;
+		}
+
+		.btn{
+			display:inline-flex;
+			align-items:center;
+			justify-content:center;
+			padding: 12px 16px;
+			border-radius: 14px;
+			border: 1px solid rgba(143,176,255,0.35);
+			background: linear-gradient(180deg, rgba(143,176,255,0.95), rgba(120,166,255,0.90));
+			color: #061023;
+			font-weight: 700;
+			text-decoration:none;
+		}
+		.btn:hover{ text-decoration:none; filter: brightness(1.03); }
+
+		.btnGhost{
+			display:inline-flex;
+			align-items:center;
+			justify-content:center;
+			padding: 12px 16px;
+			border-radius: 14px;
+			border: 1px solid rgba(255,255,255,0.14);
+			background: rgba(255,255,255,0.04);
+			color: rgba(255,255,255,0.9);
+			font-weight: 650;
+			text-decoration:none;
+		}
+		.btnGhost:hover{ text-decoration:none; background: rgba(255,255,255,0.06); }
+
+		/* Sections (no tiles) */
+		.section{
+			padding: 34px 0 0;
+		}
+		.section h2{
+			margin: 0 0 10px;
+			font-size: 18px;
+			letter-spacing: -0.01em;
+		}
+		.section p{
+			margin: 0;
+			color: var(--muted);
+			max-width: 78ch;
+		}
+
+		.footer{
+			padding-top: 42px;
+			color: var(--muted);
+			font-size: 13px;
+		}
+
+		@media (max-width: 900px){
+			h1{ font-size: 38px; }
+			.heroGrid{ grid-template-columns: 1fr; gap: 18px; }
 		}
 	</style>
 </head>
+
 <body>
-	<div class="wrapper">
-		<header>
+	<div class="container">
+		<div class="nav">
 			<div class="brand">
 				<strong>Valentine</strong>
-				<span>Marketing operator · Personal site</span>
+				<span>Marketing Partner</span>
 			</div>
-			<nav aria-label="Primary">
+
+			<div class="navlinks" aria-label="Primary">
 				<a href="#about">About</a>
-				<a href="#projects">Projects</a>
+				<a href="#work">Work</a>
 				<a href="#contact">Contact</a>
-			</nav>
-		</header>
+			</div>
+		</div>
 
-		<main>
-			<section class="hero" aria-label="Intro">
-				<span class="badge">Draft homepage</span>
-				<h1>Hello — this is my homepage.</h1>
-				<p>
-					A minimal HTML file to test how file uploads render inside Notion. Replace this text with your bio,
-					add links, or paste in analytics later.
-				</p>
-			</section>
+		<section class="hero" aria-label="Hero">
+			<div class="heroGrid">
+				<div class="heroMedia">
+					<div class="heroImage">
+						<img src="assets/val-os.webp" alt="Photo of Valentine" />
+					</div>
+				</div>
 
-			<section class="grid">
-				<article class="card" id="about">
-					<h2>About</h2>
-					<p>Short bio, focus areas, and what you’re exploring right now.</p>
-				</article>
+				<div>
+					<div class="kicker"><span class="kickerDot"></span> Fractional / Contract</div>
 
-				<article class="card" id="projects">
-					<h2>Projects</h2>
-					<p>Link to a portfolio, Notion pages, case studies, or writing.</p>
-				</article>
+					<h1>Marketing Partner for Founders &amp; CEOs</h1>
 
-				<article class="card" id="contact">
-					<h2>Contact</h2>
-					<p>
-						Email: <a href="mailto:v.osnovyanenko@gmail.com">v.osnovyanenko@gmail.com</a><br />
-						LinkedIn: <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">profile link</a>
+					<p class="lede">
+						Driving revenue growth and building impactful brand awareness. Let’s craft a tailored growth strategy
+						to position your business as a market leader.
 					</p>
-				</article>
-			</section>
-		</main>
 
-		<footer>
-			<p>© <span id="year"></span> Valentine. Built as a single HTML file for testing.</p>
-		</footer>
+					<div class="ctaRow">
+						<a class="btn" href="YOUR_CALENDAR_LINK_HERE" target="_blank" rel="noreferrer">Book a meeting</a>
+						<a class="btnGhost" href="#contact">Email me</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="about">
+			<h2>About</h2>
+			<p>
+				Write 2–4 lines about who you help, your niche (B2B SaaS/AI), and the kind of outcomes you drive.
+			</p>
+		</section>
+
+		<section class="section" id="work">
+			<h2>What I do</h2>
+			<p>
+				Example: positioning, messaging, lifecycle, content strategy, growth loops, analytics, and funnel improvements.
+			</p>
+		</section>
+
+		<section class="section" id="contact">
+			<h2>Contact</h2>
+			<p>
+				Email: <a href="mailto:v.osnovyanenko@gmail.com">v.osnovyanenko@gmail.com</a>
+			</p>
+		</section>
+
+		<div class="footer">
+			© <span id="year"></span> Valentine
+		</div>
 	</div>
 
 	<script>
