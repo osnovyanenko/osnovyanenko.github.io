@@ -64,6 +64,17 @@
 		}
 		.navlinks a{ color: rgba(255,255,255,0.86); }
 
+		/* Shared section title styling */
+		.sectionTitle{
+			margin: 0 0 14px;
+			font-size: 22px;
+			line-height: 1.2;
+			letter-spacing: -0.02em;
+		}
+		.sectionTitle.center{
+			text-align: center;
+		}
+
 		/* Hero */
 		.hero{ padding: 26px 0 10px; }
 
@@ -105,7 +116,6 @@
 			width:100%;
 			height:100%;
 			object-fit: cover;
-			/* tweak this to show more forehead/shoulders: 50% 40% or 50% 35% etc */
 			object-position: 50% 45%;
 			display:block;
 		}
@@ -125,7 +135,7 @@
 			box-shadow: 0 0 22px rgba(120,166,255,0.35);
 		}
 
-		h1{
+		.heroTitle{
 			margin: 10px 0 12px;
 			font-size: 44px;
 			line-height: 1.05;
@@ -180,18 +190,12 @@
 			padding: 34px 0 0;
 		}
 
-		.socialProofTitle{
-			margin: 0 0 14px;
-			font-size: 18px;
-			letter-spacing: -0.01em;
-			color: rgba(255,255,255,0.92);
-		}
-
 		.logoRow{
 			display: grid;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 			gap: 14px;
 			align-items: center;
+			margin-top: 12px;
 		}
 
 		.logoPh{
@@ -213,27 +217,35 @@
 			padding: 34px 0 0;
 		}
 
-		.testimonialsTitle{
-			margin: 0 0 14px;
-			font-size: 22px;
-			line-height: 1.2;
-			letter-spacing: -0.02em;
-		}
-
-		.quoteScroller{
-			display: grid;
-			grid-auto-flow: column;
-			grid-auto-columns: minmax(260px, 360px);
+		/* “Carousel”: one centered card, snap scrolling */
+		.carousel{
+			margin-top: 14px;
+			display: flex;
 			gap: 14px;
 
 			overflow-x: auto;
-			padding: 6px 2px 12px;
 			scroll-snap-type: x mandatory;
 			-webkit-overflow-scrolling: touch;
+
+			/* center the active card */
+			padding: 10px calc(50% - 170px) 16px; /* 170px = half of card width below */
+		}
+
+		.carousel::-webkit-scrollbar{
+			height: 10px;
+		}
+		.carousel::-webkit-scrollbar-thumb{
+			background: rgba(255,255,255,0.14);
+			border-radius: 999px;
+		}
+		.carousel::-webkit-scrollbar-track{
+			background: rgba(255,255,255,0.06);
+			border-radius: 999px;
 		}
 
 		.quoteCard{
-			scroll-snap-align: start;
+			scroll-snap-align: center;
+			flex: 0 0 340px; /* card width */
 			border-radius: 18px;
 			border: 1px solid rgba(255,255,255,0.12);
 			background: rgba(255,255,255,0.03);
@@ -287,12 +299,18 @@
 		}
 
 		@media (max-width: 900px){
-			h1{ font-size: 38px; }
+			.heroTitle{ font-size: 38px; }
 			.heroGrid{ grid-template-columns: 1fr; gap: 18px; }
 		}
 
 		@media (max-width: 720px){
 			.logoRow{ grid-template-columns: 1fr; }
+			.carousel{
+				padding: 10px calc(50% - 150px) 16px;
+			}
+			.quoteCard{
+				flex-basis: 300px;
+			}
 		}
 	</style>
 </head>
@@ -323,7 +341,7 @@
 				<div>
 					<div class="kicker"><span class="kickerDot"></span> Fractional / Contract</div>
 
-					<h1>Marketing Partner for Founders &amp; CEOs</h1>
+					<h1 class="heroTitle">Marketing Partner for Founders &amp; CEOs</h1>
 
 					<p class="lede">
 						Driving revenue growth and building impactful brand awareness. Let’s craft a tailored growth strategy
@@ -339,7 +357,7 @@
 		</section>
 
 		<section class="socialProof" aria-label="Social proof">
-			<h2 class="socialProofTitle">Trusted by Challengers</h2>
+			<h2 class="sectionTitle center">Trusted by Challengers</h2>
 
 			<div class="logoRow" aria-label="Logos">
 				<div class="logoPh">Logo</div>
@@ -349,9 +367,9 @@
 		</section>
 
 		<section class="testimonials" aria-label="Testimonials">
-			<h2 class="testimonialsTitle">“Always eager to take on new challenges”</h2>
+			<h2 class="sectionTitle center">“Always eager to take on new challenges”</h2>
 
-			<div class="quoteScroller" aria-label="Testimonials scroller">
+			<div class="carousel" aria-label="Testimonials carousel">
 				<article class="quoteCard">
 					<div class="quoteHeader">
 						<div class="avatarPh" aria-hidden="true"></div>
@@ -394,17 +412,17 @@
 		</section>
 
 		<section class="section" id="about">
-			<h2>About</h2>
+			<h2 class="sectionTitle">About</h2>
 			<p>Write 2–4 lines about who you help, your niche (B2B SaaS/AI), and the kind of outcomes you drive.</p>
 		</section>
 
 		<section class="section" id="work">
-			<h2>What I do</h2>
+			<h2 class="sectionTitle">What I do</h2>
 			<p>Example: positioning, messaging, lifecycle, content strategy, growth loops, analytics, and funnel improvements.</p>
 		</section>
 
 		<section class="section" id="contact">
-			<h2>Contact</h2>
+			<h2 class="sectionTitle">Contact</h2>
 			<p>Email: <a href="mailto:v.osnovyanenko@gmail.com">v.osnovyanenko@gmail.com</a></p>
 		</section>
 
