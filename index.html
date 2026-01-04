@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Valentine — Home</title>
+	<title>Valentine Osnovyanenko — Home</title>
 	<meta name="description" content="Marketing Partner for Founders & CEOs" />
 
 	<style>
@@ -18,10 +18,15 @@
 
 			--card-bg: rgba(255,255,255,0.03);
 			--card-border: rgba(255,255,255,0.12);
+
+			/* Fixed header height (adjust if you change header padding/font sizes) */
+			--header-h: 84px;
 		}
 
 		*{ box-sizing:border-box; }
 		html,body{ height:100%; }
+		html{ scroll-behavior: smooth; }
+		body{ overflow-x: hidden; } /* avoids horizontal scroll from effects */
 
 		body{
 			margin:0;
@@ -37,42 +42,108 @@
 		a{ color: var(--link); text-decoration:none; }
 		a:hover{ text-decoration:underline; }
 
-		.container{
+		/* Buttons */
+		.btn{
+			display:inline-flex;
+			align-items:center;
+			justify-content:center;
+			gap: 10px;
+			padding: 12px 16px;
+			border-radius: 14px;
+			border: 1px solid rgba(143,176,255,0.35);
+			background: linear-gradient(180deg, rgba(143,176,255,0.95), rgba(120,166,255,0.90));
+			color: #061023;
+			font-weight: 700;
+			text-decoration:none;
+			white-space: nowrap;
+		}
+		.btn:hover{ text-decoration:none; filter: brightness(1.03); }
+
+		.btnGhost{
+			display:inline-flex;
+			align-items:center;
+			justify-content:center;
+			gap: 10px;
+			padding: 12px 16px;
+			border-radius: 14px;
+			border: 1px solid rgba(255,255,255,0.14);
+			background: rgba(255,255,255,0.04);
+			color: rgba(255,255,255,0.9);
+			font-weight: 650;
+			text-decoration:none;
+			white-space: nowrap;
+		}
+		.btnGhost:hover{ text-decoration:none; background: rgba(255,255,255,0.06); }
+
+		.icon{
+			width: 18px;
+			height: 18px;
+			display:inline-block;
+		}
+		.icon svg{ width: 18px; height: 18px; display:block; }
+
+		/* Fixed header (reliable “sticky”) */
+		.siteHeader{
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 9999;
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			background: rgba(7,10,16,0.72);
+			border-bottom: 1px solid rgba(255,255,255,0.08);
+		}
+
+		.headerInner{
 			max-width: var(--max);
 			margin: 0 auto;
-			padding: 28px 20px 70px;
+			padding: 14px 20px;
+			min-height: var(--header-h);
+			display:flex;
+			align-items:center;
+		}
+
+		.page{
+			max-width: var(--max);
+			margin: 0 auto;
+			padding: calc(var(--header-h) + 28px) 20px 90px; /* push content below fixed header */
 		}
 
 		/* Top nav */
 		.nav{
+			width: 100%;
 			display:flex;
 			align-items:center;
 			justify-content:space-between;
 			gap:16px;
-			padding: 10px 0 24px;
 		}
+
 		.brand{
 			display:flex;
 			flex-direction:column;
 			gap:2px;
+			min-width: 260px;
 		}
 		.brand strong{ font-size:16px; letter-spacing:-0.01em; }
 		.brand span{ font-size:13px; color: var(--muted); }
 
 		.navlinks{
 			display:flex;
-			gap:18px;
+			gap:16px;
 			flex-wrap:wrap;
 			font-size:14px;
+			align-items:center;
+			justify-content:flex-end;
 		}
 		.navlinks a{ color: rgba(255,255,255,0.86); }
 
 		/* Shared title styles */
 		.sectionTitle{
-			margin: 0 0 14px;
-			font-size: 22px;
-			line-height: 1.2;
-			letter-spacing: -0.02em;
+			margin: 0 0 16px;
+			font-size: 28px;
+			line-height: 1.15;
+			letter-spacing: -0.025em;
 		}
 		.sectionTitle.center{ text-align:center; }
 
@@ -99,7 +170,6 @@
 			z-index: 0;
 		}
 
-		/* Your photo is almost square -> use 1:1 frame */
 		.heroImage{
 			position: relative;
 			z-index: 1;
@@ -156,42 +226,14 @@
 			margin-top: 16px;
 		}
 
-		.btn{
-			display:inline-flex;
-			align-items:center;
-			justify-content:center;
-			padding: 12px 16px;
-			border-radius: 14px;
-			border: 1px solid rgba(143,176,255,0.35);
-			background: linear-gradient(180deg, rgba(143,176,255,0.95), rgba(120,166,255,0.90));
-			color: #061023;
-			font-weight: 700;
-			text-decoration:none;
-		}
-		.btn:hover{ text-decoration:none; filter: brightness(1.03); }
-
-		.btnGhost{
-			display:inline-flex;
-			align-items:center;
-			justify-content:center;
-			padding: 12px 16px;
-			border-radius: 14px;
-			border: 1px solid rgba(255,255,255,0.14);
-			background: rgba(255,255,255,0.04);
-			color: rgba(255,255,255,0.9);
-			font-weight: 650;
-			text-decoration:none;
-		}
-		.btnGhost:hover{ text-decoration:none; background: rgba(255,255,255,0.06); }
-
 		/* Social proof */
-		.socialProof{ padding: 34px 0 0; }
+		.socialProof{ padding: 14px 0 0; }
 		.logoRow{
 			display: grid;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 			gap: 14px;
 			align-items: center;
-			margin-top: 12px;
+			margin-top: 10px;
 		}
 		.logoPh{
 			height: 56px;
@@ -207,77 +249,101 @@
 			text-transform: uppercase;
 		}
 
+		.afterSocialSpacer{ height: 54px; }
+
 		/* Testimonials */
-		.testimonials{ padding: 34px 0 0; }
+		.testimonials{ padding: 0; }
 
 		.carousel{
+			margin-top: 16px;
 			position: relative;
-			margin-top: 14px;
+			user-select: none;
 		}
 
-		.trackViewport{
+		.carouselViewport{
 			overflow: hidden;
-			border-radius: 18px;
+			padding: 14px 0 18px;
+			cursor: grab;
 		}
+		.carouselViewport.dragging{ cursor: grabbing; }
 
-		.track{
-			display:flex;
-			transition: transform 420ms cubic-bezier(.2,.8,.2,1);
+		.carouselTrack{
+			display: flex;
+			gap: 18px;
 			will-change: transform;
+			transform: translate3d(0,0,0);
+			transition: transform 420ms cubic-bezier(.2,.8,.2,1);
+			padding: 0 calc(50% - 280px);
 		}
 
-		.slide{
-			flex: 0 0 100%;
+		.carouselSlide{
+			flex: 0 0 560px;
+			max-width: 560px;
 			display:flex;
 			justify-content:center;
-			padding: 0 12px; /* lets the centered card breathe */
+			transition: transform 420ms cubic-bezier(.2,.8,.2,1), opacity 420ms cubic-bezier(.2,.8,.2,1);
+			opacity: 0.42;
+			transform: scale(0.90);
+		}
+
+		.carouselSlide.is-active{
+			opacity: 1;
+			transform: scale(1);
 		}
 
 		.quoteCard{
-			width: min(520px, 100%);
-			border-radius: 18px;
+			width: 100%;
+			border-radius: 22px;
 			border: 1px solid var(--card-border);
 			background: var(--card-bg);
-			padding: 18px 18px 16px;
+			padding: 26px 24px 22px;
+			text-align: center;
 		}
 
 		.quoteHeader{
 			display:flex;
+			flex-direction: column;
 			align-items:center;
-			gap: 12px;
-			margin-bottom: 10px;
+			gap: 10px;
+			margin-bottom: 12px;
 		}
 
 		.avatarPh{
-			width: 44px;
-			height: 44px;
+			width: 56px;
+			height: 56px;
 			border-radius: 999px;
 			background: radial-gradient(circle at 30% 30%, rgba(120,166,255,0.9), rgba(255,120,216,0.55));
 			border: 1px solid rgba(255,255,255,0.18);
-			flex: 0 0 auto;
 		}
-
-		.quoteMeta{ line-height: 1.2; }
-		.quoteName{ font-weight: 700; font-size: 14px; }
-		.quoteRole{ color: var(--muted); font-size: 13px; margin-top: 2px; }
 
 		.quoteText{
 			margin: 0;
 			color: rgba(255,255,255,0.78);
-			font-size: 14px;
-			line-height: 1.6;
+			font-size: 16px;
+			line-height: 1.75;
 		}
 
-		/* Carousel controls */
-		.carouselControls{
-			display:flex;
-			align-items:center;
-			justify-content:center;
-			gap: 12px;
-			margin-top: 12px;
+		.quoteFooter{
+			margin-top: 16px;
+			color: rgba(255,255,255,0.72);
+			font-size: 13px;
+		}
+		.quoteFooter strong{
+			color: rgba(255,255,255,0.90);
+			font-weight: 750;
 		}
 
-		.arrow{
+		.carouselArrows{
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+		}
+
+		.arrowBtn{
+			pointer-events: auto;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
 			width: 42px;
 			height: 42px;
 			border-radius: 999px;
@@ -288,18 +354,17 @@
 			display:flex;
 			align-items:center;
 			justify-content:center;
-			user-select:none;
 		}
-		.arrow:hover{ background: rgba(255,255,255,0.06); }
-		.arrow:disabled{
-			opacity: 0.35;
-			cursor: not-allowed;
-		}
+		.arrowBtn:hover{ background: rgba(255,255,255,0.06); }
+		.arrowBtn:disabled{ opacity: 0.35; cursor: not-allowed; }
+		.arrowPrev{ left: 0; }
+		.arrowNext{ right: 0; }
 
 		.dots{
 			display:flex;
+			justify-content:center;
 			gap: 8px;
-			align-items:center;
+			margin-top: 10px;
 		}
 		.dot{
 			width: 8px;
@@ -314,47 +379,234 @@
 			box-shadow: 0 0 18px rgba(120,166,255,0.35);
 		}
 
-		/* Sections */
-		.section{ padding: 34px 0 0; }
-		.section p{
-			margin: 0;
-			color: var(--muted);
-			max-width: 78ch;
+		/* Why Companies Choose Me (feature grid) */
+		.whyChoose{ padding: 54px 0 0; }
+
+		.whyGrid{
+			display:grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 14px;
+			align-items: stretch;
 		}
 
+		.whyCard{
+			border-radius: 18px;
+			overflow: hidden;
+			border: 1px solid rgba(255,255,255,0.10);
+			background: rgba(255,255,255,0.03);
+			display:flex;
+			flex-direction: column;
+			min-height: 330px;
+		}
+
+		.whyArt{
+			aspect-ratio: 2 / 3;
+			background:
+				linear-gradient(135deg, rgba(120,166,255,0.28), rgba(255,120,216,0.18)),
+				rgba(255,255,255,0.02);
+			border-bottom: 1px solid rgba(255,255,255,0.10);
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			color: rgba(255,255,255,0.70);
+			font-size: 13px;
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+			min-height: 190px;
+		}
+
+		.whyBody{
+			background: rgba(255,255,255,0.96);
+			color: rgba(10,14,22,0.92);
+			padding: 14px 14px 16px;
+			flex: 1 1 auto;
+		}
+
+		.whyBody h3{
+			margin: 0 0 6px;
+			font-size: 14px;
+			letter-spacing: -0.01em;
+		}
+
+		.whyBody p{
+			margin: 0;
+			font-size: 13px;
+			line-height: 1.45;
+			color: rgba(10,14,22,0.62);
+		}
+
+		/* Skills (expandable) */
+		.skillsUse{ padding: 54px 0 0; }
+
+		.skillsGrid{
+			display:grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 14px;
+			align-items: stretch;
+		}
+
+		details.skillCard{
+			border-radius: 18px;
+			border: 1px solid rgba(255,255,255,0.12);
+			background: rgba(255,255,255,0.03);
+			padding: 16px 18px;
+		}
+
+		details.skillCard summary{
+			list-style: none;
+			cursor: pointer;
+			display:flex;
+			align-items:flex-start;
+			justify-content: space-between;
+			gap: 14px;
+		}
+		details.skillCard summary::-webkit-details-marker{ display:none; }
+
+		.skillHead{
+			display:flex;
+			align-items:center;
+			gap: 12px;
+		}
+
+		.iconPh{
+			width: 40px;
+			height: 40px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, rgba(120,166,255,0.28), rgba(255,120,216,0.18));
+			border: 1px solid rgba(255,255,255,0.12);
+			flex: 0 0 auto;
+		}
+
+		.skillTitleWrap h3{
+			margin: 0 0 4px;
+			font-size: 16px;
+			letter-spacing: -0.01em;
+		}
+
+		.skillTitleWrap p{
+			margin: 0;
+			color: rgba(255,255,255,0.70);
+			font-size: 13px;
+			line-height: 1.55;
+		}
+
+		.sumIcon{
+			flex: 0 0 auto;
+			width: 28px;
+			height: 28px;
+			border-radius: 999px;
+			border: 1px solid rgba(255,255,255,0.14);
+			background: rgba(255,255,255,0.03);
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			color: rgba(255,255,255,0.70);
+			margin-top: 6px;
+			transition: transform 220ms ease;
+		}
+
+		details.skillCard[open] .sumIcon{ transform: rotate(45deg); }
+
+		.skillExpanded{ margin-top: 14px; }
+
+		.splitBullets{
+			display:grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 10px 14px;
+			color: rgba(255,255,255,0.74);
+			font-size: 14px;
+			line-height: 1.6;
+		}
+
+		.bItem{
+			border-left: 2px solid rgba(143,176,255,0.35);
+			padding-left: 10px;
+		}
+
+		/* Duplicate CTA below skills */
+		.skillsCta{
+			margin-top: 18px;
+			display:flex;
+			justify-content:center;
+		}
+
+		/* Footer */
 		.footer{
-			padding-top: 42px;
+			padding-top: 54px;
 			color: var(--muted);
 			font-size: 13px;
+			display:flex;
+			gap: 10px;
+			align-items:center;
+			flex-wrap: wrap;
+		}
+
+		/* Responsive */
+		@media (max-width: 1100px){
+			.carouselTrack{ padding: 0 calc(50% - 240px); }
+			.carouselSlide{ flex-basis: 480px; max-width: 480px; }
+			.whyGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+			.skillsGrid{ grid-template-columns: 1fr; }
+			.splitBullets{ grid-template-columns: 1fr; }
 		}
 
 		@media (max-width: 900px){
 			.heroTitle{ font-size: 38px; }
 			.heroGrid{ grid-template-columns: 1fr; gap: 18px; }
+			.sectionTitle{ font-size: 26px; }
+			.brand{ min-width: unset; }
+			:root{ --header-h: 96px; } /* nav wraps more on smaller screens */
+			.page{ padding-top: calc(var(--header-h) + 22px); }
 		}
 
 		@media (max-width: 720px){
 			.logoRow{ grid-template-columns: 1fr; }
-			.quoteCard{ width: 100%; }
+			.afterSocialSpacer{ height: 42px; }
+
+			.carouselTrack{ padding: 0 calc(50% - 170px); }
+			.carouselSlide{ flex-basis: 340px; max-width: 340px; }
+			.quoteCard{ padding: 20px 16px 18px; }
+			.quoteText{ font-size: 15px; }
+			.arrowPrev{ left: -6px; }
+			.arrowNext{ right: -6px; }
+
+			.whyGrid{ grid-template-columns: 1fr; }
+			:root{ --header-h: 120px; } /* often wraps on mobile */
+			.page{ padding-top: calc(var(--header-h) + 18px); }
 		}
 	</style>
 </head>
 
 <body>
-	<div class="container">
-		<div class="nav">
-			<div class="brand">
-				<strong>Valentine</strong>
-				<span>Marketing Partner</span>
-			</div>
+	<header class="siteHeader">
+		<div class="headerInner">
+			<div class="nav">
+				<div class="brand">
+					<strong>Valentine Osnovyanenko</strong>
+					<span>Marketing Partner</span>
+				</div>
 
-			<div class="navlinks" aria-label="Primary">
-				<a href="#about">About</a>
-				<a href="#work">Work</a>
-				<a href="#contact">Contact</a>
+				<nav class="navlinks" aria-label="Primary">
+					<a href="#references">References</a>
+					<a href="#why-me">Why me</a>
+					<a href="#skills">Skills</a>
+
+					<a class="btn" href="YOUR_CALENDAR_LINK_HERE" target="_blank" rel="noreferrer">Book a meeting</a>
+
+					<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+						<span class="icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+								<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
+							</svg>
+						</span>
+						Request CV
+					</a>
+				</nav>
 			</div>
 		</div>
+	</header>
 
+	<main class="page">
 		<section class="hero" aria-label="Hero">
 			<div class="heroGrid">
 				<div class="heroMedia">
@@ -374,7 +626,15 @@
 
 					<div class="ctaRow">
 						<a class="btn" href="YOUR_CALENDAR_LINK_HERE" target="_blank" rel="noreferrer">Book a meeting</a>
-						<a class="btnGhost" href="#contact">Email me</a>
+
+						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+							<span class="icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+									<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
+								</svg>
+							</span>
+							Request CV
+						</a>
 					</div>
 				</div>
 			</div>
@@ -390,155 +650,302 @@
 			</div>
 		</section>
 
-		<section class="testimonials" aria-label="Testimonials">
-			<h2 class="sectionTitle center">Always eager to take on new challenges</h2>
+		<div class="afterSocialSpacer" aria-hidden="true"></div>
+
+		<section class="testimonials" id="references" aria-label="Testimonials">
+			<h2 class="sectionTitle center">“Always eager to take on new challenges”</h2>
 
 			<div class="carousel" data-carousel>
-				<div class="trackViewport">
-					<div class="track">
-						<div class="slide">
+				<div class="carouselViewport" data-viewport>
+					<div class="carouselTrack" data-track>
+						<div class="carouselSlide">
 							<article class="quoteCard">
 								<div class="quoteHeader">
 									<div class="avatarPh" aria-hidden="true"></div>
-									<div class="quoteMeta">
-										<div class="quoteName">Name Surname</div>
-										<div class="quoteRole">Title, Company</div>
-									</div>
 								</div>
 								<p class="quoteText">
-									“Valentine quickly understood the problem space, shipped ideas fast, and stayed focused on outcomes.”
+									“He has a natural talent for mentoring colleagues and sharing his knowledge and expertise to help them grow in their own roles.”
 								</p>
+								<div class="quoteFooter"><strong>Kate Vasylenko</strong> &nbsp; Founder of 42DM</div>
 							</article>
 						</div>
 
-						<div class="slide">
+						<div class="carouselSlide">
 							<article class="quoteCard">
 								<div class="quoteHeader">
 									<div class="avatarPh" aria-hidden="true"></div>
-									<div class="quoteMeta">
-										<div class="quoteName">Name Surname</div>
-										<div class="quoteRole">Title, Company</div>
-									</div>
 								</div>
 								<p class="quoteText">
-									“Clear thinking, strong ownership, and great communication. I always knew what was next and why.”
+									“Val built our inbound lead-generation engine and helped drive a 4× ARR increase. He also led our RevOps transformation across HubSpot and Notion, bringing strategic clarity and executional rigor.”
 								</p>
+								<div class="quoteFooter"><strong>Karyna Naminas</strong> &nbsp; CEO of Label Your Data</div>
 							</article>
 						</div>
 
-						<div class="slide">
+						<div class="carouselSlide">
 							<article class="quoteCard">
 								<div class="quoteHeader">
 									<div class="avatarPh" aria-hidden="true"></div>
-									<div class="quoteMeta">
-										<div class="quoteName">Name Surname</div>
-										<div class="quoteRole">Title, Company</div>
-									</div>
 								</div>
 								<p class="quoteText">
-									“High quality execution with a strategic lens. Great at turning ambiguity into a plan.”
+									“Valentine brought structure and focus to our marketing. He clarified messaging for both B2B and the hacker community, grew Twitter with consistently valuable posts, and rebuilt the blog into an SEO channel that drove high-intent organic traffic.”
 								</p>
+								<div class="quoteFooter"><strong>Dmytro Matviiv</strong> &nbsp; CEO of HackenProof</div>
 							</article>
 						</div>
 					</div>
 				</div>
 
-				<div class="carouselControls" aria-label="Carousel controls">
-					<button class="arrow" type="button" data-prev aria-label="Previous testimonial">‹</button>
-					<div class="dots" data-dots aria-label="Carousel dots"></div>
-					<button class="arrow" type="button" data-next aria-label="Next testimonial">›</button>
+				<div class="carouselArrows" aria-hidden="false">
+					<button class="arrowBtn arrowPrev" type="button" data-prev aria-label="Previous testimonial">‹</button>
+					<button class="arrowBtn arrowNext" type="button" data-next aria-label="Next testimonial">›</button>
 				</div>
+
+				<div class="dots" data-dots aria-label="Carousel dots"></div>
 			</div>
 		</section>
 
-		<section class="section" id="about">
-			<h2 class="sectionTitle">About</h2>
-			<p>Write 2–4 lines about who you help, your niche (B2B SaaS/AI), and the kind of outcomes you drive.</p>
+		<section class="whyChoose" id="why-me" aria-label="Why Companies Choose Me">
+			<h2 class="sectionTitle center">Why Companies Choose Me</h2>
+
+			<div class="whyGrid">
+				<article class="whyCard">
+					<div class="whyArt">Image placeholder (2:3)</div>
+					<div class="whyBody">
+						<h3>Agency Background</h3>
+						<p>That’s 3× more exposure to industries than working for a single product or service company.</p>
+					</div>
+				</article>
+
+				<article class="whyCard">
+					<div class="whyArt">Image placeholder (2:3)</div>
+					<div class="whyBody">
+						<h3>Genuine Enthusiasm</h3>
+						<p>I don’t fake interest to get a foot in the door. Curiosity is what drives me most to grow the business.</p>
+					</div>
+				</article>
+
+				<article class="whyCard">
+					<div class="whyArt">Image placeholder (2:3)</div>
+					<div class="whyBody">
+						<h3>Agile Contribution</h3>
+						<p>Depending on the growth stage, I can be the hands-on generalist or step up as the team leader.</p>
+					</div>
+				</article>
+
+				<article class="whyCard">
+					<div class="whyArt">Image placeholder (2:3)</div>
+					<div class="whyBody">
+						<h3>Soft Skills</h3>
+						<p>I will keep us aligned on vision and execution, staying open to ideas – may the best one win.</p>
+					</div>
+				</article>
+			</div>
 		</section>
 
-		<section class="section" id="work">
-			<h2 class="sectionTitle">What I do</h2>
-			<p>Example: positioning, messaging, lifecycle, content strategy, growth loops, analytics, and funnel improvements.</p>
+		<section class="skillsUse" id="skills" aria-label="Use My Skills for Your Business">
+			<h2 class="sectionTitle center">Use My Skills for Your Business</h2>
+
+			<div class="skillsGrid">
+				<details class="skillCard">
+					<summary>
+						<div class="skillHead">
+							<div class="iconPh" aria-hidden="true"></div>
+							<div class="skillTitleWrap">
+								<h3>Commercial Streamlining</h3>
+								<p>Merging teams and tools into one operating system.</p>
+							</div>
+						</div>
+						<div class="sumIcon" aria-hidden="true">+</div>
+					</summary>
+
+					<div class="skillExpanded">
+						<div class="splitBullets">
+							<div class="bItem">Merging marketing, sales, and support tasks into workflows</div>
+							<div class="bItem">Building compact teams, one goal per teammate</div>
+							<div class="bItem">Using AI as a data scientist copilot</div>
+						</div>
+					</div>
+				</details>
+
+				<details class="skillCard">
+					<summary>
+						<div class="skillHead">
+							<div class="iconPh" aria-hidden="true"></div>
+							<div class="skillTitleWrap">
+								<h3>Product‑Led Growth</h3>
+								<p>Improving activation, conversion, and retention.</p>
+							</div>
+						</div>
+						<div class="sumIcon" aria-hidden="true">+</div>
+					</summary>
+
+					<div class="skillExpanded">
+						<div class="splitBullets">
+							<div class="bItem">Creating a feedback loop on product‑market fit</div>
+							<div class="bItem">Recycling product features into public demos</div>
+							<div class="bItem">Improving in‑product conversion rates</div>
+						</div>
+					</div>
+				</details>
+
+				<details class="skillCard">
+					<summary>
+						<div class="skillHead">
+							<div class="iconPh" aria-hidden="true"></div>
+							<div class="skillTitleWrap">
+								<h3>Inbound Marketing</h3>
+								<p>Building demand through content and distribution.</p>
+							</div>
+						</div>
+						<div class="sumIcon" aria-hidden="true">+</div>
+					</summary>
+
+					<div class="skillExpanded">
+						<div class="splitBullets">
+							<div class="bItem">Preparing creative brand awareness ads</div>
+							<div class="bItem">Distributing valuable content</div>
+							<div class="bItem">Promoting thought leadership</div>
+						</div>
+					</div>
+				</details>
+			</div>
+
+			<div class="skillsCta">
+				<a class="btn" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+					<span class="icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+							<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
+						</svg>
+					</span>
+					Request CV
+				</a>
+			</div>
 		</section>
 
-		<section class="section" id="contact">
-			<h2 class="sectionTitle">Contact</h2>
-			<p>Email: <a href="mailto:v.osnovyanenko@gmail.com">v.osnovyanenko@gmail.com</a></p>
-		</section>
-
-		<div class="footer">© <span id="year"></span> Valentine</div>
-	</div>
+		<div class="footer">
+			<span>© 2026 Valentine Osnovyanenko</span>
+			<span>·</span>
+			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">LinkedIn</a>
+		</div>
+	</main>
 
 	<script>
-		// Footer year
-		document.getElementById("year").textContent = new Date().getFullYear();
-
-		// Simple, dependency-free carousel: arrows, dots, swipe
 		(function initCarousel(){
 			const root = document.querySelector('[data-carousel]');
 			if (!root) return;
 
-			const track = root.querySelector('.track');
-			const slides = Array.from(root.querySelectorAll('.slide'));
+			const track = root.querySelector('[data-track]');
+			const viewport = root.querySelector('[data-viewport]');
+			const slides = Array.from(root.querySelectorAll('.carouselSlide'));
 			const prevBtn = root.querySelector('[data-prev]');
 			const nextBtn = root.querySelector('[data-next]');
 			const dotsWrap = root.querySelector('[data-dots]');
 
-			let index = 0;
+			let index = Math.floor(slides.length / 2);
 
-			// Build dots
 			const dots = slides.map((_, i) => {
 				const d = document.createElement('button');
 				d.type = 'button';
-				d.className = 'dot' + (i === 0 ? ' active' : '');
+				d.className = 'dot';
 				d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
 				d.addEventListener('click', () => goTo(i));
 				dotsWrap.appendChild(d);
 				return d;
 			});
 
-			function update(){
-				track.style.transform = 'translateX(' + (-index * 100) + '%)';
+			function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+			function setActive(){
+				slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
 				dots.forEach((d, i) => d.classList.toggle('active', i === index));
-				prevBtn.disabled = index === 0;
-				nextBtn.disabled = index === slides.length - 1;
+				if (prevBtn) prevBtn.disabled = index === 0;
+				if (nextBtn) nextBtn.disabled = index === slides.length - 1;
 			}
 
-			function goTo(i){
-				index = Math.max(0, Math.min(slides.length - 1, i));
-				update();
+			function updateTransform(animate = true){
+				const slideW = slides[0].getBoundingClientRect().width;
+				const gap = parseFloat(getComputedStyle(track).gap || '0');
+				const step = slideW + gap;
+				const x = step * index;
+
+				if (!animate) track.style.transition = 'none';
+				else track.style.transition = 'transform 420ms cubic-bezier(.2,.8,.2,1)';
+
+				track.style.transform = `translate3d(${-x}px,0,0)`;
+
+				if (!animate){
+					void track.offsetHeight;
+					track.style.transition = 'transform 420ms cubic-bezier(.2,.8,.2,1)';
+				}
 			}
 
-			prevBtn.addEventListener('click', () => goTo(index - 1));
-			nextBtn.addEventListener('click', () => goTo(index + 1));
+			function goTo(i, animate = true){
+				index = clamp(i, 0, slides.length - 1);
+				setActive();
+				updateTransform(animate);
+			}
 
-			// Swipe support
-			let startX = null;
-			let deltaX = 0;
-			const viewport = root.querySelector('.trackViewport');
+			if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
+			if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
+
+			let isDown = false;
+			let startX = 0;
+			let startTranslate = 0;
+
+			function currentTranslateX(){
+				const m = new DOMMatrixReadOnly(getComputedStyle(track).transform);
+				return m.m41;
+			}
+
+			function pointerDown(clientX){
+				isDown = true;
+				viewport.classList.add('dragging');
+				startX = clientX;
+				startTranslate = currentTranslateX();
+				track.style.transition = 'none';
+			}
+
+			function pointerMove(clientX){
+				if (!isDown) return;
+				const dx = clientX - startX;
+				track.style.transform = `translate3d(${startTranslate + dx}px,0,0)`;
+			}
+
+			function pointerUp(){
+				if (!isDown) return;
+				isDown = false;
+				viewport.classList.remove('dragging');
+
+				const slideW = slides[0].getBoundingClientRect().width;
+				const gap = parseFloat(getComputedStyle(track).gap || '0');
+				const step = slideW + gap;
+
+				const tx = currentTranslateX();
+				const rawIndex = Math.round((-tx) / step);
+
+				goTo(rawIndex, true);
+			}
+
+			viewport.addEventListener('mousedown', (e) => {
+				e.preventDefault();
+				pointerDown(e.clientX);
+			});
+			window.addEventListener('mousemove', (e) => pointerMove(e.clientX));
+			window.addEventListener('mouseup', pointerUp);
 
 			viewport.addEventListener('touchstart', (e) => {
-				startX = e.touches[0].clientX;
-				deltaX = 0;
+				pointerDown(e.touches[0].clientX);
 			}, {passive:true});
-
 			viewport.addEventListener('touchmove', (e) => {
-				if (startX == null) return;
-				deltaX = e.touches[0].clientX - startX;
+				pointerMove(e.touches[0].clientX);
 			}, {passive:true});
+			viewport.addEventListener('touchend', pointerUp);
 
-			viewport.addEventListener('touchend', () => {
-				if (startX == null) return;
+			window.addEventListener('resize', () => goTo(index, false));
 
-				const threshold = 40; // px
-				if (deltaX > threshold) goTo(index - 1);
-				if (deltaX < -threshold) goTo(index + 1);
-
-				startX = null;
-				deltaX = 0;
-			});
-
-			update();
+			// init without animation
+			goTo(index, false);
 		})();
 	</script>
 </body>
