@@ -15,6 +15,9 @@
 			--accent: #78a6ff;
 			--accent2: #ff78d8;
 			--max: 1080px;
+
+			--card-bg: rgba(255,255,255,0.03);
+			--card-border: rgba(255,255,255,0.12);
 		}
 
 		*{ box-sizing:border-box; }
@@ -64,16 +67,14 @@
 		}
 		.navlinks a{ color: rgba(255,255,255,0.86); }
 
-		/* Shared section title styling */
+		/* Shared title styles */
 		.sectionTitle{
 			margin: 0 0 14px;
 			font-size: 22px;
 			line-height: 1.2;
 			letter-spacing: -0.02em;
 		}
-		.sectionTitle.center{
-			text-align: center;
-		}
+		.sectionTitle.center{ text-align:center; }
 
 		/* Hero */
 		.hero{ padding: 26px 0 10px; }
@@ -85,9 +86,7 @@
 			align-items: center;
 		}
 
-		.heroMedia{
-			position: relative;
-		}
+		.heroMedia{ position: relative; }
 
 		.heroMedia::before{
 			content:"";
@@ -186,10 +185,7 @@
 		.btnGhost:hover{ text-decoration:none; background: rgba(255,255,255,0.06); }
 
 		/* Social proof */
-		.socialProof{
-			padding: 34px 0 0;
-		}
-
+		.socialProof{ padding: 34px 0 0; }
 		.logoRow{
 			display: grid;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -197,7 +193,6 @@
 			align-items: center;
 			margin-top: 12px;
 		}
-
 		.logoPh{
 			height: 56px;
 			border-radius: 14px;
@@ -213,43 +208,37 @@
 		}
 
 		/* Testimonials */
-		.testimonials{
-			padding: 34px 0 0;
-		}
+		.testimonials{ padding: 34px 0 0; }
 
-		/* “Carousel”: one centered card, snap scrolling */
 		.carousel{
+			position: relative;
 			margin-top: 14px;
-			display: flex;
-			gap: 14px;
-
-			overflow-x: auto;
-			scroll-snap-type: x mandatory;
-			-webkit-overflow-scrolling: touch;
-
-			/* center the active card */
-			padding: 10px calc(50% - 170px) 16px; /* 170px = half of card width below */
 		}
 
-		.carousel::-webkit-scrollbar{
-			height: 10px;
+		.trackViewport{
+			overflow: hidden;
+			border-radius: 18px;
 		}
-		.carousel::-webkit-scrollbar-thumb{
-			background: rgba(255,255,255,0.14);
-			border-radius: 999px;
+
+		.track{
+			display:flex;
+			transition: transform 420ms cubic-bezier(.2,.8,.2,1);
+			will-change: transform;
 		}
-		.carousel::-webkit-scrollbar-track{
-			background: rgba(255,255,255,0.06);
-			border-radius: 999px;
+
+		.slide{
+			flex: 0 0 100%;
+			display:flex;
+			justify-content:center;
+			padding: 0 12px; /* lets the centered card breathe */
 		}
 
 		.quoteCard{
-			scroll-snap-align: center;
-			flex: 0 0 340px; /* card width */
+			width: min(520px, 100%);
 			border-radius: 18px;
-			border: 1px solid rgba(255,255,255,0.12);
-			background: rgba(255,255,255,0.03);
-			padding: 16px;
+			border: 1px solid var(--card-border);
+			background: var(--card-bg);
+			padding: 18px 18px 16px;
 		}
 
 		.quoteHeader{
@@ -276,16 +265,57 @@
 			margin: 0;
 			color: rgba(255,255,255,0.78);
 			font-size: 14px;
-			line-height: 1.55;
+			line-height: 1.6;
 		}
 
-		/* Sections (no tiles) */
-		.section{ padding: 34px 0 0; }
-		.section h2{
-			margin: 0 0 10px;
-			font-size: 18px;
-			letter-spacing: -0.01em;
+		/* Carousel controls */
+		.carouselControls{
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			gap: 12px;
+			margin-top: 12px;
 		}
+
+		.arrow{
+			width: 42px;
+			height: 42px;
+			border-radius: 999px;
+			border: 1px solid rgba(255,255,255,0.14);
+			background: rgba(255,255,255,0.04);
+			color: rgba(255,255,255,0.88);
+			cursor: pointer;
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			user-select:none;
+		}
+		.arrow:hover{ background: rgba(255,255,255,0.06); }
+		.arrow:disabled{
+			opacity: 0.35;
+			cursor: not-allowed;
+		}
+
+		.dots{
+			display:flex;
+			gap: 8px;
+			align-items:center;
+		}
+		.dot{
+			width: 8px;
+			height: 8px;
+			border-radius: 999px;
+			background: rgba(255,255,255,0.25);
+			border: 1px solid rgba(255,255,255,0.10);
+			cursor: pointer;
+		}
+		.dot.active{
+			background: rgba(143,176,255,0.95);
+			box-shadow: 0 0 18px rgba(120,166,255,0.35);
+		}
+
+		/* Sections */
+		.section{ padding: 34px 0 0; }
 		.section p{
 			margin: 0;
 			color: var(--muted);
@@ -305,12 +335,7 @@
 
 		@media (max-width: 720px){
 			.logoRow{ grid-template-columns: 1fr; }
-			.carousel{
-				padding: 10px calc(50% - 150px) 16px;
-			}
-			.quoteCard{
-				flex-basis: 300px;
-			}
+			.quoteCard{ width: 100%; }
 		}
 	</style>
 </head>
@@ -340,7 +365,6 @@
 
 				<div>
 					<div class="kicker"><span class="kickerDot"></span> Fractional / Contract</div>
-
 					<h1 class="heroTitle">Marketing Partner for Founders &amp; CEOs</h1>
 
 					<p class="lede">
@@ -367,47 +391,63 @@
 		</section>
 
 		<section class="testimonials" aria-label="Testimonials">
-			<h2 class="sectionTitle center">“Always eager to take on new challenges”</h2>
+			<h2 class="sectionTitle center">Always eager to take on new challenges</h2>
 
-			<div class="carousel" aria-label="Testimonials carousel">
-				<article class="quoteCard">
-					<div class="quoteHeader">
-						<div class="avatarPh" aria-hidden="true"></div>
-						<div class="quoteMeta">
-							<div class="quoteName">Name Surname</div>
-							<div class="quoteRole">Title, Company</div>
+			<div class="carousel" data-carousel>
+				<div class="trackViewport">
+					<div class="track">
+						<div class="slide">
+							<article class="quoteCard">
+								<div class="quoteHeader">
+									<div class="avatarPh" aria-hidden="true"></div>
+									<div class="quoteMeta">
+										<div class="quoteName">Name Surname</div>
+										<div class="quoteRole">Title, Company</div>
+									</div>
+								</div>
+								<p class="quoteText">
+									“Valentine quickly understood the problem space, shipped ideas fast, and stayed focused on outcomes.”
+								</p>
+							</article>
+						</div>
+
+						<div class="slide">
+							<article class="quoteCard">
+								<div class="quoteHeader">
+									<div class="avatarPh" aria-hidden="true"></div>
+									<div class="quoteMeta">
+										<div class="quoteName">Name Surname</div>
+										<div class="quoteRole">Title, Company</div>
+									</div>
+								</div>
+								<p class="quoteText">
+									“Clear thinking, strong ownership, and great communication. I always knew what was next and why.”
+								</p>
+							</article>
+						</div>
+
+						<div class="slide">
+							<article class="quoteCard">
+								<div class="quoteHeader">
+									<div class="avatarPh" aria-hidden="true"></div>
+									<div class="quoteMeta">
+										<div class="quoteName">Name Surname</div>
+										<div class="quoteRole">Title, Company</div>
+									</div>
+								</div>
+								<p class="quoteText">
+									“High quality execution with a strategic lens. Great at turning ambiguity into a plan.”
+								</p>
+							</article>
 						</div>
 					</div>
-					<p class="quoteText">
-						“Valentine quickly understood the problem space, shipped ideas fast, and stayed focused on outcomes.”
-					</p>
-				</article>
+				</div>
 
-				<article class="quoteCard">
-					<div class="quoteHeader">
-						<div class="avatarPh" aria-hidden="true"></div>
-						<div class="quoteMeta">
-							<div class="quoteName">Name Surname</div>
-							<div class="quoteRole">Title, Company</div>
-						</div>
-					</div>
-					<p class="quoteText">
-						“Clear thinking, strong ownership, and great communication. I always knew what was next and why.”
-					</p>
-				</article>
-
-				<article class="quoteCard">
-					<div class="quoteHeader">
-						<div class="avatarPh" aria-hidden="true"></div>
-						<div class="quoteMeta">
-							<div class="quoteName">Name Surname</div>
-							<div class="quoteRole">Title, Company</div>
-						</div>
-					</div>
-					<p class="quoteText">
-						“High quality execution with a strategic lens. Great at turning ambiguity into a plan.”
-					</p>
-				</article>
+				<div class="carouselControls" aria-label="Carousel controls">
+					<button class="arrow" type="button" data-prev aria-label="Previous testimonial">‹</button>
+					<div class="dots" data-dots aria-label="Carousel dots"></div>
+					<button class="arrow" type="button" data-next aria-label="Next testimonial">›</button>
+				</div>
 			</div>
 		</section>
 
@@ -430,7 +470,76 @@
 	</div>
 
 	<script>
+		// Footer year
 		document.getElementById("year").textContent = new Date().getFullYear();
+
+		// Simple, dependency-free carousel: arrows, dots, swipe
+		(function initCarousel(){
+			const root = document.querySelector('[data-carousel]');
+			if (!root) return;
+
+			const track = root.querySelector('.track');
+			const slides = Array.from(root.querySelectorAll('.slide'));
+			const prevBtn = root.querySelector('[data-prev]');
+			const nextBtn = root.querySelector('[data-next]');
+			const dotsWrap = root.querySelector('[data-dots]');
+
+			let index = 0;
+
+			// Build dots
+			const dots = slides.map((_, i) => {
+				const d = document.createElement('button');
+				d.type = 'button';
+				d.className = 'dot' + (i === 0 ? ' active' : '');
+				d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+				d.addEventListener('click', () => goTo(i));
+				dotsWrap.appendChild(d);
+				return d;
+			});
+
+			function update(){
+				track.style.transform = 'translateX(' + (-index * 100) + '%)';
+				dots.forEach((d, i) => d.classList.toggle('active', i === index));
+				prevBtn.disabled = index === 0;
+				nextBtn.disabled = index === slides.length - 1;
+			}
+
+			function goTo(i){
+				index = Math.max(0, Math.min(slides.length - 1, i));
+				update();
+			}
+
+			prevBtn.addEventListener('click', () => goTo(index - 1));
+			nextBtn.addEventListener('click', () => goTo(index + 1));
+
+			// Swipe support
+			let startX = null;
+			let deltaX = 0;
+			const viewport = root.querySelector('.trackViewport');
+
+			viewport.addEventListener('touchstart', (e) => {
+				startX = e.touches[0].clientX;
+				deltaX = 0;
+			}, {passive:true});
+
+			viewport.addEventListener('touchmove', (e) => {
+				if (startX == null) return;
+				deltaX = e.touches[0].clientX - startX;
+			}, {passive:true});
+
+			viewport.addEventListener('touchend', () => {
+				if (startX == null) return;
+
+				const threshold = 40; // px
+				if (deltaX > threshold) goTo(index - 1);
+				if (deltaX < -threshold) goTo(index + 1);
+
+				startX = null;
+				deltaX = 0;
+			});
+
+			update();
+		})();
 	</script>
 </body>
 </html>
