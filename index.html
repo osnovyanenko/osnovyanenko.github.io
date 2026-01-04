@@ -1,39 +1,172 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CoinMarketCap Price Widget</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Valentine — Home</title>
+	<meta name="description" content="Personal homepage" />
+	<style>
+		:root {
+			--bg: #0b0f14;
+			--card: rgba(255,255,255,0.06);
+			--text: rgba(255,255,255,0.92);
+			--muted: rgba(255,255,255,0.70);
+			--border: rgba(255,255,255,0.12);
+			--link: #78a6ff;
+			--max: 920px;
+		}
+		* { box-sizing: border-box; }
+		html, body { height: 100%; }
+		body {
+			margin: 0;
+			font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+			background: radial-gradient(1000px 600px at 15% 10%, rgba(120,166,255,0.25), transparent 60%),
+						radial-gradient(900px 500px at 85% 20%, rgba(255,120,216,0.18), transparent 55%),
+						var(--bg);
+			color: var(--text);
+			line-height: 1.55;
+		}
+		a { color: var(--link); text-decoration: none; }
+		a:hover { text-decoration: underline; }
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    /* Helps it look nicer in embeds */
-    #wrap {
-      padding: 8px;
-    }
-  </style>
+		.wrapper {
+			max-width: var(--max);
+			margin: 0 auto;
+			padding: 48px 20px;
+		}
+
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 12px;
+			padding: 14px 16px;
+			border: 1px solid var(--border);
+			background: var(--card);
+			border-radius: 14px;
+			backdrop-filter: blur(10px);
+		}
+		.brand {
+			display: flex;
+			flex-direction: column;
+			gap: 2px;
+		}
+		.brand strong { font-size: 16px; }
+		.brand span { color: var(--muted); font-size: 13px; }
+
+		nav a {
+			margin-left: 14px;
+			font-size: 14px;
+			color: var(--text);
+			opacity: 0.9;
+		}
+
+		main { margin-top: 22px; }
+
+		.hero {
+			padding: 26px 18px;
+			border: 1px solid var(--border);
+			background: var(--card);
+			border-radius: 18px;
+		}
+		.hero h1 {
+			margin: 0 0 8px 0;
+			font-size: 28px;
+			letter-spacing: -0.02em;
+		}
+		.hero p { margin: 0; color: var(--muted); max-width: 70ch; }
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 14px;
+			margin-top: 14px;
+		}
+		.card {
+			padding: 16px;
+			border: 1px solid var(--border);
+			background: rgba(255,255,255,0.04);
+			border-radius: 16px;
+		}
+		.card h2 {
+			margin: 0 0 6px 0;
+			font-size: 15px;
+		}
+		.card p {
+			margin: 0;
+			font-size: 14px;
+			color: var(--muted);
+		}
+
+		footer {
+			margin-top: 22px;
+			color: var(--muted);
+			font-size: 13px;
+			text-align: center;
+		}
+
+		.badge {
+			display: inline-block;
+			padding: 2px 8px;
+			border: 1px solid var(--border);
+			border-radius: 999px;
+			font-size: 12px;
+			color: var(--muted);
+		}
+	</style>
 </head>
-
 <body>
-  <div id="wrap">
-    <div
-      id="coinmarketcap-widget-coin-price-block"
-      coins="1,1027,1839,37082,11419"
-      currency="USD"
-      theme="light"
-      transparent="true"
-      show-symbol-logo="true">
-    </div>
-  </div>
+	<div class="wrapper">
+		<header>
+			<div class="brand">
+				<strong>Valentine</strong>
+				<span>Marketing operator · Personal site</span>
+			</div>
+			<nav aria-label="Primary">
+				<a href="#about">About</a>
+				<a href="#projects">Projects</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</header>
 
-  <script
-    type="text/javascript"
-    src="https://files.coinmarketcap.com/static/widget/coinPriceBlock.js">
-  </script>
+		<main>
+			<section class="hero" aria-label="Intro">
+				<span class="badge">Draft homepage</span>
+				<h1>Hello — this is my homepage.</h1>
+				<p>
+					A minimal HTML file to test how file uploads render inside Notion. Replace this text with your bio,
+					add links, or paste in analytics later.
+				</p>
+			</section>
+
+			<section class="grid">
+				<article class="card" id="about">
+					<h2>About</h2>
+					<p>Short bio, focus areas, and what you’re exploring right now.</p>
+				</article>
+
+				<article class="card" id="projects">
+					<h2>Projects</h2>
+					<p>Link to a portfolio, Notion pages, case studies, or writing.</p>
+				</article>
+
+				<article class="card" id="contact">
+					<h2>Contact</h2>
+					<p>
+						Email: <a href="mailto:v.osnovyanenko@gmail.com">v.osnovyanenko@gmail.com</a><br />
+						LinkedIn: <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">profile link</a>
+					</p>
+				</article>
+			</section>
+		</main>
+
+		<footer>
+			<p>© <span id="year"></span> Valentine. Built as a single HTML file for testing.</p>
+		</footer>
+	</div>
+
+	<script>
+		document.getElementById("year").textContent = new Date().getFullYear();
+	</script>
 </body>
 </html>
