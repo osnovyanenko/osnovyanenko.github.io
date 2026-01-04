@@ -74,7 +74,9 @@
 			align-items: center;
 		}
 
-		.heroMedia{ position: relative; }
+		.heroMedia{
+			position: relative;
+		}
 
 		.heroMedia::before{
 			content:"";
@@ -87,7 +89,7 @@
 			z-index: 0;
 		}
 
-		/* Your photo is almost square -> use 1:1 frame to avoid side borders */
+		/* Your photo is almost square -> use 1:1 frame */
 		.heroImage{
 			position: relative;
 			z-index: 1;
@@ -173,6 +175,98 @@
 		}
 		.btnGhost:hover{ text-decoration:none; background: rgba(255,255,255,0.06); }
 
+		/* Social proof */
+		.socialProof{
+			padding: 34px 0 0;
+		}
+
+		.socialProofTitle{
+			margin: 0 0 14px;
+			font-size: 18px;
+			letter-spacing: -0.01em;
+			color: rgba(255,255,255,0.92);
+		}
+
+		.logoRow{
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 14px;
+			align-items: center;
+		}
+
+		.logoPh{
+			height: 56px;
+			border-radius: 14px;
+			border: 1px dashed rgba(255,255,255,0.20);
+			background: rgba(255,255,255,0.03);
+			color: rgba(255,255,255,0.55);
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			font-size: 13px;
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+		}
+
+		/* Testimonials */
+		.testimonials{
+			padding: 34px 0 0;
+		}
+
+		.testimonialsTitle{
+			margin: 0 0 14px;
+			font-size: 22px;
+			line-height: 1.2;
+			letter-spacing: -0.02em;
+		}
+
+		.quoteScroller{
+			display: grid;
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(260px, 360px);
+			gap: 14px;
+
+			overflow-x: auto;
+			padding: 6px 2px 12px;
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.quoteCard{
+			scroll-snap-align: start;
+			border-radius: 18px;
+			border: 1px solid rgba(255,255,255,0.12);
+			background: rgba(255,255,255,0.03);
+			padding: 16px;
+		}
+
+		.quoteHeader{
+			display:flex;
+			align-items:center;
+			gap: 12px;
+			margin-bottom: 10px;
+		}
+
+		.avatarPh{
+			width: 44px;
+			height: 44px;
+			border-radius: 999px;
+			background: radial-gradient(circle at 30% 30%, rgba(120,166,255,0.9), rgba(255,120,216,0.55));
+			border: 1px solid rgba(255,255,255,0.18);
+			flex: 0 0 auto;
+		}
+
+		.quoteMeta{ line-height: 1.2; }
+		.quoteName{ font-weight: 700; font-size: 14px; }
+		.quoteRole{ color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+		.quoteText{
+			margin: 0;
+			color: rgba(255,255,255,0.78);
+			font-size: 14px;
+			line-height: 1.55;
+		}
+
 		/* Sections (no tiles) */
 		.section{ padding: 34px 0 0; }
 		.section h2{
@@ -195,6 +289,10 @@
 		@media (max-width: 900px){
 			h1{ font-size: 38px; }
 			.heroGrid{ grid-template-columns: 1fr; gap: 18px; }
+		}
+
+		@media (max-width: 720px){
+			.logoRow{ grid-template-columns: 1fr; }
 		}
 	</style>
 </head>
@@ -237,6 +335,61 @@
 						<a class="btnGhost" href="#contact">Email me</a>
 					</div>
 				</div>
+			</div>
+		</section>
+
+		<section class="socialProof" aria-label="Social proof">
+			<h2 class="socialProofTitle">Trusted by Challengers</h2>
+
+			<div class="logoRow" aria-label="Logos">
+				<div class="logoPh">Logo</div>
+				<div class="logoPh">Logo</div>
+				<div class="logoPh">Logo</div>
+			</div>
+		</section>
+
+		<section class="testimonials" aria-label="Testimonials">
+			<h2 class="testimonialsTitle">“Always eager to take on new challenges”</h2>
+
+			<div class="quoteScroller" aria-label="Testimonials scroller">
+				<article class="quoteCard">
+					<div class="quoteHeader">
+						<div class="avatarPh" aria-hidden="true"></div>
+						<div class="quoteMeta">
+							<div class="quoteName">Name Surname</div>
+							<div class="quoteRole">Title, Company</div>
+						</div>
+					</div>
+					<p class="quoteText">
+						“Valentine quickly understood the problem space, shipped ideas fast, and stayed focused on outcomes.”
+					</p>
+				</article>
+
+				<article class="quoteCard">
+					<div class="quoteHeader">
+						<div class="avatarPh" aria-hidden="true"></div>
+						<div class="quoteMeta">
+							<div class="quoteName">Name Surname</div>
+							<div class="quoteRole">Title, Company</div>
+						</div>
+					</div>
+					<p class="quoteText">
+						“Clear thinking, strong ownership, and great communication. I always knew what was next and why.”
+					</p>
+				</article>
+
+				<article class="quoteCard">
+					<div class="quoteHeader">
+						<div class="avatarPh" aria-hidden="true"></div>
+						<div class="quoteMeta">
+							<div class="quoteName">Name Surname</div>
+							<div class="quoteRole">Title, Company</div>
+						</div>
+					</div>
+					<p class="quoteText">
+						“High quality execution with a strategic lens. Great at turning ambiguity into a plan.”
+					</p>
+				</article>
 			</div>
 		</section>
 
