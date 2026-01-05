@@ -33,22 +33,32 @@
 		*{ box-sizing:border-box; }
 		html,body{ height:100%; }
 		html{ scroll-behavior: smooth; }
-		body{ overflow-x: hidden; }
-
-		/* Defensive: if any <hr> sneaks in, hide it */
-		hr{ display:none !important; }
 
 		body{
 			margin:0;
 			font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 			color: var(--text);
+			background: var(--bg);
+			line-height:1.5;
+			overflow-x: hidden;
+			position: relative;
+		}
+
+		/* One continuous background (fixed overlay) */
+		body::before{
+			content:"";
+			position: fixed;
+			inset: 0;
+			z-index: -1;
+			pointer-events: none;
 			background:
 				radial-gradient(900px 520px at 12% 10%, rgba(114,139,225,0.18), transparent 60%),
 				radial-gradient(820px 520px at 88% 16%, rgba(246,85,52,0.12), transparent 58%),
 				radial-gradient(900px 640px at 60% 92%, rgba(197,26,15,0.08), transparent 60%),
 				var(--bg);
-			line-height:1.5;
 		}
+
+		hr{ display:none !important; }
 
 		a{ color: var(--link); text-decoration:none; }
 		a:hover{ text-decoration:underline; }
@@ -94,7 +104,7 @@
 			transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
 		}
 
-		/* Neon glow hover: BOTH button types turn red + glow (text stays white) */
+		/* Neon glow hover: BOTH button types turn red + glow */
 		.btn:hover,
 		.btnGhost:hover{
 			text-decoration: none;
@@ -153,6 +163,7 @@
 			max-width: var(--max);
 			margin: 0 auto;
 			padding: calc(var(--header-h) + 28px) 20px 90px;
+			background: transparent;
 		}
 
 		.nav{
@@ -209,7 +220,6 @@
 			opacity: 0.9;
 			z-index: 0;
 		}
-
 		.heroImage{
 			position: relative;
 			z-index: 1;
@@ -266,7 +276,7 @@
 		}
 
 		/* Social proof */
-		.socialProof{ padding: 14px 0 0; }
+		.socialProof{ padding: 14px 0 0; background: transparent; }
 		.logoRow{
 			display: grid;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -290,7 +300,7 @@
 		.afterSocialSpacer{ height: 54px; }
 
 		/* Testimonials */
-		.testimonials{ padding: 0; }
+		.testimonials{ padding: 0; background: transparent; }
 		.carousel{ margin-top: 16px; position: relative; user-select: none; }
 
 		.carouselViewport{
@@ -337,12 +347,18 @@
 			margin-bottom: 12px;
 		}
 
-		.avatarPh{
+		/* NEW: real avatar images */
+		.avatarImg{
 			width: 56px;
 			height: 56px;
 			border-radius: 999px;
-			background: radial-gradient(circle at 30% 30%, rgba(114,139,225,0.9), rgba(246,85,52,0.40));
+			object-fit: cover;
+			object-position: 50% 35%;
+			display:block;
 			border: 1px solid rgba(255,255,255,0.18);
+			box-shadow:
+				0 0 0 1px rgba(114,139,225,0.20),
+				0 0 18px rgba(114,139,225,0.12);
 		}
 
 		.quoteText{
@@ -397,7 +413,7 @@
 		}
 
 		/* Why Companies Choose Me */
-		.whyChoose{ padding: 54px 0 0; }
+		.whyChoose{ padding: 54px 0 0; background: transparent; }
 		.whyGrid{
 			display:grid;
 			grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -420,7 +436,7 @@
 			background:
 				linear-gradient(135deg, rgba(114,139,225,0.28), rgba(246,85,52,0.18)),
 				rgba(255,255,255,0.02);
-			border-bottom: 0; /* removed separator line */
+			border-bottom: 0;
 			display:flex;
 			align-items:center;
 			justify-content:center;
@@ -441,7 +457,7 @@
 		.whyBody p{ margin: 0; font-size: 13px; line-height: 1.45; color: rgba(10,14,22,0.62); }
 
 		/* Skills */
-		.skillsUse{ padding: 54px 0 0; }
+		.skillsUse{ padding: 54px 0 0; background: transparent; }
 		.skillsGrid{
 			display:grid;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -496,7 +512,6 @@
 		details.skillCard[open] .sumIcon{ transform: rotate(45deg); }
 
 		.skillExpanded{ margin-top: 14px; }
-
 		.splitBullets{
 			display:grid;
 			grid-template-columns: 1fr 1fr;
@@ -505,7 +520,6 @@
 			font-size: 14px;
 			line-height: 1.6;
 		}
-
 		.bItem{
 			border-left: 2px solid rgba(114,139,225,0.40);
 			padding-left: 10px;
@@ -527,6 +541,7 @@
 			align-items:center;
 			flex-wrap: wrap;
 			border: 0;
+			background: transparent;
 		}
 
 		@media (max-width: 1100px){
@@ -647,7 +662,7 @@
 						<div class="carouselSlide">
 							<article class="quoteCard">
 								<div class="quoteHeader">
-									<div class="avatarPh" aria-hidden="true"></div>
+									<img class="avatarImg" src="assets/kate-vasylenko.webp" alt="Kate Vasylenko" />
 								</div>
 								<p class="quoteText">
 									“He has a natural talent for mentoring colleagues and sharing his knowledge and expertise to help them grow in their own roles.”
@@ -659,7 +674,7 @@
 						<div class="carouselSlide">
 							<article class="quoteCard">
 								<div class="quoteHeader">
-									<div class="avatarPh" aria-hidden="true"></div>
+									<img class="avatarImg" src="assets/karyna-naminas.jpeg" alt="Karyna Naminas" />
 								</div>
 								<p class="quoteText">
 									“Val built our inbound lead-generation engine and helped drive a 4× ARR increase. He also led our RevOps transformation across HubSpot and Notion, bringing strategic clarity and executional rigor.”
@@ -671,7 +686,7 @@
 						<div class="carouselSlide">
 							<article class="quoteCard">
 								<div class="quoteHeader">
-									<div class="avatarPh" aria-hidden="true"></div>
+									<img class="avatarImg" src="assets/dmytro-matviiv.webp" alt="Dmytro Matviiv" />
 								</div>
 								<p class="quoteText">
 									“Valentine brought structure and focus to our marketing. He clarified messaging for both B2B and the hacker community, grew Twitter with consistently valuable posts, and rebuilt the blog into an SEO channel that drove high-intent organic traffic.”
