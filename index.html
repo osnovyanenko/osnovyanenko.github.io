@@ -6,18 +6,23 @@
 	<title>Valentine Osnovyanenko — Home</title>
 	<meta name="description" content="Marketing Partner for Founders & CEOs" />
 
+	<!-- Google Calendar Appointment Scheduling begin (required for embedded appointment schedules) -->
+	<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+	<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+	<!-- Google Calendar Appointment Scheduling end -->
+
 	<style>
 		:root{
 			/* Photo-led palette */
-			--bg: #020204;                 /* black-2 */
-			--bg2: #060509;                /* black */
+			--bg: #020204;
+			--bg2: #060509;
 
 			--text: rgba(255,255,255,0.92);
 			--muted: rgba(255,255,255,0.68);
 
-			--accent: #728BE1;             /* cornflower-blue */
-			--accent2: #F65534;            /* tomato */
-			--accent3: #C51A0F;            /* brick-ember */
+			--accent: #728BE1;
+			--accent2: #F65534;
+			--accent3: #C51A0F;
 
 			--link: #9AAAF0;
 
@@ -26,7 +31,6 @@
 			--card-bg: rgba(255,255,255,0.03);
 			--card-border: rgba(255,255,255,0.12);
 
-			/* Fixed header height (adjust if you change header padding/font sizes) */
 			--header-h: 84px;
 		}
 
@@ -104,7 +108,7 @@
 			transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
 		}
 
-		/* Neon glow hover: BOTH button types turn red + glow (text stays white) */
+		/* Neon glow hover: BOTH button types turn red + glow */
 		.btn:hover,
 		.btnGhost:hover{
 			text-decoration: none;
@@ -550,7 +554,7 @@
 			position: fixed;
 			inset: 0;
 			z-index: 20000;
-			display: none; /* toggled via .is-open */
+			display: none;
 			align-items: center;
 			justify-content: center;
 			padding: 18px;
@@ -619,6 +623,7 @@
 			background: rgba(2,2,4,0.20);
 		}
 
+		/* Inline appointment schedule iframe */
 		.modalBody iframe{
 			width: 100%;
 			height: 100%;
@@ -660,7 +665,6 @@
 					<a href="#why-me">Why me</a>
 					<a href="#skills">Skills</a>
 
-					<!-- Changed: Book a meeting triggers modal -->
 					<a class="btn js-open-calendar" href="#" role="button">Book a meeting</a>
 
 					<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
@@ -695,7 +699,6 @@
 					</p>
 
 					<div class="ctaRow">
-						<!-- Changed: Book a meeting triggers modal -->
 						<a class="btn js-open-calendar" href="#" role="button">Book a meeting</a>
 
 						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
@@ -749,7 +752,7 @@
 									“Val built our inbound lead-generation engine and helped drive a 4× ARR increase. He also led our RevOps transformation across HubSpot and Notion, bringing strategic clarity and executional rigor.”
 								</p>
 								<div class="quoteFooter"><strong>Karyna Naminas</strong> &nbsp; CEO of Label Your Data</div>
-							</article>
+							article>
 						</div>
 
 						<div class="carouselSlide">
@@ -906,7 +909,6 @@
 			<div class="modalTopbar">
 				<div class="modalTitle">Book a meeting</div>
 				<button class="modalClose" type="button" aria-label="Close">
-					<!-- X icon -->
 					<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
 						<path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4Z"/>
 					</svg>
@@ -914,12 +916,16 @@
 			</div>
 
 			<div class="modalBody">
+				<!-- Inline embeddable schedule iframe (this is the reliable embed) -->
 				<iframe
 					id="calendarFrame"
 					src=""
+					style="border: 0"
+					width="100%"
+					height="100%"
+					frameborder="0"
 					title="Google Calendar appointment scheduling"
 					loading="lazy"
-					allow="fullscreen; payment; clipboard-read; clipboard-write"
 				></iframe>
 			</div>
 		</div>
@@ -1039,13 +1045,13 @@
 			viewport.addEventListener('touchend', pointerUp);
 
 			window.addEventListener('resize', () => goTo(index, false));
-
 			goTo(index, false);
 		})();
 
-		// Calendar modal logic
+		// Calendar modal logic (uses embeddable appointment schedule URL)
 		(function initCalendarModal(){
-			const CALENDAR_URL = "https://calendar.app.google/yXTaEWLWcCm2VbCp9";
+			// IMPORTANT: use the appointments schedule embed URL (gv=true)
+			const CALENDAR_EMBED_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fl52OMBKffQzG6Ab0-1T44N7-qT4r7Y-CHiF5Ng45bqBUEyb_xkbgIy85i07xo9O3FeZu5Fjz?gv=true";
 
 			const modal = document.getElementById('calendarModal');
 			const frame = document.getElementById('calendarFrame');
@@ -1060,13 +1066,13 @@
 				modal.classList.add('is-open');
 				modal.setAttribute('aria-hidden', 'false');
 
-				// lazy-load the iframe only when opened
-				if (!frame.src) frame.src = CALENDAR_URL;
+				// Lazy-load iframe only when opening
+				if (!frame.src) frame.src = CALENDAR_EMBED_URL;
 
 				// prevent page scroll under modal
 				document.body.style.overflow = 'hidden';
 
-				// focus close button for accessibility
+				// focus close button
 				closeBtn.focus();
 			}
 
@@ -1074,8 +1080,8 @@
 				modal.classList.remove('is-open');
 				modal.setAttribute('aria-hidden', 'true');
 
-				// optional: keep src so subsequent opens are instant
-				// if you prefer to stop the calendar when closing, uncomment:
+				// keep iframe loaded so it's fast next time
+				// if you prefer it to stop when closed, uncomment:
 				// frame.src = "";
 
 				document.body.style.overflow = '';
@@ -1094,7 +1100,7 @@
 
 			closeBtn.addEventListener('click', closeModal);
 
-			// click outside the modalCard closes
+			// click outside closes
 			modal.addEventListener('click', (e) => {
 				if (e.target === modal) closeModal();
 			});
