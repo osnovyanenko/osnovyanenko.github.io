@@ -8,7 +8,7 @@
 
 	<!-- Google Calendar Appointment Scheduling (overlay) -->
 	<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-	<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+	<script src="https://calendar.google.com/calendar/scheduling-button-script.js" defer></script>
 
 	<style>
 		:root{
@@ -23,8 +23,8 @@
 			--accent3: #C51A0F;
 
 			--link: #9AAAF0;
-
 			--max: 1080px;
+
 			--card-bg: rgba(255,255,255,0.03);
 			--card-border: rgba(255,255,255,0.12);
 
@@ -70,8 +70,10 @@
 			gap: 10px;
 			padding: 12px 16px;
 			border-radius: 14px;
+
 			border: 1px solid rgba(114,139,225,0.45);
 			background: linear-gradient(180deg, rgba(114,139,225,0.95), rgba(114,139,225,0.82));
+
 			color: rgba(255,255,255,0.96);
 			font-weight: 700;
 			text-decoration:none;
@@ -88,8 +90,10 @@
 			gap: 10px;
 			padding: 12px 16px;
 			border-radius: 14px;
+
 			border: 1px solid rgba(255,255,255,0.14);
 			background: rgba(255,255,255,0.04);
+
 			color: rgba(255,255,255,0.96);
 			font-weight: 650;
 			text-decoration:none;
@@ -105,18 +109,20 @@
 			border-color: rgba(246,85,52,0.80);
 			background: linear-gradient(180deg, rgba(246,85,52,0.98), rgba(197,26,15,0.88));
 			color: rgba(255,255,255,0.98);
+
 			box-shadow:
 				0 0 0 1px rgba(246,85,52,0.38),
 				0 0 26px rgba(246,85,52,0.55),
 				0 0 60px rgba(197,26,15,0.35);
 		}
 
-		.btn:active, .btnGhost:active{ transform: translateY(1px); }
+		.btn:active,
+		.btnGhost:active{ transform: translateY(1px); }
 
 		.icon{ width: 18px; height: 18px; display:inline-block; }
 		.icon svg{ width: 18px; height: 18px; display:block; }
 
-		/* Header */
+		/* Fixed header */
 		.siteHeader{
 			position: fixed;
 			top: 0; left: 0; right: 0;
@@ -154,6 +160,7 @@
 		}
 		.brand strong{ font-size:16px; letter-spacing:-0.01em; }
 		.brand span{ font-size:13px; color: var(--muted); }
+
 		.navlinks{
 			display:flex;
 			gap:16px;
@@ -181,6 +188,7 @@
 			align-items: center;
 		}
 		.heroMedia{ position: relative; }
+
 		.heroMedia::before{
 			content:"";
 			position:absolute;
@@ -191,6 +199,7 @@
 			opacity: 0.9;
 			z-index: 0;
 		}
+
 		.heroImage{
 			position: relative;
 			z-index: 1;
@@ -208,6 +217,47 @@
 			object-position: 50% 45%;
 			display:block;
 		}
+
+		/* TEST PANEL inside hero image */
+		.testPanel{
+			position: absolute;
+			left: 14px;
+			right: 14px;
+			bottom: 14px;
+			z-index: 2;
+			border-radius: 16px;
+			border: 1px solid rgba(255,255,255,0.12);
+			background: rgba(2,2,4,0.55);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			padding: 12px;
+		}
+		.testPanelTitle{
+			font-size: 12px;
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+			color: rgba(255,255,255,0.70);
+			margin-bottom: 8px;
+		}
+		.testButtons{
+			display:flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+		.btnSm{
+			padding: 10px 12px;
+			border-radius: 12px;
+			font-size: 13px;
+		}
+		.debugLine{
+			margin-top: 8px;
+			font-size: 12px;
+			color: rgba(255,255,255,0.70);
+			line-height: 1.4;
+			word-break: break-word;
+		}
+		.debugLine strong{ color: rgba(255,255,255,0.92); }
+
 		.kicker{
 			display:inline-flex;
 			align-items:center;
@@ -312,6 +362,7 @@
 		.quoteText{ margin: 0; color: rgba(255,255,255,0.78); font-size: 16px; line-height: 1.75; }
 		.quoteFooter{ margin-top: 16px; color: rgba(255,255,255,0.72); font-size: 13px; }
 		.quoteFooter strong{ color: rgba(255,255,255,0.90); font-weight: 750; }
+
 		.carouselArrows{ position: absolute; inset: 0; pointer-events: none; }
 		.arrowBtn{
 			pointer-events: auto;
@@ -329,6 +380,7 @@
 		.arrowBtn:disabled{ opacity: 0.35; cursor: not-allowed; }
 		.arrowPrev{ left: 0; }
 		.arrowNext{ right: 0; }
+
 		.dots{ display:flex; justify-content:center; gap: 8px; margin-top: 10px; }
 		.dot{
 			width: 8px; height: 8px;
@@ -401,98 +453,17 @@
 
 		.footer{ padding-top: 54px; color: var(--muted); font-size: 13px; display:flex; gap: 10px; align-items:center; flex-wrap: wrap; border: 0; }
 
-		/* =========================
-		   YOUR POPUP (single layer)
-		   ========================= */
-		.modalOverlay{
-			position: fixed;
-			inset: 0;
-			z-index: 20000;
-			display: none;
-			align-items: center;
-			justify-content: center;
-			padding: 18px;
-			background: rgba(2,2,4,0.72);
-			backdrop-filter: blur(10px);
-			-webkit-backdrop-filter: blur(10px);
-		}
-		.modalOverlay.is-open{ display:flex; }
-
-		.modalCard{
-			width: min(720px, 96vw);
-			border-radius: 18px;
-			border: 1px solid rgba(255,255,255,0.14);
-			background: rgba(255,255,255,0.04);
-			box-shadow:
-				0 0 0 1px rgba(114,139,225,0.18),
-				0 0 40px rgba(114,139,225,0.18),
-				0 0 60px rgba(246,85,52,0.10);
-			overflow: hidden;
-			display:flex;
-			flex-direction: column;
-		}
-		.modalTopbar{
-			display:flex;
-			align-items:center;
-			justify-content: space-between;
-			gap: 12px;
-			padding: 12px 12px 10px 14px;
-			border-bottom: 1px solid rgba(255,255,255,0.10);
-			background: rgba(2,2,4,0.35);
-		}
-		.modalTitle{
-			font-size: 14px;
-			color: rgba(255,255,255,0.88);
-			letter-spacing: -0.01em;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-		.modalClose{
-			width: 38px;
-			height: 38px;
-			border-radius: 999px;
-			border: 1px solid rgba(255,255,255,0.14);
-			background: rgba(255,255,255,0.04);
-			color: rgba(255,255,255,0.90);
-			cursor: pointer;
-			display:flex;
-			align-items:center;
-			justify-content:center;
-		}
-		.modalClose:hover{
-			border-color: rgba(246,85,52,0.80);
-			background: linear-gradient(180deg, rgba(246,85,52,0.98), rgba(197,26,15,0.88));
-			box-shadow: 0 0 0 1px rgba(246,85,52,0.38), 0 0 22px rgba(246,85,52,0.45);
-		}
-		.modalBody{ padding: 18px; }
-
-		.loaderRow{
-			display:flex;
-			align-items:center;
-			gap: 12px;
-			color: rgba(255,255,255,0.78);
-			line-height: 1.6;
-		}
-		.spinner{
-			width: 18px; height: 18px;
-			border-radius: 999px;
-			border: 2px solid rgba(255,255,255,0.18);
-			border-top-color: rgba(114,139,225,0.9);
-			animation: spin 900ms linear infinite;
-		}
-		@keyframes spin { to { transform: rotate(360deg); } }
-
-		.modalActions{ margin-top: 14px; display:flex; gap: 10px; flex-wrap: wrap; }
-		.modalHint{ margin-top: 10px; color: rgba(255,255,255,0.62); font-size: 13px; line-height: 1.6; }
-
-		/* Hidden Google button host: keep it off-screen but clickable programmatically */
+		/* Hidden host for injected google button: not display:none */
 		#gcalSchedulingButtonHost{
-			position: absolute;
+			position: fixed;
 			left: -9999px;
-			top: -9999px;
-			opacity: 0;
-			pointer-events: auto;
+			top: 0;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			visibility: hidden;
+			pointer-events: none;
+			z-index: -1;
 		}
 
 		@media (max-width: 1100px){
@@ -502,6 +473,7 @@
 			.skillsGrid{ grid-template-columns: 1fr; }
 			.splitBullets{ grid-template-columns: 1fr; }
 		}
+
 		@media (max-width: 900px){
 			.heroTitle{ font-size: 38px; }
 			.heroGrid{ grid-template-columns: 1fr; gap: 18px; }
@@ -510,15 +482,18 @@
 			:root{ --header-h: 96px; }
 			.page{ padding-top: calc(var(--header-h) + 22px); }
 		}
+
 		@media (max-width: 720px){
 			.logoRow{ grid-template-columns: 1fr; }
 			.afterSocialSpacer{ height: 42px; }
+
 			.carouselTrack{ padding: 0 calc(50% - 170px); }
 			.carouselSlide{ flex-basis: 340px; max-width: 340px; }
 			.quoteCard{ padding: 20px 16px 18px; }
 			.quoteText{ font-size: 15px; }
 			.arrowPrev{ left: -6px; }
 			.arrowNext{ right: -6px; }
+
 			.whyGrid{ grid-template-columns: 1fr; }
 			:root{ --header-h: 120px; }
 			.page{ padding-top: calc(var(--header-h) + 18px); }
@@ -540,7 +515,8 @@
 					<a href="#why-me">Why me</a>
 					<a href="#skills">Skills</a>
 
-					<a class="btn js-open-calendar" href="#" role="button">Book a meeting</a>
+					<!-- Keep your main button (can be re-wired later once we know what works) -->
+					<a class="btn" href="#" role="button" id="mainBookBtn">Book a meeting</a>
 
 					<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
 						<span class="icon" aria-hidden="true">
@@ -561,6 +537,20 @@
 				<div class="heroMedia">
 					<div class="heroImage">
 						<img src="assets/val-os.webp" alt="Photo of Valentine" />
+
+						<!-- TEST PANEL -->
+						<div class="testPanel">
+							<div class="testPanelTitle">Calendar test buttons</div>
+							<div class="testButtons">
+								<a class="btn btnSm" href="#" id="testA">Test A — Direct API click</a>
+								<a class="btn btnSm" href="#" id="testB">Test B — API click (requestAnimationFrame)</a>
+								<a class="btn btnSm" href="#" id="testC">Test C — Load API into visible host then click</a>
+								<a class="btn btnSm" href="#" id="testD">Test D — Open calendar.app.google in new tab</a>
+							</div>
+							<div class="debugLine" id="calDebug">
+								<strong>Status:</strong> idle
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -574,7 +564,7 @@
 					</p>
 
 					<div class="ctaRow">
-						<a class="btn js-open-calendar" href="#" role="button">Book a meeting</a>
+						<a class="btn" href="#" role="button" id="mainBookBtn2">Book a meeting</a>
 
 						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
 							<span class="icon" aria-hidden="true">
@@ -778,40 +768,8 @@
 		</footer>
 	</main>
 
-	<!-- Hidden host for Google's injected button (loaded ONCE) -->
+	<!-- Hidden host for Google-injected scheduling button (NOT display:none) -->
 	<span id="gcalSchedulingButtonHost"></span>
-
-	<!-- YOUR POPUP -->
-	<div class="modalOverlay" id="calendarModal" aria-hidden="true">
-		<div class="modalCard" role="dialog" aria-modal="true" aria-label="Book a meeting">
-			<div class="modalTopbar">
-				<div class="modalTitle">Book a meeting</div>
-				<button class="modalClose" type="button" aria-label="Close">
-					<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-						<path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4Z"/>
-					</svg>
-				</button>
-			</div>
-
-			<div class="modalBody">
-				<div class="loaderRow" id="calendarLoadingRow">
-					<div class="spinner" aria-hidden="true"></div>
-					<div>
-						<div style="font-weight:700; color: rgba(255,255,255,0.92);">Opening calendar…</div>
-						<div style="color: rgba(255,255,255,0.70); font-size: 13px;">If nothing happens, use the fallback.</div>
-					</div>
-				</div>
-
-				<div class="modalActions" id="calendarFallbackActions" style="display:none;">
-					<a class="btn" href="https://calendar.app.google/yXTaEWLWcCm2VbCp9" target="_blank" rel="noreferrer">Open in a new tab</a>
-				</div>
-
-				<div class="modalHint" id="calendarHint" style="display:none;">
-					If the scheduling overlay is blocked by browser settings, open it in a new tab.
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<script>
 		// Carousel (unchanged)
@@ -926,124 +884,143 @@
 			goTo(index, false);
 		})();
 
-		// Calendar popup + Google overlay trigger (NO duplicate buttons)
-		(function calendarPopup(){
+		// ====== Calendar testing harness ======
+		(function calendarTestHarness(){
 			const SCHEDULING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fl52OMBKffQzG6Ab0-1T44N7-qT4r7Y-CHiF5Ng45bqBUEyb_xkbgIy85i07xo9O3FeZu5Fjz?gv=true";
-
-			const modal = document.getElementById("calendarModal");
-			const closeBtn = modal.querySelector(".modalClose");
-
-			const loadingRow = document.getElementById("calendarLoadingRow");
-			const fallbackActions = document.getElementById("calendarFallbackActions");
-			const hint = document.getElementById("calendarHint");
+			const CAL_APP_URL = "https://calendar.app.google/yXTaEWLWcCm2VbCp9";
 
 			const host = document.getElementById("gcalSchedulingButtonHost");
-			const openers = Array.from(document.querySelectorAll(".js-open-calendar"));
+			const dbg = document.getElementById("calDebug");
 
-			let lastFocused = null;
-			let googleButtonLoaded = false;
+			const btnA = document.getElementById("testA");
+			const btnB = document.getElementById("testB");
+			const btnC = document.getElementById("testC");
+			const btnD = document.getElementById("testD");
 
-			function showLoading(){
-				loadingRow.style.display = "flex";
-				fallbackActions.style.display = "none";
-				hint.style.display = "none";
+			const main1 = document.getElementById("mainBookBtn");
+			const main2 = document.getElementById("mainBookBtn2");
+
+			function setStatus(msg){
+				dbg.innerHTML = "<strong>Status:</strong> " + msg;
 			}
 
-			function showFallback(){
-				loadingRow.style.display = "none";
-				fallbackActions.style.display = "flex";
-				hint.style.display = "block";
+			function apiReady(){
+				return !!(window.calendar && window.calendar.schedulingButton && window.calendar.schedulingButton.load);
 			}
 
-			function openModal(){
-				lastFocused = document.activeElement;
+			function ensureInjectedButton(){
+				if (!apiReady()) return null;
 
-				modal.classList.add("is-open");
-				modal.setAttribute("aria-hidden", "false");
-				document.body.style.overflow = "hidden";
+				// Do NOT keep adding buttons. Clear and load once per test click.
+				host.innerHTML = "";
 
-				showLoading();
-				closeBtn.focus();
+				try{
+					window.calendar.schedulingButton.load({
+						url: SCHEDULING_URL,
+						color: "#728BE1",
+						label: "Book a meeting",
+						target: host
+					});
+				}catch(e){
+					return null;
+				}
 
-				// Try to trigger calendar overlay quickly
-				triggerGoogleOverlayWithTimeout(2500);
-			}
-
-			function closeModal(){
-				modal.classList.remove("is-open");
-				modal.setAttribute("aria-hidden", "true");
-				document.body.style.overflow = "";
-
-				if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
-			}
-
-			function ensureGoogleButtonLoaded(){
-				if (googleButtonLoaded) return true;
-				if (!(window.calendar && window.calendar.schedulingButton && window.calendar.schedulingButton.load)) return false;
-
-				// Load Google's injected button ONCE
-				window.calendar.schedulingButton.load({
-					url: SCHEDULING_URL,
-					color: "#728BE1",
-					label: "Book a meeting",
-					target: host
-				});
-
-				googleButtonLoaded = true;
-				return true;
-			}
-
-			function getGoogleInjectedButton(){
 				return host.querySelector("button, a");
 			}
 
-			function triggerGoogleOverlayWithTimeout(timeoutMs){
+			async function waitForInjectedBtn(timeoutMs){
 				const start = Date.now();
-
-				(function tick(){
-					const apiReady = ensureGoogleButtonLoaded();
-					const injected = apiReady ? getGoogleInjectedButton() : null;
-
-					if (injected){
-						// IMPORTANT: close OUR popup first so Google overlay is on top
-						closeModal();
-
-						// Give the browser a beat to remove our overlay, then click Google's trigger
-						setTimeout(() => injected.click(), 60);
-						return;
-					}
-
-					if (Date.now() - start > timeoutMs){
-						// Still not ready -> show fallback INSIDE our popup (no auto new-tab)
-						showFallback();
-						return;
-					}
-
-					setTimeout(tick, 50);
-				})();
+				while (Date.now() - start < timeoutMs){
+					const el = host.querySelector("button, a");
+					if (el) return el;
+					await new Promise(r => setTimeout(r, 60));
+				}
+				return null;
 			}
 
-			openers.forEach(btn => {
-				btn.addEventListener("click", (e) => {
-					e.preventDefault();
-					openModal();
+			async function testA(){
+				setStatus("Test A: checking API…");
+				if (!apiReady()){
+					setStatus("Test A: API not ready (window.calendar missing). Wait 2–3s and try again.");
+					return;
+				}
+				setStatus("Test A: loading injected trigger…");
+				ensureInjectedButton();
+				const injected = await waitForInjectedBtn(3000);
+				if (!injected){
+					setStatus("Test A: injected button NOT created.");
+					return;
+				}
+				setStatus("Test A: clicking injected trigger now…");
+				injected.click();
+				setStatus("Test A: click fired. Did overlay open?");
+			}
+
+			async function testB(){
+				setStatus("Test B: checking API…");
+				if (!apiReady()){
+					setStatus("Test B: API not ready. Wait 2–3s and try again.");
+					return;
+				}
+				setStatus("Test B: loading injected trigger…");
+				ensureInjectedButton();
+				const injected = await waitForInjectedBtn(3000);
+				if (!injected){
+					setStatus("Test B: injected button NOT created.");
+					return;
+				}
+				setStatus("Test B: clicking on next animation frame…");
+				requestAnimationFrame(() => {
+					injected.click();
+					setStatus("Test B: click fired. Did overlay open?");
 				});
-			});
+			}
 
-			closeBtn.addEventListener("click", closeModal);
-			modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-			window.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal(); });
+			async function testC(){
+				setStatus("Test C: making host temporarily visible (offscreen) and loading…");
+				if (!apiReady()){
+					setStatus("Test C: API not ready. Wait 2–3s and try again.");
+					return;
+				}
 
-			// Optional: pre-load the google button as soon as the page finishes loading
-			window.addEventListener("load", () => {
-				// wait a bit for async script
-				const start = Date.now();
-				(function preloadTick(){
-					if (ensureGoogleButtonLoaded()) return;
-					if (Date.now() - start > 8000) return;
-					setTimeout(preloadTick, 80);
-				})();
-			});
+				// Temporarily make host visible (but still offscreen) for widget init
+				const prev = host.style.visibility;
+				host.style.visibility = "visible";
+
+				ensureInjectedButton();
+				const injected = await waitForInjectedBtn(3000);
+
+				host.style.visibility = prev;
+
+				if (!injected){
+					setStatus("Test C: injected button NOT created (even when host visible).");
+					return;
+				}
+				setStatus("Test C: clicking injected trigger…");
+				injected.click();
+				setStatus("Test C: click fired. Did overlay open?");
+			}
+
+			function testD(){
+				setStatus("Test D: opening calendar.app.google in new tab.");
+				window.open(CAL_APP_URL, "_blank", "noopener,noreferrer");
+			}
+
+			btnA.addEventListener("click", (e) => { e.preventDefault(); testA(); });
+			btnB.addEventListener("click", (e) => { e.preventDefault(); testB(); });
+			btnC.addEventListener("click", (e) => { e.preventDefault(); testC(); });
+			btnD.addEventListener("click", (e) => { e.preventDefault(); testD(); });
+
+			// For now, wire your main “Book a meeting” to Test A so you can compare.
+			function wireMain(btn){
+				if (!btn) return;
+				btn.addEventListener("click", (e) => { e.preventDefault(); testA(); });
+			}
+			wireMain(main1);
+			wireMain(main2);
+
+			// initial status
+			setStatus("idle. API ready = " + (apiReady() ? "yes" : "no") + ". If no, wait a few seconds.");
 		})();
 	</script>
 </body>
