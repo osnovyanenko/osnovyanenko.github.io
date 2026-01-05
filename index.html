@@ -6,12 +6,9 @@
 	<title>Valentine Osnovyanenko — Home</title>
 	<meta name="description" content="Marketing Partner for Founders & CEOs" />
 
-	<!-- Google Calendar Appointment Scheduling (overlay) -->
-	<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-	<script src="https://calendar.google.com/calendar/scheduling-button-script.js" defer></script>
-
 	<style>
 		:root{
+			/* Photo-led palette */
 			--bg: #020204;
 			--bg2: #060509;
 
@@ -23,11 +20,13 @@
 			--accent3: #C51A0F;
 
 			--link: #9AAAF0;
+
 			--max: 1080px;
 
 			--card-bg: rgba(255,255,255,0.03);
 			--card-border: rgba(255,255,255,0.12);
 
+			/* Fixed header height */
 			--header-h: 84px;
 		}
 
@@ -45,6 +44,7 @@
 			position: relative;
 		}
 
+		/* One continuous background (fixed overlay) */
 		body::before{
 			content:"";
 			position: fixed;
@@ -59,10 +59,11 @@
 		}
 
 		hr{ display:none !important; }
+
 		a{ color: var(--link); text-decoration:none; }
 		a:hover{ text-decoration:underline; }
 
-		/* Buttons */
+		/* Buttons (ALL text white) */
 		.btn{
 			display:inline-flex;
 			align-items:center;
@@ -103,6 +104,7 @@
 			transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
 		}
 
+		/* Neon glow hover: BOTH button types turn red + glow */
 		.btn:hover,
 		.btnGhost:hover{
 			text-decoration: none;
@@ -117,21 +119,37 @@
 		}
 
 		.btn:active,
-		.btnGhost:active{ transform: translateY(1px); }
+		.btnGhost:active{
+			transform: translateY(1px);
+		}
 
-		.icon{ width: 18px; height: 18px; display:inline-block; }
+		.btn:focus-visible,
+		.btnGhost:focus-visible{
+			box-shadow:
+				0 0 0 2px rgba(114,139,225,0.55),
+				0 0 26px rgba(114,139,225,0.25);
+		}
+
+		.icon{
+			width: 18px;
+			height: 18px;
+			display:inline-block;
+		}
 		.icon svg{ width: 18px; height: 18px; display:block; }
 
 		/* Fixed header */
 		.siteHeader{
 			position: fixed;
-			top: 0; left: 0; right: 0;
+			top: 0;
+			left: 0;
+			right: 0;
 			z-index: 9999;
 			backdrop-filter: blur(10px);
 			-webkit-backdrop-filter: blur(10px);
 			background: rgba(2,2,4,0.76);
 			border-bottom: 1px solid rgba(255,255,255,0.08);
 		}
+
 		.headerInner{
 			max-width: var(--max);
 			margin: 0 auto;
@@ -140,11 +158,14 @@
 			display:flex;
 			align-items:center;
 		}
+
 		.page{
 			max-width: var(--max);
 			margin: 0 auto;
 			padding: calc(var(--header-h) + 28px) 20px 90px;
+			background: transparent;
 		}
+
 		.nav{
 			width: 100%;
 			display:flex;
@@ -152,6 +173,7 @@
 			justify-content:space-between;
 			gap:16px;
 		}
+
 		.brand{
 			display:flex;
 			flex-direction:column;
@@ -188,7 +210,6 @@
 			align-items: center;
 		}
 		.heroMedia{ position: relative; }
-
 		.heroMedia::before{
 			content:"";
 			position:absolute;
@@ -199,7 +220,6 @@
 			opacity: 0.9;
 			z-index: 0;
 		}
-
 		.heroImage{
 			position: relative;
 			z-index: 1;
@@ -218,46 +238,6 @@
 			display:block;
 		}
 
-		/* TEST PANEL inside hero image */
-		.testPanel{
-			position: absolute;
-			left: 14px;
-			right: 14px;
-			bottom: 14px;
-			z-index: 2;
-			border-radius: 16px;
-			border: 1px solid rgba(255,255,255,0.12);
-			background: rgba(2,2,4,0.55);
-			backdrop-filter: blur(10px);
-			-webkit-backdrop-filter: blur(10px);
-			padding: 12px;
-		}
-		.testPanelTitle{
-			font-size: 12px;
-			letter-spacing: 0.02em;
-			text-transform: uppercase;
-			color: rgba(255,255,255,0.70);
-			margin-bottom: 8px;
-		}
-		.testButtons{
-			display:flex;
-			flex-wrap: wrap;
-			gap: 8px;
-		}
-		.btnSm{
-			padding: 10px 12px;
-			border-radius: 12px;
-			font-size: 13px;
-		}
-		.debugLine{
-			margin-top: 8px;
-			font-size: 12px;
-			color: rgba(255,255,255,0.70);
-			line-height: 1.4;
-			word-break: break-word;
-		}
-		.debugLine strong{ color: rgba(255,255,255,0.92); }
-
 		.kicker{
 			display:inline-flex;
 			align-items:center;
@@ -272,18 +252,21 @@
 			background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
 			box-shadow: 0 0 22px rgba(114,139,225,0.35);
 		}
+
 		.heroTitle{
 			margin: 10px 0 12px;
 			font-size: 44px;
 			line-height: 1.05;
 			letter-spacing: -0.03em;
 		}
+
 		.lede{
 			margin: 0 0 18px;
 			color: var(--muted);
 			font-size: 16px;
 			max-width: 60ch;
 		}
+
 		.ctaRow{
 			display:flex;
 			gap:12px;
@@ -293,7 +276,7 @@
 		}
 
 		/* Social proof */
-		.socialProof{ padding: 14px 0 0; }
+		.socialProof{ padding: 14px 0 0; background: transparent; }
 		.logoRow{
 			display: grid;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -317,22 +300,33 @@
 		.afterSocialSpacer{ height: 54px; }
 
 		/* Testimonials */
-		.testimonials{ padding: 0; }
+		.testimonials{ padding: 0; background: transparent; }
 		.carousel{ margin-top: 16px; position: relative; user-select: none; }
-		.carouselViewport{ overflow: hidden; padding: 14px 0 18px; cursor: grab; }
+
+		.carouselViewport{
+			overflow: hidden;
+			padding: 14px 0 18px;
+			cursor: grab;
+		}
 		.carouselViewport.dragging{ cursor: grabbing; }
+
 		.carouselTrack{
-			display: flex; gap: 18px;
+			display: flex;
+			gap: 18px;
 			will-change: transform;
 			transform: translate3d(0,0,0);
 			transition: transform 420ms cubic-bezier(.2,.8,.2,1);
 			padding: 0 calc(50% - 280px);
 		}
+
 		.carouselSlide{
-			flex: 0 0 560px; max-width: 560px;
-			display:flex; justify-content:center;
+			flex: 0 0 560px;
+			max-width: 560px;
+			display:flex;
+			justify-content:center;
 			transition: transform 420ms cubic-bezier(.2,.8,.2,1), opacity 420ms cubic-bezier(.2,.8,.2,1);
-			opacity: 0.42; transform: scale(0.90);
+			opacity: 0.42;
+			transform: scale(0.90);
 		}
 		.carouselSlide.is-active{ opacity: 1; transform: scale(1); }
 
@@ -344,12 +338,18 @@
 			padding: 26px 24px 22px;
 			text-align: center;
 		}
+
 		.quoteHeader{
-			display:flex; flex-direction: column; align-items:center;
-			gap: 10px; margin-bottom: 12px;
+			display:flex;
+			flex-direction: column;
+			align-items:center;
+			gap: 10px;
+			margin-bottom: 12px;
 		}
+
 		.avatarImg{
-			width: 56px; height: 56px;
+			width: 56px;
+			height: 56px;
 			border-radius: 999px;
 			object-fit: cover;
 			object-position: 50% 35%;
@@ -359,22 +359,38 @@
 				0 0 0 1px rgba(114,139,225,0.20),
 				0 0 18px rgba(114,139,225,0.12);
 		}
-		.quoteText{ margin: 0; color: rgba(255,255,255,0.78); font-size: 16px; line-height: 1.75; }
-		.quoteFooter{ margin-top: 16px; color: rgba(255,255,255,0.72); font-size: 13px; }
+
+		.quoteText{
+			margin: 0;
+			color: rgba(255,255,255,0.78);
+			font-size: 16px;
+			line-height: 1.75;
+		}
+
+		.quoteFooter{
+			margin-top: 16px;
+			color: rgba(255,255,255,0.72);
+			font-size: 13px;
+		}
 		.quoteFooter strong{ color: rgba(255,255,255,0.90); font-weight: 750; }
 
 		.carouselArrows{ position: absolute; inset: 0; pointer-events: none; }
+
 		.arrowBtn{
 			pointer-events: auto;
 			position: absolute;
-			top: 50%; transform: translateY(-50%);
-			width: 42px; height: 42px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 42px;
+			height: 42px;
 			border-radius: 999px;
 			border: 1px solid rgba(255,255,255,0.14);
 			background: rgba(255,255,255,0.04);
 			color: rgba(255,255,255,0.88);
 			cursor: pointer;
-			display:flex; align-items:center; justify-content:center;
+			display:flex;
+			align-items:center;
+			justify-content:center;
 		}
 		.arrowBtn:hover{ background: rgba(255,255,255,0.06); }
 		.arrowBtn:disabled{ opacity: 0.35; cursor: not-allowed; }
@@ -383,87 +399,171 @@
 
 		.dots{ display:flex; justify-content:center; gap: 8px; margin-top: 10px; }
 		.dot{
-			width: 8px; height: 8px;
+			width: 8px;
+			height: 8px;
 			border-radius: 999px;
 			background: rgba(255,255,255,0.25);
 			border: 1px solid rgba(255,255,255,0.10);
 			cursor: pointer;
 		}
-		.dot.active{ background: rgba(114,139,225,0.95); box-shadow: 0 0 18px rgba(114,139,225,0.35); }
+		.dot.active{
+			background: rgba(114,139,225,0.95);
+			box-shadow: 0 0 18px rgba(114,139,225,0.35);
+		}
 
-		/* Why */
-		.whyChoose{ padding: 54px 0 0; }
-		.whyGrid{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+		/* Why Companies Choose Me */
+		.whyChoose{ padding: 54px 0 0; background: transparent; }
+		.whyGrid{
+			display:grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 14px;
+			align-items: stretch;
+		}
+
 		.whyCard{
-			border-radius: 18px; overflow: hidden;
+			border-radius: 18px;
+			overflow: hidden;
 			border: 1px solid rgba(255,255,255,0.10);
 			background: rgba(255,255,255,0.03);
-			display:flex; flex-direction: column;
+			display:flex;
+			flex-direction: column;
 			min-height: 330px;
 		}
+
 		.whyArt{
 			aspect-ratio: 2 / 3;
-			background: linear-gradient(135deg, rgba(114,139,225,0.28), rgba(246,85,52,0.18)), rgba(255,255,255,0.02);
+			background:
+				linear-gradient(135deg, rgba(114,139,225,0.28), rgba(246,85,52,0.18)),
+				rgba(255,255,255,0.02);
 			border-bottom: 0;
-			display:flex; align-items:center; justify-content:center;
+			display:flex;
+			align-items:center;
+			justify-content:center;
 			color: rgba(255,255,255,0.70);
-			font-size: 13px; letter-spacing: 0.02em; text-transform: uppercase;
+			font-size: 13px;
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
 			min-height: 190px;
 		}
-		.whyBody{ background: rgba(255,255,255,0.96); color: rgba(10,14,22,0.92); padding: 14px 14px 16px; flex: 1 1 auto; }
+
+		.whyBody{
+			background: rgba(255,255,255,0.96);
+			color: rgba(10,14,22,0.92);
+			padding: 14px 14px 16px;
+			flex: 1 1 auto;
+		}
 		.whyBody h3{ margin: 0 0 6px; font-size: 14px; letter-spacing: -0.01em; }
 		.whyBody p{ margin: 0; font-size: 13px; line-height: 1.45; color: rgba(10,14,22,0.62); }
 
 		/* Skills */
-		.skillsUse{ padding: 54px 0 0; }
-		.skillsGrid{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
-		details.skillCard{ border-radius: 18px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 16px 18px; }
+		.skillsUse{ padding: 54px 0 0; background: transparent; }
+		.skillsGrid{
+			display:grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 14px;
+			align-items: stretch;
+		}
+
+		details.skillCard{
+			border-radius: 18px;
+			border: 1px solid rgba(255,255,255,0.12);
+			background: rgba(255,255,255,0.03);
+			padding: 16px 18px;
+		}
 		details.skillCard summary{
-			list-style: none; cursor: pointer;
-			display:flex; align-items:flex-start; justify-content: space-between;
+			list-style: none;
+			cursor: pointer;
+			display:flex;
+			align-items:flex-start;
+			justify-content: space-between;
 			gap: 14px;
 		}
 		details.skillCard summary::-webkit-details-marker{ display:none; }
+
 		.skillHead{ display:flex; align-items:center; gap: 12px; }
+
 		.iconPh{
-			width: 40px; height: 40px;
+			width: 40px;
+			height: 40px;
 			border-radius: 14px;
 			background: linear-gradient(135deg, rgba(114,139,225,0.28), rgba(246,85,52,0.18));
 			border: 1px solid rgba(255,255,255,0.12);
 			flex: 0 0 auto;
 		}
+
 		.skillTitleWrap h3{ margin: 0 0 4px; font-size: 16px; letter-spacing: -0.01em; }
 		.skillTitleWrap p{ margin: 0; color: rgba(255,255,255,0.70); font-size: 13px; line-height: 1.55; }
+
 		.sumIcon{
 			flex: 0 0 auto;
-			width: 28px; height: 28px;
+			width: 28px;
+			height: 28px;
 			border-radius: 999px;
 			border: 1px solid rgba(255,255,255,0.14);
 			background: rgba(255,255,255,0.03);
-			display:flex; align-items:center; justify-content:center;
+			display:flex;
+			align-items:center;
+			justify-content:center;
 			color: rgba(255,255,255,0.70);
 			margin-top: 6px;
 			transition: transform 220ms ease;
 		}
 		details.skillCard[open] .sumIcon{ transform: rotate(45deg); }
+
 		.skillExpanded{ margin-top: 14px; }
-		.splitBullets{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; color: rgba(255,255,255,0.74); font-size: 14px; line-height: 1.6; }
-		.bItem{ border-left: 2px solid rgba(114,139,225,0.40); padding-left: 10px; }
-		.skillsCta{ margin-top: 18px; display:flex; justify-content:center; }
+		.splitBullets{
+			display:grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 10px 14px;
+			color: rgba(255,255,255,0.74);
+			font-size: 14px;
+			line-height: 1.6;
+		}
+		.bItem{
+			border-left: 2px solid rgba(114,139,225,0.40);
+			padding-left: 10px;
+		}
 
-		.footer{ padding-top: 54px; color: var(--muted); font-size: 13px; display:flex; gap: 10px; align-items:center; flex-wrap: wrap; border: 0; }
+		.skillsCta{
+			margin-top: 18px;
+			display:flex;
+			justify-content:center;
+		}
 
-		/* Hidden host for injected google button: not display:none */
-		#gcalSchedulingButtonHost{
-			position: fixed;
-			left: -9999px;
-			top: 0;
-			width: 1px;
-			height: 1px;
+		/* Footer */
+		.footer{
+			padding-top: 54px;
+			color: var(--muted);
+			font-size: 13px;
+			display:flex;
+			gap: 10px;
+			align-items:center;
+			flex-wrap: wrap;
+			border: 0;
+			background: transparent;
+		}
+
+		/* ===== Calendar embed below skills (no title) ===== */
+		.calendarEmbed{
+			padding-top: 18px;
+		}
+		.calendarCard{
+			border-radius: 20px;
+			border: 1px solid rgba(255,255,255,0.12);
+			background: rgba(255,255,255,0.04);
 			overflow: hidden;
-			visibility: hidden;
-			pointer-events: none;
-			z-index: -1;
+		}
+		.calendarFrameWrap{
+			background: #ffffff;
+			border-radius: 20px;
+			overflow: hidden;
+		}
+		.calendarFrame{
+			width: 100%;
+			height: 700px;
+			border: 0;
+			display:block;
+			background: #ffffff;
 		}
 
 		@media (max-width: 1100px){
@@ -497,6 +597,8 @@
 			.whyGrid{ grid-template-columns: 1fr; }
 			:root{ --header-h: 120px; }
 			.page{ padding-top: calc(var(--header-h) + 18px); }
+
+			.calendarFrame{ height: 620px; }
 		}
 	</style>
 </head>
@@ -515,8 +617,8 @@
 					<a href="#why-me">Why me</a>
 					<a href="#skills">Skills</a>
 
-					<!-- Keep your main button (can be re-wired later once we know what works) -->
-					<a class="btn" href="#" role="button" id="mainBookBtn">Book a meeting</a>
+					<!-- Keep existing header CTA -->
+					<a class="btn" href="#calendar">Book a meeting</a>
 
 					<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
 						<span class="icon" aria-hidden="true">
@@ -537,20 +639,6 @@
 				<div class="heroMedia">
 					<div class="heroImage">
 						<img src="assets/val-os.webp" alt="Photo of Valentine" />
-
-						<!-- TEST PANEL -->
-						<div class="testPanel">
-							<div class="testPanelTitle">Calendar test buttons</div>
-							<div class="testButtons">
-								<a class="btn btnSm" href="#" id="testA">Test A — Direct API click</a>
-								<a class="btn btnSm" href="#" id="testB">Test B — API click (requestAnimationFrame)</a>
-								<a class="btn btnSm" href="#" id="testC">Test C — Load API into visible host then click</a>
-								<a class="btn btnSm" href="#" id="testD">Test D — Open calendar.app.google in new tab</a>
-							</div>
-							<div class="debugLine" id="calDebug">
-								<strong>Status:</strong> idle
-							</div>
-						</div>
 					</div>
 				</div>
 
@@ -564,7 +652,7 @@
 					</p>
 
 					<div class="ctaRow">
-						<a class="btn" href="#" role="button" id="mainBookBtn2">Book a meeting</a>
+						<a class="btn" href="#calendar">Book a meeting</a>
 
 						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
 							<span class="icon" aria-hidden="true">
@@ -749,15 +837,21 @@
 				</details>
 			</div>
 
-			<div class="skillsCta">
-				<a class="btn" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
-					<span class="icon" aria-hidden="true">
-						<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-							<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
-						</svg>
-					</span>
-					Request CV
-				</a>
+			<!-- Removed Request CV button from skills section -->
+		</section>
+
+		<!-- Calendar embed directly below Skills, no title -->
+		<section class="calendarEmbed" id="calendar" aria-label="Calendar">
+			<div class="calendarCard">
+				<div class="calendarFrameWrap">
+					<iframe
+						class="calendarFrame"
+						src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fl52OMBKffQzG6Ab0-1T44N7-qT4r7Y-CHiF5Ng45bqBUEyb_xkbgIy85i07xo9O3FeZu5Fjz?gv=true"
+						title="Google Calendar appointment scheduling"
+						loading="lazy"
+						allow="fullscreen"
+					></iframe>
+				</div>
 			</div>
 		</section>
 
@@ -767,9 +861,6 @@
 			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">LinkedIn</a>
 		</footer>
 	</main>
-
-	<!-- Hidden host for Google-injected scheduling button (NOT display:none) -->
-	<span id="gcalSchedulingButtonHost"></span>
 
 	<script>
 		// Carousel (unchanged)
@@ -881,146 +972,8 @@
 			viewport.addEventListener('touchend', pointerUp);
 
 			window.addEventListener('resize', () => goTo(index, false));
+
 			goTo(index, false);
-		})();
-
-		// ====== Calendar testing harness ======
-		(function calendarTestHarness(){
-			const SCHEDULING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fl52OMBKffQzG6Ab0-1T44N7-qT4r7Y-CHiF5Ng45bqBUEyb_xkbgIy85i07xo9O3FeZu5Fjz?gv=true";
-			const CAL_APP_URL = "https://calendar.app.google/yXTaEWLWcCm2VbCp9";
-
-			const host = document.getElementById("gcalSchedulingButtonHost");
-			const dbg = document.getElementById("calDebug");
-
-			const btnA = document.getElementById("testA");
-			const btnB = document.getElementById("testB");
-			const btnC = document.getElementById("testC");
-			const btnD = document.getElementById("testD");
-
-			const main1 = document.getElementById("mainBookBtn");
-			const main2 = document.getElementById("mainBookBtn2");
-
-			function setStatus(msg){
-				dbg.innerHTML = "<strong>Status:</strong> " + msg;
-			}
-
-			function apiReady(){
-				return !!(window.calendar && window.calendar.schedulingButton && window.calendar.schedulingButton.load);
-			}
-
-			function ensureInjectedButton(){
-				if (!apiReady()) return null;
-
-				// Do NOT keep adding buttons. Clear and load once per test click.
-				host.innerHTML = "";
-
-				try{
-					window.calendar.schedulingButton.load({
-						url: SCHEDULING_URL,
-						color: "#728BE1",
-						label: "Book a meeting",
-						target: host
-					});
-				}catch(e){
-					return null;
-				}
-
-				return host.querySelector("button, a");
-			}
-
-			async function waitForInjectedBtn(timeoutMs){
-				const start = Date.now();
-				while (Date.now() - start < timeoutMs){
-					const el = host.querySelector("button, a");
-					if (el) return el;
-					await new Promise(r => setTimeout(r, 60));
-				}
-				return null;
-			}
-
-			async function testA(){
-				setStatus("Test A: checking API…");
-				if (!apiReady()){
-					setStatus("Test A: API not ready (window.calendar missing). Wait 2–3s and try again.");
-					return;
-				}
-				setStatus("Test A: loading injected trigger…");
-				ensureInjectedButton();
-				const injected = await waitForInjectedBtn(3000);
-				if (!injected){
-					setStatus("Test A: injected button NOT created.");
-					return;
-				}
-				setStatus("Test A: clicking injected trigger now…");
-				injected.click();
-				setStatus("Test A: click fired. Did overlay open?");
-			}
-
-			async function testB(){
-				setStatus("Test B: checking API…");
-				if (!apiReady()){
-					setStatus("Test B: API not ready. Wait 2–3s and try again.");
-					return;
-				}
-				setStatus("Test B: loading injected trigger…");
-				ensureInjectedButton();
-				const injected = await waitForInjectedBtn(3000);
-				if (!injected){
-					setStatus("Test B: injected button NOT created.");
-					return;
-				}
-				setStatus("Test B: clicking on next animation frame…");
-				requestAnimationFrame(() => {
-					injected.click();
-					setStatus("Test B: click fired. Did overlay open?");
-				});
-			}
-
-			async function testC(){
-				setStatus("Test C: making host temporarily visible (offscreen) and loading…");
-				if (!apiReady()){
-					setStatus("Test C: API not ready. Wait 2–3s and try again.");
-					return;
-				}
-
-				// Temporarily make host visible (but still offscreen) for widget init
-				const prev = host.style.visibility;
-				host.style.visibility = "visible";
-
-				ensureInjectedButton();
-				const injected = await waitForInjectedBtn(3000);
-
-				host.style.visibility = prev;
-
-				if (!injected){
-					setStatus("Test C: injected button NOT created (even when host visible).");
-					return;
-				}
-				setStatus("Test C: clicking injected trigger…");
-				injected.click();
-				setStatus("Test C: click fired. Did overlay open?");
-			}
-
-			function testD(){
-				setStatus("Test D: opening calendar.app.google in new tab.");
-				window.open(CAL_APP_URL, "_blank", "noopener,noreferrer");
-			}
-
-			btnA.addEventListener("click", (e) => { e.preventDefault(); testA(); });
-			btnB.addEventListener("click", (e) => { e.preventDefault(); testB(); });
-			btnC.addEventListener("click", (e) => { e.preventDefault(); testC(); });
-			btnD.addEventListener("click", (e) => { e.preventDefault(); testD(); });
-
-			// For now, wire your main “Book a meeting” to Test A so you can compare.
-			function wireMain(btn){
-				if (!btn) return;
-				btn.addEventListener("click", (e) => { e.preventDefault(); testA(); });
-			}
-			wireMain(main1);
-			wireMain(main2);
-
-			// initial status
-			setStatus("idle. API ready = " + (apiReady() ? "yes" : "no") + ". If no, wait a few seconds.");
 		})();
 	</script>
 </body>
