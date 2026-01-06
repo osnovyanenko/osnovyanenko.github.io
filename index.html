@@ -3,8 +3,19 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Valentine Osnovyanenko — Home</title>
-	<meta name="description" content="Marketing Partner for Founders & CEOs" />
+
+	<title>Valentine Osnovyanenko: Marketing Partner for SaaS Founders</title>
+	<meta name="description" content="Find out how Val Osnovyanenko can be useful for your product business." />
+
+	<!-- Google Tag Manager -->
+	<script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-WDK7FTB2');
+	</script>
+	<!-- End Google Tag Manager -->
 
 	<style>
 		:root{
@@ -448,10 +459,9 @@
 			border: 1px solid var(--card-border);
 			background: var(--card-bg);
 			padding: 24px 22px 20px;
-			text-align: left; /* changed */
+			text-align: left;
 		}
 
-		/* (4) New quote header layout: avatar left, name+title right */
 		.quoteHeader{
 			display:flex;
 			flex-direction: row;
@@ -501,9 +511,10 @@
 		}
 		.dot.active{ background: rgba(114,139,225,0.95); box-shadow: 0 0 18px rgba(114,139,225,0.35); }
 
-		/* ===== Why cards ===== */
+		/* ===== Why cards (HOVER) ===== */
 		.whyChoose{ padding: 54px 0 0; }
 		.whyGrid{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+
 		.whyCard{
 			border-radius: 18px;
 			overflow: hidden;
@@ -513,14 +524,21 @@
 			min-height: 330px;
 			transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease;
 		}
-		.whyArt{ aspect-ratio: 2 / 3; background: rgba(255,255,255,0.02); display:block; min-height: 190px; overflow: hidden; }
-		.whyArt img{ width: 100%; height: 100%; display:block; object-fit: cover; object-position: 50% 50%; transition: transform 300ms cubic-bezier(.2,.8,.2,1), filter 300ms cubic-bezier(.2,.8,.2,1); }
+
+		/* (1) Ensure ALL cards get the hover lift + glow */
 		.whyCard:hover{
 			border-color: rgba(246,85,52,0.35);
-			box-shadow: 0 0 0 1px rgba(246,85,52,0.22), 0 0 26px rgba(246,85,52,0.20), 0 0 60px rgba(197,26,15,0.14);
+			box-shadow:
+				0 0 0 1px rgba(246,85,52,0.22),
+				0 0 26px rgba(246,85,52,0.20),
+				0 0 60px rgba(197,26,15,0.14);
 			transform: translateY(-2px);
 		}
+
+		.whyArt{ aspect-ratio: 2 / 3; background: rgba(255,255,255,0.02); display:block; min-height: 190px; overflow: hidden; }
+		.whyArt img{ width: 100%; height: 100%; display:block; object-fit: cover; object-position: 50% 50%; transition: transform 300ms cubic-bezier(.2,.8,.2,1), filter 300ms cubic-bezier(.2,.8,.2,1); }
 		.whyCard:hover .whyArt img{ transform: scale(1.045); filter: contrast(1.04) saturate(1.03); }
+
 		.whyBody{ background: rgba(255,255,255,0.96); color: rgba(10,14,22,0.92); padding: 14px 14px 16px; flex: 1 1 auto; }
 		.whyBody h3{ margin: 0 0 6px; font-size: 14px; letter-spacing: -0.01em; }
 		.whyBody p{ margin: 0; font-size: 13px; line-height: 1.45; color: rgba(10,14,22,0.62); }
@@ -651,6 +669,11 @@
 </head>
 
 <body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDK7FTB2"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
 	<header class="siteHeader">
 		<div class="headerInner">
 			<div class="nav">
@@ -661,7 +684,7 @@
 
 				<nav class="navlinks" aria-label="Primary">
 					<a href="#references">References</a>
-					<a href="#why-me">Why me</a>
+					<a href="#why-me">Why Me</a>
 					<a href="#skills">Skills</a>
 
 					<a class="btn is-cta" href="#calendar">Book a meeting</a>
@@ -679,12 +702,11 @@
 		</div>
 	</header>
 
-	<!-- Mobile bottom navigation (labels clarified) -->
 	<nav class="bottomNav" aria-label="Mobile menu">
 		<div class="bottomNavInner">
 			<a href="#why-me">
 				<img class="mobileIcon" src="assets/why-me-mobile.webp" alt="" aria-hidden="true" />
-				<span class="navLabel">Why me</span>
+				<span class="navLabel">Why Me</span>
 			</a>
 			<a href="#calendar">
 				<img class="mobileIcon" src="assets/meeting-mobile.webp" alt="" aria-hidden="true" />
@@ -731,7 +753,6 @@
 			</div>
 		</section>
 
-		<!-- (2) Logos reordered: 42dm, hackenproof, label your data -->
 		<section class="socialProof" aria-label="Social proof">
 			<h2 class="sectionTitle center">Trusted by Challengers</h2>
 			<div class="logoRow" aria-label="Logos">
@@ -749,7 +770,6 @@
 			<div class="carousel" data-carousel>
 				<div class="carouselViewport" data-viewport>
 					<div class="carouselTrack" data-track>
-						<!-- (3) Quotes reordered: 42DM (Kate), HackenProof (Dmytro), Label Your Data (Karyna) -->
 						<div class="carouselSlide">
 							<article class="quoteCard">
 								<div class="quoteHeader">
@@ -1072,7 +1092,7 @@
 				const nextBtn = root.querySelector('[data-next]');
 				const dotsWrap = root.querySelector('[data-dots]');
 
-				let index = 0; /* start from first (42DM) after reorder */
+				let index = 0;
 
 				if (dotsWrap) dotsWrap.innerHTML = "";
 
