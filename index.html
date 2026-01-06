@@ -9,7 +9,6 @@
 	<style>
 		:root{
 			--bg: #020204;
-			--bg2: #060509;
 
 			--text: rgba(255,255,255,0.92);
 			--muted: rgba(255,255,255,0.68);
@@ -19,13 +18,16 @@
 			--accent3: #C51A0F;
 
 			--link: #9AAAF0;
-
 			--max: 1080px;
 
 			--card-bg: rgba(255,255,255,0.03);
 			--card-border: rgba(255,255,255,0.12);
 
+			/* Desktop header height */
 			--header-h: 84px;
+
+			/* Mobile bottom nav height */
+			--bottom-nav-h: 74px;
 		}
 
 		*{ box-sizing:border-box; }
@@ -42,12 +44,11 @@
 			position: relative;
 		}
 
-		/* One continuous background (fixed overlay) */
 		body::before{
 			content:"";
 			position: fixed;
 			inset: 0;
-			z-index: -1;
+			z-index: -2;
 			pointer-events: none;
 			background:
 				radial-gradient(900px 520px at 12% 10%, rgba(114,139,225,0.18), transparent 60%),
@@ -56,12 +57,35 @@
 				var(--bg);
 		}
 
-		hr{ display:none !important; }
+		/* 7) Background scanlines */
+		body::after{
+			content:"";
+			position: fixed;
+			inset: 0;
+			z-index: -1;
+			pointer-events: none;
+			background:
+				repeating-linear-gradient(
+					to bottom,
+					rgba(255,255,255,0.018) 0px,
+					rgba(255,255,255,0.018) 1px,
+					rgba(0,0,0,0) 3px,
+					rgba(0,0,0,0) 6px
+				);
+			mix-blend-mode: overlay;
+			opacity: 0.25;
+			animation: scanMove 14s linear infinite;
+		}
+		@keyframes scanMove{
+			0%{ transform: translateY(0); }
+			100%{ transform: translateY(18px); }
+		}
 
+		hr{ display:none !important; }
 		a{ color: var(--link); text-decoration:none; }
 		a:hover{ text-decoration:underline; }
 
-		/* Buttons */
+		/* ===== Buttons ===== */
 		.btn{
 			display:inline-flex;
 			align-items:center;
@@ -102,17 +126,31 @@
 			transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
 		}
 
+		/* FIX: ensure BOTH Book + Request CV get the red hover glow */
 		.btn:hover,
 		.btnGhost:hover{
 			text-decoration: none;
 			border-color: rgba(246,85,52,0.80);
 			background: linear-gradient(180deg, rgba(246,85,52,0.98), rgba(197,26,15,0.88));
 			color: rgba(255,255,255,0.98);
-
 			box-shadow:
 				0 0 0 1px rgba(246,85,52,0.38),
 				0 0 26px rgba(246,85,52,0.55),
 				0 0 60px rgba(197,26,15,0.35);
+		}
+
+		/* CTA breathing (subtle) */
+		@keyframes neonBreathBlue{
+			0%, 100%{ box-shadow: 0 0 0 rgba(114,139,225,0.0); opacity: 0.95; }
+			50%{ box-shadow: 0 0 22px rgba(114,139,225,0.35); opacity: 1; }
+		}
+		.btn.is-cta{
+			box-shadow: 0 0 0 1px rgba(114,139,225,0.18);
+			animation: neonBreathBlue 8s ease-in-out infinite;
+		}
+		/* IMPORTANT: stop the breathing animation during hover so red glow “wins” */
+		.btn.is-cta:hover{
+			animation: none;
 		}
 
 		.btn:active,
@@ -125,10 +163,7 @@
 				0 0 26px rgba(114,139,225,0.25);
 		}
 
-		.icon{ width: 18px; height: 18px; display:inline-block; }
-		.icon svg{ width: 18px; height: 18px; display:block; }
-
-		/* Fixed header */
+		/* ===== Header (desktop) ===== */
 		.siteHeader{
 			position: fixed;
 			top: 0;
@@ -154,7 +189,6 @@
 			max-width: var(--max);
 			margin: 0 auto;
 			padding: calc(var(--header-h) + 28px) 20px 90px;
-			background: transparent;
 		}
 
 		.nav{
@@ -172,7 +206,7 @@
 			min-width: 260px;
 		}
 		.brand strong{ font-size:16px; letter-spacing:-0.01em; }
-		.brand span{ font-size:13px; color: var(--muted); }
+		.brand span{ font-size:13px; color: rgba(255,255,255,0.68); }
 
 		.navlinks{
 			display:flex;
@@ -184,6 +218,58 @@
 		}
 		.navlinks a{ color: rgba(255,255,255,0.86); }
 
+		/* ===== Mobile bottom nav ===== */
+		.bottomNav{
+			display:none; /* shown only on mobile */
+			position: fixed;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 10000;
+			background: rgba(2,2,4,0.86);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-top: 1px solid rgba(255,255,255,0.10);
+			padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+		}
+		.bottomNavInner{
+			display:flex;
+			justify-content: space-between;
+			gap: 8px;
+		}
+		.bottomNav a{
+			flex: 1 1 0;
+			min-width: 0;
+			display:flex;
+			flex-direction: column;
+			align-items:center;
+			justify-content:center;
+			gap: 6px;
+			padding: 10px 6px;
+			border-radius: 14px;
+			border: 1px solid rgba(255,255,255,0.10);
+			background: rgba(255,255,255,0.03);
+			color: rgba(255,255,255,0.90);
+			text-decoration: none;
+		}
+		.bottomNav a:active{ transform: translateY(1px); }
+		.bottomNav .navIcon{
+			width: 22px;
+			height: 22px;
+			border-radius: 8px;
+			border: 1px solid rgba(255,255,255,0.14);
+			background: linear-gradient(135deg, rgba(114,139,225,0.22), rgba(246,85,52,0.12));
+		}
+		.bottomNav .navLabel{
+			font-size: 11px;
+			line-height: 1;
+			color: rgba(255,255,255,0.72);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 100%;
+		}
+
 		.sectionTitle{
 			margin: 0 0 16px;
 			font-size: 28px;
@@ -192,7 +278,7 @@
 		}
 		.sectionTitle.center{ text-align:center; }
 
-		/* Hero */
+		/* ===== Hero ===== */
 		.hero{ padding: 26px 0 10px; }
 		.heroGrid{
 			display:grid;
@@ -212,10 +298,8 @@
 			z-index: 0;
 			transition: opacity 260ms ease, filter 260ms ease;
 		}
-		.heroMedia.is-hovered::before{
-			opacity: 1;
-			filter: blur(18px);
-		}
+		.heroMedia.is-hovered::before{ opacity: 1; filter: blur(18px); }
+
 		.heroImage{
 			position: relative;
 			z-index: 1;
@@ -240,7 +324,7 @@
 			display:inline-flex;
 			align-items:center;
 			gap:10px;
-			color: var(--muted);
+			color: rgba(255,255,255,0.68);
 			font-size: 13px;
 			letter-spacing: 0.02em;
 			text-transform: uppercase;
@@ -249,6 +333,7 @@
 			width:10px; height:10px; border-radius:50%;
 			background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
 			box-shadow: 0 0 22px rgba(114,139,225,0.35);
+			animation: neonBreathBlue 6.5s ease-in-out infinite;
 		}
 
 		.heroTitle{
@@ -260,7 +345,7 @@
 
 		.lede{
 			margin: 0 0 18px;
-			color: var(--muted);
+			color: rgba(255,255,255,0.68);
 			font-size: 16px;
 			max-width: 60ch;
 		}
@@ -273,8 +358,8 @@
 			margin-top: 16px;
 		}
 
-		/* Social proof */
-		.socialProof{ padding: 14px 0 0; background: transparent; }
+		/* ===== Social proof ===== */
+		.socialProof{ padding: 14px 0 0; }
 		.logoRow{
 			display: grid;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -282,7 +367,6 @@
 			align-items: center;
 			margin-top: 10px;
 		}
-
 		.logoSlot{
 			height: 72px;
 			border-radius: 16px;
@@ -302,20 +386,13 @@
 			display:block;
 			opacity: 0.92;
 		}
-
 		.afterSocialSpacer{ height: 54px; }
 
-		/* Testimonials */
-		.testimonials{ padding: 0; background: transparent; }
+		/* ===== Testimonials (carousel styles unchanged) ===== */
+		.testimonials{ padding: 0; }
 		.carousel{ margin-top: 16px; position: relative; user-select: none; }
-
-		.carouselViewport{
-			overflow: hidden;
-			padding: 14px 0 18px;
-			cursor: grab;
-		}
+		.carouselViewport{ overflow: hidden; padding: 14px 0 18px; cursor: grab; }
 		.carouselViewport.dragging{ cursor: grabbing; }
-
 		.carouselTrack{
 			display: flex;
 			gap: 18px;
@@ -324,7 +401,6 @@
 			transition: transform 520ms cubic-bezier(.2,.95,.2,1);
 			padding: 0 calc(50% - 280px);
 		}
-
 		.carouselSlide{
 			flex: 0 0 560px;
 			max-width: 560px;
@@ -344,59 +420,30 @@
 			padding: 26px 24px 22px;
 			text-align: center;
 		}
-
-		.quoteHeader{
-			display:flex;
-			flex-direction: column;
-			align-items:center;
-			gap: 10px;
-			margin-bottom: 12px;
-		}
-
+		.quoteHeader{ display:flex; flex-direction: column; align-items:center; gap: 10px; margin-bottom: 12px; }
 		.avatarImg{
-			width: 56px;
-			height: 56px;
-			border-radius: 999px;
-			object-fit: cover;
-			object-position: 50% 35%;
+			width: 56px; height: 56px; border-radius: 999px;
+			object-fit: cover; object-position: 50% 35%;
 			display:block;
 			border: 1px solid rgba(255,255,255,0.18);
-			box-shadow:
-				0 0 0 1px rgba(114,139,225,0.20),
-				0 0 18px rgba(114,139,225,0.12);
+			box-shadow: 0 0 0 1px rgba(114,139,225,0.20), 0 0 18px rgba(114,139,225,0.12);
 		}
-
-		.quoteText{
-			margin: 0;
-			color: rgba(255,255,255,0.78);
-			font-size: 16px;
-			line-height: 1.75;
-		}
-
-		.quoteFooter{
-			margin-top: 16px;
-			color: rgba(255,255,255,0.72);
-			font-size: 13px;
-		}
+		.quoteText{ margin: 0; color: rgba(255,255,255,0.78); font-size: 16px; line-height: 1.75; }
+		.quoteFooter{ margin-top: 16px; color: rgba(255,255,255,0.72); font-size: 13px; }
 		.quoteFooter strong{ color: rgba(255,255,255,0.90); font-weight: 750; }
 
 		.carouselArrows{ position: absolute; inset: 0; pointer-events: none; }
-
 		.arrowBtn{
 			pointer-events: auto;
 			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 42px;
-			height: 42px;
+			top: 50%; transform: translateY(-50%);
+			width: 42px; height: 42px;
 			border-radius: 999px;
 			border: 1px solid rgba(255,255,255,0.14);
 			background: rgba(255,255,255,0.04);
 			color: rgba(255,255,255,0.88);
 			cursor: pointer;
-			display:flex;
-			align-items:center;
-			justify-content:center;
+			display:flex; align-items:center; justify-content:center;
 		}
 		.arrowBtn:hover{ background: rgba(255,255,255,0.06); }
 		.arrowBtn:disabled{ opacity: 0.35; cursor: not-allowed; }
@@ -405,38 +452,25 @@
 
 		.dots{ display:flex; justify-content:center; gap: 8px; margin-top: 10px; }
 		.dot{
-			width: 8px;
-			height: 8px;
-			border-radius: 999px;
+			width: 8px; height: 8px; border-radius: 999px;
 			background: rgba(255,255,255,0.25);
 			border: 1px solid rgba(255,255,255,0.10);
 			cursor: pointer;
 		}
-		.dot.active{
-			background: rgba(114,139,225,0.95);
-			box-shadow: 0 0 18px rgba(114,139,225,0.35);
-		}
+		.dot.active{ background: rgba(114,139,225,0.95); box-shadow: 0 0 18px rgba(114,139,225,0.35); }
 
-		/* Why Companies Choose Me */
-		.whyChoose{ padding: 54px 0 0; background: transparent; }
-		.whyGrid{
-			display:grid;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-			gap: 14px;
-			align-items: stretch;
-		}
-
+		/* ===== Why cards ===== */
+		.whyChoose{ padding: 54px 0 0; }
+		.whyGrid{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
 		.whyCard{
 			border-radius: 18px;
 			overflow: hidden;
 			border: 1px solid rgba(255,255,255,0.10);
 			background: rgba(255,255,255,0.03);
-			display:flex;
-			flex-direction: column;
+			display:flex; flex-direction: column;
 			min-height: 330px;
 			transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease;
 		}
-
 		.whyArt{
 			aspect-ratio: 2 / 3;
 			background: rgba(255,255,255,0.02);
@@ -452,7 +486,6 @@
 			object-position: 50% 50%;
 			transition: transform 300ms cubic-bezier(.2,.8,.2,1), filter 300ms cubic-bezier(.2,.8,.2,1);
 		}
-
 		.whyCard:hover{
 			border-color: rgba(246,85,52,0.35);
 			box-shadow:
@@ -465,7 +498,6 @@
 			transform: scale(1.045);
 			filter: contrast(1.04) saturate(1.03);
 		}
-
 		.whyBody{
 			background: rgba(255,255,255,0.96);
 			color: rgba(10,14,22,0.92);
@@ -475,37 +507,20 @@
 		.whyBody h3{ margin: 0 0 6px; font-size: 14px; letter-spacing: -0.01em; }
 		.whyBody p{ margin: 0; font-size: 13px; line-height: 1.45; color: rgba(10,14,22,0.62); }
 
-		/* Skills */
-		.skillsUse{ padding: 54px 0 0; background: transparent; }
-		.skillsGrid{
-			display:grid;
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-			gap: 14px;
-			align-items: stretch;
-		}
-
-		details.skillCard{
-			border-radius: 18px;
-			border: 1px solid rgba(255,255,255,0.12);
-			background: rgba(255,255,255,0.03);
-			padding: 16px 18px;
-		}
+		/* ===== Skills ===== */
+		.skillsUse{ padding: 54px 0 0; }
+		.skillsGrid{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+		details.skillCard{ border-radius: 18px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 16px 18px; }
 		details.skillCard summary{
 			list-style: none;
 			cursor: pointer;
-			display:flex;
-			align-items:flex-start;
-			justify-content: space-between;
+			display:flex; align-items:flex-start; justify-content: space-between;
 			gap: 14px;
 		}
 		details.skillCard summary::-webkit-details-marker{ display:none; }
-
 		.skillHead{ display:flex; align-items:center; gap: 12px; }
-
 		.skillIcon{
-			width: 40px;
-			height: 40px;
-			border-radius: 14px;
+			width: 40px; height: 40px; border-radius: 14px;
 			border: 1px solid rgba(255,255,255,0.12);
 			background: rgba(255,255,255,0.03);
 			display:block;
@@ -514,44 +529,25 @@
 			flex: 0 0 auto;
 			transition: transform 220ms cubic-bezier(.2,.8,.2,1);
 		}
-		details.skillCard[open] .skillIcon{
-			transform: scale(1.06);
-		}
-
+		details.skillCard[open] .skillIcon{ transform: scale(1.06); }
 		.skillTitleWrap h3{ margin: 0 0 4px; font-size: 16px; letter-spacing: -0.01em; }
 		.skillTitleWrap p{ margin: 0; color: rgba(255,255,255,0.70); font-size: 13px; line-height: 1.55; }
-
 		.sumIcon{
 			flex: 0 0 auto;
-			width: 28px;
-			height: 28px;
-			border-radius: 999px;
+			width: 28px; height: 28px; border-radius: 999px;
 			border: 1px solid rgba(255,255,255,0.14);
 			background: rgba(255,255,255,0.03);
-			display:flex;
-			align-items:center;
-			justify-content:center;
+			display:flex; align-items:center; justify-content:center;
 			color: rgba(255,255,255,0.70);
 			margin-top: 6px;
 			transition: transform 220ms ease;
 		}
 		details.skillCard[open] .sumIcon{ transform: rotate(45deg); }
-
 		.skillExpanded{ margin-top: 14px; }
-		.splitBullets{
-			display:grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 10px 14px;
-			color: rgba(255,255,255,0.74);
-			font-size: 14px;
-			line-height: 1.6;
-		}
-		.bItem{
-			border-left: 2px solid rgba(114,139,225,0.40);
-			padding-left: 10px;
-		}
+		.splitBullets{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; color: rgba(255,255,255,0.74); font-size: 14px; line-height: 1.6; }
+		.bItem{ border-left: 2px solid rgba(114,139,225,0.40); padding-left: 10px; }
 
-		/* Calendar embed below skills */
+		/* ===== Calendar ===== */
 		.calendarEmbed{ padding-top: 18px; }
 		.calendarCard{
 			border-radius: 20px;
@@ -559,52 +555,17 @@
 			background: rgba(255,255,255,0.04);
 			overflow: hidden;
 		}
-		.calendarFrameWrap{
-			background: #ffffff;
-			border-radius: 20px;
-			overflow: hidden;
-		}
-		.calendarFrame{
-			width: 100%;
-			height: 700px;
-			border: 0;
-			display:block;
-			background: #ffffff;
-		}
+		.calendarFrameWrap{ background: #ffffff; border-radius: 20px; overflow: hidden; }
+		.calendarFrame{ width: 100%; height: 700px; border: 0; display:block; background: #ffffff; }
 
-		/* Footer */
-		.footer{
-			padding-top: 54px;
-			color: var(--muted);
-			font-size: 13px;
-			display:flex;
-			gap: 10px;
-			align-items:center;
-			flex-wrap: wrap;
-			border: 0;
-			background: transparent;
+		@keyframes calendarPulse{
+			0%{ box-shadow: 0 0 0 0 rgba(114,139,225,0.0); border-color: rgba(255,255,255,0.12); }
+			40%{ box-shadow: 0 0 0 6px rgba(114,139,225,0.22); border-color: rgba(114,139,225,0.55); }
+			100%{ box-shadow: 0 0 0 0 rgba(114,139,225,0.0); border-color: rgba(255,255,255,0.12); }
 		}
+		.calendarCard.pulse{ animation: calendarPulse 900ms ease-out 1; }
 
-		/* ===== ANIMATIONS PACK (all 8) ===== */
-
-		@media (prefers-reduced-motion: reduce){
-			*{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-		}
-
-		/* 1) Neon breathing accents */
-		@keyframes neonBreathBlue{
-			0%, 100%{ box-shadow: 0 0 0 rgba(114,139,225,0.0); opacity: 0.95; }
-			50%{ box-shadow: 0 0 22px rgba(114,139,225,0.35); opacity: 1; }
-		}
-		.kickerDot{ animation: neonBreathBlue 6.5s ease-in-out infinite; }
-
-		/* Only CTA buttons should breathe (not every .btn on the page) */
-		.btn.is-cta{
-			box-shadow: 0 0 0 1px rgba(114,139,225,0.18);
-			animation: neonBreathBlue 8s ease-in-out infinite;
-		}
-
-		/* 3) Reveal on scroll */
+		/* ===== Reveal on scroll ===== */
 		.reveal{
 			opacity: 0;
 			transform: translateY(12px);
@@ -620,43 +581,21 @@
 			transform: translateY(0);
 			filter: blur(0);
 		}
-		.reveal[data-stagger]{
-			transition-delay: var(--stagger, 0ms);
+		.reveal[data-stagger]{ transition-delay: var(--stagger, 0ms); }
+
+		/* ===== Footer ===== */
+		.footer{
+			padding-top: 54px;
+			color: rgba(255,255,255,0.68);
+			font-size: 13px;
+			display:flex;
+			gap: 10px;
+			align-items:center;
+			flex-wrap: wrap;
+			border: 0;
 		}
 
-		/* 7) Background scanlines */
-		body::after{
-			content:"";
-			position: fixed;
-			inset: 0;
-			z-index: -1;
-			pointer-events: none;
-			background:
-				repeating-linear-gradient(
-					to bottom,
-					rgba(255,255,255,0.018) 0px,
-					rgba(255,255,255,0.018) 1px,
-					rgba(0,0,0,0) 3px,
-					rgba(0,0,0,0) 6px
-				);
-			mix-blend-mode: overlay;
-			opacity: 0.25;
-			animation: scanMove 14s linear infinite;
-		}
-		@keyframes scanMove{
-			0%{ transform: translateY(0); }
-			100%{ transform: translateY(18px); }
-		}
-
-		/* 8) Calendar spotlight pulse */
-		@keyframes calendarPulse{
-			0%{ box-shadow: 0 0 0 0 rgba(114,139,225,0.0); border-color: rgba(255,255,255,0.12); }
-			40%{ box-shadow: 0 0 0 6px rgba(114,139,225,0.22); border-color: rgba(114,139,225,0.55); }
-			100%{ box-shadow: 0 0 0 0 rgba(114,139,225,0.0); border-color: rgba(255,255,255,0.12); }
-		}
-		.calendarCard.pulse{ animation: calendarPulse 900ms ease-out 1; }
-
-		/* Responsive */
+		/* ===== Responsive ===== */
 		@media (max-width: 1100px){
 			.carouselTrack{ padding: 0 calc(50% - 240px); }
 			.carouselSlide{ flex-basis: 480px; max-width: 480px; }
@@ -671,15 +610,47 @@
 			.sectionTitle{ font-size: 26px; }
 			.brand{ min-width: unset; }
 			:root{ --header-h: 96px; }
-			.page{ padding-top: calc(var(--header-h) + 22px); }
+			.page{ padding-top: calc(var(--header-h) + 18px); }
 		}
 
 		@media (max-width: 720px){
-			.logoRow{ grid-template-columns: 1fr; }
-			.logoSlot{ height: 64px; padding: 12px 16px; border-radius: 14px; }
-			.logoSlot img{ max-height: 38px; max-width: 220px; }
+			/* 1) Move header to bottom app menu on mobile */
+			.siteHeader{ display:none; }
+			.bottomNav{ display:block; }
 
-			.afterSocialSpacer{ height: 42px; }
+			/* Make space for bottom nav */
+			.page{
+				padding-top: 22px;
+				padding-bottom: calc(90px + var(--bottom-nav-h));
+			}
+
+			/* 2) Social proof: turn into horizontal swipe with snap */
+			.logoRow{
+				display: flex;
+				gap: 12px;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				scroll-snap-type: x mandatory;
+				scroll-padding-left: 16px;
+				scroll-padding-right: 16px;
+				padding: 6px 16px 6px;
+				margin: 10px -16px 0; /* allow full-bleed swipe region */
+			}
+			.logoRow::-webkit-scrollbar{ display:none; }
+
+			.logoSlot{
+				flex: 0 0 86%;
+				max-width: 86%;
+				scroll-snap-align: center;
+				height: 72px;
+				border-radius: 16px;
+			}
+			.logoSlot img{
+				max-height: 44px;
+				max-width: 240px;
+			}
+
+			.afterSocialSpacer{ height: 36px; }
 
 			.carouselTrack{ padding: 0 calc(50% - 170px); }
 			.carouselSlide{ flex-basis: 340px; max-width: 340px; }
@@ -689,10 +660,11 @@
 			.arrowNext{ right: -6px; }
 
 			.whyGrid{ grid-template-columns: 1fr; }
-			:root{ --header-h: 120px; }
-			.page{ padding-top: calc(var(--header-h) + 18px); }
-
 			.calendarFrame{ height: 620px; }
+		}
+
+		@media (prefers-reduced-motion: reduce){
+			*{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 		}
 	</style>
 </head>
@@ -721,6 +693,32 @@
 		</div>
 	</header>
 
+	<!-- Mobile bottom navigation (placeholders for icons) -->
+	<nav class="bottomNav" aria-label="Mobile menu">
+		<div class="bottomNavInner">
+			<a href="#references">
+				<span class="navIcon" aria-hidden="true"></span>
+				<span class="navLabel">References</span>
+			</a>
+			<a href="#why-me">
+				<span class="navIcon" aria-hidden="true"></span>
+				<span class="navLabel">Why me</span>
+			</a>
+			<a href="#skills">
+				<span class="navIcon" aria-hidden="true"></span>
+				<span class="navLabel">Skills</span>
+			</a>
+			<a href="#calendar">
+				<span class="navIcon" aria-hidden="true"></span>
+				<span class="navLabel">Book</span>
+			</a>
+			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+				<span class="navIcon" aria-hidden="true"></span>
+				<span class="navLabel">CV</span>
+			</a>
+		</div>
+	</nav>
+
 	<main class="page">
 		<section class="hero" aria-label="Hero">
 			<div class="heroGrid">
@@ -741,15 +739,7 @@
 
 					<div class="ctaRow">
 						<a class="btn is-cta" href="#calendar">Book a meeting</a>
-
-						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
-							<span class="icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-									<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
-								</svg>
-							</span>
-							Request CV
-						</a>
+						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">Request CV</a>
 					</div>
 				</div>
 			</div>
@@ -830,9 +820,7 @@
 
 			<div class="whyGrid">
 				<article class="whyCard">
-					<div class="whyArt">
-						<img src="assets/agency-background.webp" alt="Agency background illustration">
-					</div>
+					<div class="whyArt"><img src="assets/agency-background.webp" alt="Agency background illustration"></div>
 					<div class="whyBody">
 						<h3>Agency Background</h3>
 						<p>That’s 3× more exposure to industries than working for a single product or service company.</p>
@@ -840,9 +828,7 @@
 				</article>
 
 				<article class="whyCard">
-					<div class="whyArt">
-						<img src="assets/genuine-enthusiasm.webp" alt="Genuine enthusiasm illustration">
-					</div>
+					<div class="whyArt"><img src="assets/genuine-enthusiasm.webp" alt="Genuine enthusiasm illustration"></div>
 					<div class="whyBody">
 						<h3>Genuine Enthusiasm</h3>
 						<p>I don’t fake interest to get a foot in the door. Curiosity is what drives me most to grow the business.</p>
@@ -850,9 +836,7 @@
 				</article>
 
 				<article class="whyCard">
-					<div class="whyArt">
-						<img src="assets/agile-contribution.webp" alt="Agile contribution illustration">
-					</div>
+					<div class="whyArt"><img src="assets/agile-contribution.webp" alt="Agile contribution illustration"></div>
 					<div class="whyBody">
 						<h3>Agile Contribution</h3>
 						<p>Depending on the growth stage, I can be the hands-on generalist or step up as the team leader.</p>
@@ -860,9 +844,7 @@
 				</article>
 
 				<article class="whyCard">
-					<div class="whyArt">
-						<img src="assets/soft-skills.webp" alt="Soft skills illustration">
-					</div>
+					<div class="whyArt"><img src="assets/soft-skills.webp" alt="Soft skills illustration"></div>
 					<div class="whyBody">
 						<h3>Soft Skills</h3>
 						<p>I will keep us aligned on vision and execution, staying open to ideas – may the best one win.</p>
@@ -1059,10 +1041,7 @@
 				goTo(rawIndex, true);
 			}
 
-			viewport.addEventListener('mousedown', (e) => {
-				e.preventDefault();
-				pointerDown(e.clientX);
-			});
+			viewport.addEventListener('mousedown', (e) => { e.preventDefault(); pointerDown(e.clientX); });
 			window.addEventListener('mousemove', (e) => pointerMove(e.clientX));
 			window.addEventListener('mouseup', pointerUp);
 
