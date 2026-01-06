@@ -23,10 +23,7 @@
 			--card-bg: rgba(255,255,255,0.03);
 			--card-border: rgba(255,255,255,0.12);
 
-			/* Desktop header height */
 			--header-h: 84px;
-
-			/* Mobile bottom nav height */
 			--bottom-nav-h: 74px;
 		}
 
@@ -44,6 +41,7 @@
 			position: relative;
 		}
 
+		/* Background */
 		body::before{
 			content:"";
 			position: fixed;
@@ -57,7 +55,7 @@
 				var(--bg);
 		}
 
-		/* 7) Background scanlines */
+		/* Subtle scanlines */
 		body::after{
 			content:"";
 			position: fixed;
@@ -81,52 +79,43 @@
 			100%{ transform: translateY(18px); }
 		}
 
+		@media (prefers-reduced-motion: reduce){
+			*{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+		}
+
 		hr{ display:none !important; }
 		a{ color: var(--link); text-decoration:none; }
 		a:hover{ text-decoration:underline; }
 
 		/* ===== Buttons ===== */
-		.btn{
+		.btn, .btnGhost{
 			display:inline-flex;
 			align-items:center;
 			justify-content:center;
 			gap: 10px;
 			padding: 12px 16px;
 			border-radius: 14px;
-
-			border: 1px solid rgba(114,139,225,0.45);
-			background: linear-gradient(180deg, rgba(114,139,225,0.95), rgba(114,139,225,0.82));
-
-			color: rgba(255,255,255,0.96);
-			font-weight: 700;
 			text-decoration:none;
 			white-space: nowrap;
 			outline: none;
 			-webkit-tap-highlight-color: transparent;
 			transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
+			color: rgba(255,255,255,0.96);
+		}
+
+		.btn{
+			border: 1px solid rgba(114,139,225,0.45);
+			background: linear-gradient(180deg, rgba(114,139,225,0.95), rgba(114,139,225,0.82));
+			font-weight: 700;
 		}
 
 		.btnGhost{
-			display:inline-flex;
-			align-items:center;
-			justify-content:center;
-			gap: 10px;
-			padding: 12px 16px;
-			border-radius: 14px;
-
 			border: 1px solid rgba(255,255,255,0.14);
 			background: rgba(255,255,255,0.04);
-
-			color: rgba(255,255,255,0.96);
 			font-weight: 650;
-			text-decoration:none;
-			white-space: nowrap;
-			outline: none;
-			-webkit-tap-highlight-color: transparent;
-			transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
 		}
 
-		/* FIX: ensure BOTH Book + Request CV get the red hover glow */
+		/* (2) Copy the Request CV hover glow logic to ALL buttons */
 		.btn:hover,
 		.btnGhost:hover{
 			text-decoration: none;
@@ -139,20 +128,6 @@
 				0 0 60px rgba(197,26,15,0.35);
 		}
 
-		/* CTA breathing (subtle) */
-		@keyframes neonBreathBlue{
-			0%, 100%{ box-shadow: 0 0 0 rgba(114,139,225,0.0); opacity: 0.95; }
-			50%{ box-shadow: 0 0 22px rgba(114,139,225,0.35); opacity: 1; }
-		}
-		.btn.is-cta{
-			box-shadow: 0 0 0 1px rgba(114,139,225,0.18);
-			animation: neonBreathBlue 8s ease-in-out infinite;
-		}
-		/* IMPORTANT: stop the breathing animation during hover so red glow “wins” */
-		.btn.is-cta:hover{
-			animation: none;
-		}
-
 		.btn:active,
 		.btnGhost:active{ transform: translateY(1px); }
 
@@ -162,6 +137,21 @@
 				0 0 0 2px rgba(114,139,225,0.55),
 				0 0 26px rgba(114,139,225,0.25);
 		}
+
+		/* CTA breathing */
+		@keyframes neonBreathBlue{
+			0%, 100%{ box-shadow: 0 0 0 rgba(114,139,225,0.0); opacity: 0.95; }
+			50%{ box-shadow: 0 0 22px rgba(114,139,225,0.35); opacity: 1; }
+		}
+		.btn.is-cta{
+			box-shadow: 0 0 0 1px rgba(114,139,225,0.18);
+			animation: neonBreathBlue 8s ease-in-out infinite;
+		}
+		/* Ensure hover glow always wins */
+		.btn.is-cta:hover{ animation: none; }
+
+		.icon{ width: 18px; height: 18px; display:inline-block; }
+		.icon svg{ width: 18px; height: 18px; display:block; }
 
 		/* ===== Header (desktop) ===== */
 		.siteHeader{
@@ -218,9 +208,9 @@
 		}
 		.navlinks a{ color: rgba(255,255,255,0.86); }
 
-		/* ===== Mobile bottom nav ===== */
+		/* ===== Mobile bottom nav (3 buttons only) ===== */
 		.bottomNav{
-			display:none; /* shown only on mobile */
+			display:none;
 			position: fixed;
 			left: 0;
 			right: 0;
@@ -233,12 +223,11 @@
 			padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
 		}
 		.bottomNavInner{
-			display:flex;
-			justify-content: space-between;
-			gap: 8px;
+			display:grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 10px;
 		}
 		.bottomNav a{
-			flex: 1 1 0;
 			min-width: 0;
 			display:flex;
 			flex-direction: column;
@@ -332,7 +321,6 @@
 		.kickerDot{
 			width:10px; height:10px; border-radius:50%;
 			background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
-			box-shadow: 0 0 22px rgba(114,139,225,0.35);
 			animation: neonBreathBlue 6.5s ease-in-out infinite;
 		}
 
@@ -342,14 +330,12 @@
 			line-height: 1.05;
 			letter-spacing: -0.03em;
 		}
-
 		.lede{
 			margin: 0 0 18px;
 			color: rgba(255,255,255,0.68);
 			font-size: 16px;
 			max-width: 60ch;
 		}
-
 		.ctaRow{
 			display:flex;
 			gap:12px;
@@ -358,7 +344,7 @@
 			margin-top: 16px;
 		}
 
-		/* ===== Social proof ===== */
+		/* ===== Social proof (keep 3-in-a-row even on mobile) ===== */
 		.socialProof{ padding: 14px 0 0; }
 		.logoRow{
 			display: grid;
@@ -388,7 +374,7 @@
 		}
 		.afterSocialSpacer{ height: 54px; }
 
-		/* ===== Testimonials (carousel styles unchanged) ===== */
+		/* ===== Testimonials carousel ===== */
 		.testimonials{ padding: 0; }
 		.carousel{ margin-top: 16px; position: relative; user-select: none; }
 		.carouselViewport{ overflow: hidden; padding: 14px 0 18px; cursor: grab; }
@@ -471,39 +457,15 @@
 			min-height: 330px;
 			transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease;
 		}
-		.whyArt{
-			aspect-ratio: 2 / 3;
-			background: rgba(255,255,255,0.02);
-			display:block;
-			min-height: 190px;
-			overflow: hidden;
-		}
-		.whyArt img{
-			width: 100%;
-			height: 100%;
-			display:block;
-			object-fit: cover;
-			object-position: 50% 50%;
-			transition: transform 300ms cubic-bezier(.2,.8,.2,1), filter 300ms cubic-bezier(.2,.8,.2,1);
-		}
+		.whyArt{ aspect-ratio: 2 / 3; background: rgba(255,255,255,0.02); display:block; min-height: 190px; overflow: hidden; }
+		.whyArt img{ width: 100%; height: 100%; display:block; object-fit: cover; object-position: 50% 50%; transition: transform 300ms cubic-bezier(.2,.8,.2,1), filter 300ms cubic-bezier(.2,.8,.2,1); }
 		.whyCard:hover{
 			border-color: rgba(246,85,52,0.35);
-			box-shadow:
-				0 0 0 1px rgba(246,85,52,0.22),
-				0 0 26px rgba(246,85,52,0.20),
-				0 0 60px rgba(197,26,15,0.14);
+			box-shadow: 0 0 0 1px rgba(246,85,52,0.22), 0 0 26px rgba(246,85,52,0.20), 0 0 60px rgba(197,26,15,0.14);
 			transform: translateY(-2px);
 		}
-		.whyCard:hover .whyArt img{
-			transform: scale(1.045);
-			filter: contrast(1.04) saturate(1.03);
-		}
-		.whyBody{
-			background: rgba(255,255,255,0.96);
-			color: rgba(10,14,22,0.92);
-			padding: 14px 14px 16px;
-			flex: 1 1 auto;
-		}
+		.whyCard:hover .whyArt img{ transform: scale(1.045); filter: contrast(1.04) saturate(1.03); }
+		.whyBody{ background: rgba(255,255,255,0.96); color: rgba(10,14,22,0.92); padding: 14px 14px 16px; flex: 1 1 auto; }
 		.whyBody h3{ margin: 0 0 6px; font-size: 14px; letter-spacing: -0.01em; }
 		.whyBody p{ margin: 0; font-size: 13px; line-height: 1.45; color: rgba(10,14,22,0.62); }
 
@@ -549,12 +511,7 @@
 
 		/* ===== Calendar ===== */
 		.calendarEmbed{ padding-top: 18px; }
-		.calendarCard{
-			border-radius: 20px;
-			border: 1px solid rgba(255,255,255,0.12);
-			background: rgba(255,255,255,0.04);
-			overflow: hidden;
-		}
+		.calendarCard{ border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); overflow: hidden; }
 		.calendarFrameWrap{ background: #ffffff; border-radius: 20px; overflow: hidden; }
 		.calendarFrame{ width: 100%; height: 700px; border: 0; display:block; background: #ffffff; }
 
@@ -576,11 +533,7 @@
 				filter 650ms cubic-bezier(.2,.8,.2,1);
 			will-change: opacity, transform, filter;
 		}
-		.reveal.is-visible{
-			opacity: 1;
-			transform: translateY(0);
-			filter: blur(0);
-		}
+		.reveal.is-visible{ opacity: 1; transform: translateY(0); filter: blur(0); }
 		.reveal[data-stagger]{ transition-delay: var(--stagger, 0ms); }
 
 		/* ===== Footer ===== */
@@ -613,58 +566,49 @@
 			.page{ padding-top: calc(var(--header-h) + 18px); }
 		}
 
+		/* MOBILE */
 		@media (max-width: 720px){
-			/* 1) Move header to bottom app menu on mobile */
+			/* Header becomes bottom nav */
 			.siteHeader{ display:none; }
 			.bottomNav{ display:block; }
 
-			/* Make space for bottom nav */
 			.page{
 				padding-top: 22px;
 				padding-bottom: calc(90px + var(--bottom-nav-h));
 			}
 
-			/* 2) Social proof: turn into horizontal swipe with snap */
-			.logoRow{
-				display: flex;
-				gap: 12px;
+			/* Logos remain a row of 3 (smaller) */
+			.logoRow{ gap: 10px; }
+			.logoSlot{ height: 64px; padding: 10px 12px; border-radius: 14px; }
+			.logoSlot img{ max-height: 38px; max-width: 180px; }
+			.afterSocialSpacer{ height: 36px; }
+
+			/* Fix quote “offscreen” bugs by switching carousel to native horizontal scroll on mobile */
+			.carouselViewport{
 				overflow-x: auto;
 				-webkit-overflow-scrolling: touch;
 				scroll-snap-type: x mandatory;
-				scroll-padding-left: 16px;
-				scroll-padding-right: 16px;
-				padding: 6px 16px 6px;
-				margin: 10px -16px 0; /* allow full-bleed swipe region */
+				padding: 14px 0 18px;
+				cursor: auto;
 			}
-			.logoRow::-webkit-scrollbar{ display:none; }
-
-			.logoSlot{
+			.carouselViewport::-webkit-scrollbar{ display:none; }
+			.carouselTrack{
+				padding: 0 16px;
+				transform: none !important; /* stop transform positioning */
+				transition: none !important;
+			}
+			.carouselSlide{
 				flex: 0 0 86%;
 				max-width: 86%;
 				scroll-snap-align: center;
-				height: 72px;
-				border-radius: 16px;
+				opacity: 1;              /* no dimming on mobile */
+				transform: none;         /* no scaling on mobile */
 			}
-			.logoSlot img{
-				max-height: 44px;
-				max-width: 240px;
-			}
-
-			.afterSocialSpacer{ height: 36px; }
-
-			.carouselTrack{ padding: 0 calc(50% - 170px); }
-			.carouselSlide{ flex-basis: 340px; max-width: 340px; }
-			.quoteCard{ padding: 20px 16px 18px; }
-			.quoteText{ font-size: 15px; }
-			.arrowPrev{ left: -6px; }
-			.arrowNext{ right: -6px; }
+			.carouselArrows{ display:none; }
+			.dots{ display:none; }
 
 			.whyGrid{ grid-template-columns: 1fr; }
 			.calendarFrame{ height: 620px; }
-		}
-
-		@media (prefers-reduced-motion: reduce){
-			*{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 		}
 	</style>
 </head>
@@ -685,7 +629,13 @@
 
 					<a class="btn is-cta" href="#calendar">Book a meeting</a>
 
+					<!-- (1) Restore LinkedIn icon -->
 					<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+						<span class="icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+								<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
+							</svg>
+						</span>
 						Request CV
 					</a>
 				</nav>
@@ -693,24 +643,16 @@
 		</div>
 	</header>
 
-	<!-- Mobile bottom navigation (placeholders for icons) -->
+	<!-- Mobile bottom navigation (3 buttons only) -->
 	<nav class="bottomNav" aria-label="Mobile menu">
 		<div class="bottomNavInner">
-			<a href="#references">
-				<span class="navIcon" aria-hidden="true"></span>
-				<span class="navLabel">References</span>
-			</a>
 			<a href="#why-me">
 				<span class="navIcon" aria-hidden="true"></span>
 				<span class="navLabel">Why me</span>
 			</a>
-			<a href="#skills">
-				<span class="navIcon" aria-hidden="true"></span>
-				<span class="navLabel">Skills</span>
-			</a>
 			<a href="#calendar">
 				<span class="navIcon" aria-hidden="true"></span>
-				<span class="navLabel">Book</span>
+				<span class="navLabel">Meeting</span>
 			</a>
 			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
 				<span class="navIcon" aria-hidden="true"></span>
@@ -739,7 +681,16 @@
 
 					<div class="ctaRow">
 						<a class="btn is-cta" href="#calendar">Book a meeting</a>
-						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">Request CV</a>
+
+						<!-- (1) Restore LinkedIn icon (hero) -->
+						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+							<span class="icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+									<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
+								</svg>
+							</span>
+							Request CV
+						</a>
 					</div>
 				</div>
 			</div>
@@ -944,124 +895,12 @@
 	</main>
 
 	<script>
-		// Carousel (unchanged)
-		(function initCarousel(){
-			const root = document.querySelector('[data-carousel]');
-			if (!root) return;
-
-			const track = root.querySelector('[data-track]');
-			const viewport = root.querySelector('[data-viewport]');
-			const slides = Array.from(root.querySelectorAll('.carouselSlide'));
-			const prevBtn = root.querySelector('[data-prev]');
-			const nextBtn = root.querySelector('[data-next]');
-			const dotsWrap = root.querySelector('[data-dots]');
-
-			let index = Math.floor(slides.length / 2);
-
-			const dots = slides.map((_, i) => {
-				const d = document.createElement('button');
-				d.type = 'button';
-				d.className = 'dot';
-				d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
-				d.addEventListener('click', () => goTo(i));
-				dotsWrap.appendChild(d);
-				return d;
-			});
-
-			function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
-
-			function setActive(){
-				slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
-				dots.forEach((d, i) => d.classList.toggle('active', i === index));
-				if (prevBtn) prevBtn.disabled = index === 0;
-				if (nextBtn) nextBtn.disabled = index === slides.length - 1;
-			}
-
-			function updateTransform(animate = true){
-				const slideW = slides[0].getBoundingClientRect().width;
-				const gap = parseFloat(getComputedStyle(track).gap || '0');
-				const step = slideW + gap;
-				const x = step * index;
-
-				if (!animate) track.style.transition = 'none';
-				else track.style.transition = 'transform 520ms cubic-bezier(.2,.95,.2,1)';
-
-				track.style.transform = `translate3d(${-x}px,0,0)`;
-
-				if (!animate){
-					void track.offsetHeight;
-					track.style.transition = 'transform 520ms cubic-bezier(.2,.95,.2,1)';
-				}
-			}
-
-			function goTo(i, animate = true){
-				index = clamp(i, 0, slides.length - 1);
-				setActive();
-				updateTransform(animate);
-			}
-
-			if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
-			if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
-
-			let isDown = false;
-			let startX = 0;
-			let startTranslate = 0;
-
-			function currentTranslateX(){
-				const m = new DOMMatrixReadOnly(getComputedStyle(track).transform);
-				return m.m41;
-			}
-
-			function pointerDown(clientX){
-				isDown = true;
-				viewport.classList.add('dragging');
-				startX = clientX;
-				startTranslate = currentTranslateX();
-				track.style.transition = 'none';
-			}
-
-			function pointerMove(clientX){
-				if (!isDown) return;
-				const dx = clientX - startX;
-				track.style.transform = `translate3d(${startTranslate + dx}px,0,0)`;
-			}
-
-			function pointerUp(){
-				if (!isDown) return;
-				isDown = false;
-				viewport.classList.remove('dragging');
-
-				const slideW = slides[0].getBoundingClientRect().width;
-				const gap = parseFloat(getComputedStyle(track).gap || '0');
-				const step = slideW + gap;
-
-				const tx = currentTranslateX();
-				const rawIndex = Math.round((-tx) / step);
-
-				goTo(rawIndex, true);
-			}
-
-			viewport.addEventListener('mousedown', (e) => { e.preventDefault(); pointerDown(e.clientX); });
-			window.addEventListener('mousemove', (e) => pointerMove(e.clientX));
-			window.addEventListener('mouseup', pointerUp);
-
-			viewport.addEventListener('touchstart', (e) => pointerDown(e.touches[0].clientX), {passive:true});
-			viewport.addEventListener('touchmove', (e) => pointerMove(e.touches[0].clientX), {passive:true});
-			viewport.addEventListener('touchend', pointerUp);
-
-			window.addEventListener('resize', () => goTo(index, false));
-			goTo(index, false);
-		})();
-	</script>
-
-	<script>
 		(function(){
 			const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-			/* 2) Hero parallax tilt (desktop only) */
+			/* Hero tilt (desktop only) */
 			(function heroTilt(){
 				if (reduceMotion) return;
-
 				const media = document.querySelector(".heroMedia");
 				const imgWrap = document.querySelector(".heroImage");
 				if (!media || !imgWrap) return;
@@ -1104,57 +943,7 @@
 				imgWrap.addEventListener("mouseleave", onLeave);
 			})();
 
-			/* 3) Reveal on scroll (staggered) */
-			(function revealOnScroll(){
-				const targets = [];
-
-				const sections = [
-					document.querySelector(".socialProof"),
-					document.querySelector(".testimonials"),
-					document.querySelector(".whyChoose"),
-					document.querySelector(".skillsUse"),
-					document.querySelector(".calendarEmbed")
-				].filter(Boolean);
-
-				sections.forEach(sec => {
-					sec.classList.add("reveal");
-					sec.dataset.stagger = "1";
-					sec.style.setProperty("--stagger", "0ms");
-					targets.push(sec);
-				});
-
-				document.querySelectorAll(".whyCard").forEach((el, i) => {
-					el.classList.add("reveal");
-					el.dataset.stagger = "1";
-					el.style.setProperty("--stagger", `${i * 90}ms`);
-					targets.push(el);
-				});
-
-				document.querySelectorAll("details.skillCard").forEach((el, i) => {
-					el.classList.add("reveal");
-					el.dataset.stagger = "1";
-					el.style.setProperty("--stagger", `${i * 90}ms`);
-					targets.push(el);
-				});
-
-				if (reduceMotion){
-					targets.forEach(el => el.classList.add("is-visible"));
-					return;
-				}
-
-				const io = new IntersectionObserver((entries) => {
-					entries.forEach(entry => {
-						if (entry.isIntersecting){
-							entry.target.classList.add("is-visible");
-							io.unobserve(entry.target);
-						}
-					});
-				}, { threshold: 0.15 });
-
-				targets.forEach(el => io.observe(el));
-			})();
-
-			/* 8) Calendar spotlight when navigating to #calendar */
+			/* Calendar spotlight when navigating to #calendar */
 			(function calendarPulseOnHash(){
 				const card = document.getElementById("calendarCard");
 				if (!card) return;
@@ -1168,6 +957,120 @@
 
 				window.addEventListener("hashchange", pulse);
 				window.addEventListener("load", pulse);
+			})();
+
+			/* (3) Carousel JS only on desktop/tablet.
+			   On mobile we use native horizontal scroll (CSS above). */
+			(function initCarouselDesktop(){
+				if (window.matchMedia("(max-width: 720px)").matches) return;
+
+				const root = document.querySelector('[data-carousel]');
+				if (!root) return;
+
+				const track = root.querySelector('[data-track]');
+				const viewport = root.querySelector('[data-viewport]');
+				const slides = Array.from(root.querySelectorAll('.carouselSlide'));
+				const prevBtn = root.querySelector('[data-prev]');
+				const nextBtn = root.querySelector('[data-next]');
+				const dotsWrap = root.querySelector('[data-dots]');
+
+				let index = Math.floor(slides.length / 2);
+
+				// build dots once
+				const dots = slides.map((_, i) => {
+					const d = document.createElement('button');
+					d.type = 'button';
+					d.className = 'dot';
+					d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+					d.addEventListener('click', () => goTo(i));
+					dotsWrap.appendChild(d);
+					return d;
+				});
+
+				function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+				function setActive(){
+					slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+					dots.forEach((d, i) => d.classList.toggle('active', i === index));
+					if (prevBtn) prevBtn.disabled = index === 0;
+					if (nextBtn) nextBtn.disabled = index === slides.length - 1;
+				}
+
+				function updateTransform(animate = true){
+					const slideW = slides[0].getBoundingClientRect().width;
+					const gap = parseFloat(getComputedStyle(track).gap || '0');
+					const step = slideW + gap;
+					const x = step * index;
+
+					if (!animate) track.style.transition = 'none';
+					else track.style.transition = 'transform 520ms cubic-bezier(.2,.95,.2,1)';
+
+					track.style.transform = `translate3d(${-x}px,0,0)`;
+
+					if (!animate){
+						void track.offsetHeight;
+						track.style.transition = 'transform 520ms cubic-bezier(.2,.95,.2,1)';
+					}
+				}
+
+				function goTo(i, animate = true){
+					index = clamp(i, 0, slides.length - 1);
+					setActive();
+					updateTransform(animate);
+				}
+
+				if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
+				if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
+
+				let isDown = false;
+				let startX = 0;
+				let startTranslate = 0;
+
+				function currentTranslateX(){
+					const m = new DOMMatrixReadOnly(getComputedStyle(track).transform);
+					return m.m41;
+				}
+
+				function pointerDown(clientX){
+					isDown = true;
+					viewport.classList.add('dragging');
+					startX = clientX;
+					startTranslate = currentTranslateX();
+					track.style.transition = 'none';
+				}
+
+				function pointerMove(clientX){
+					if (!isDown) return;
+					const dx = clientX - startX;
+					track.style.transform = `translate3d(${startTranslate + dx}px,0,0)`;
+				}
+
+				function pointerUp(){
+					if (!isDown) return;
+					isDown = false;
+					viewport.classList.remove('dragging');
+
+					const slideW = slides[0].getBoundingClientRect().width;
+					const gap = parseFloat(getComputedStyle(track).gap || '0');
+					const step = slideW + gap;
+
+					const tx = currentTranslateX();
+					const rawIndex = Math.round((-tx) / step);
+
+					goTo(rawIndex, true);
+				}
+
+				viewport.addEventListener('mousedown', (e) => { e.preventDefault(); pointerDown(e.clientX); });
+				window.addEventListener('mousemove', (e) => pointerMove(e.clientX));
+				window.addEventListener('mouseup', pointerUp);
+
+				viewport.addEventListener('touchstart', (e) => { pointerDown(e.touches[0].clientX); }, {passive:true});
+				viewport.addEventListener('touchmove', (e) => { pointerMove(e.touches[0].clientX); }, {passive:true});
+				viewport.addEventListener('touchend', pointerUp);
+
+				window.addEventListener('resize', () => goTo(index, false));
+
+				goTo(index, false);
 			})();
 		})();
 	</script>
