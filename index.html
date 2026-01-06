@@ -119,9 +119,7 @@
 		}
 
 		.btn:active,
-		.btnGhost:active{
-			transform: translateY(1px);
-		}
+		.btnGhost:active{ transform: translateY(1px); }
 
 		.btn:focus-visible,
 		.btnGhost:focus-visible{
@@ -130,11 +128,7 @@
 				0 0 26px rgba(114,139,225,0.25);
 		}
 
-		.icon{
-			width: 18px;
-			height: 18px;
-			display:inline-block;
-		}
+		.icon{ width: 18px; height: 18px; display:inline-block; }
 		.icon svg{ width: 18px; height: 18px; display:block; }
 
 		/* Fixed header */
@@ -440,11 +434,9 @@
 			min-height: 330px;
 		}
 
-		/* UPDATED: show images instead of placeholder */
 		.whyArt{
 			aspect-ratio: 2 / 3;
 			background: rgba(255,255,255,0.02);
-			border-bottom: 0;
 			display:block;
 			min-height: 190px;
 			overflow: hidden;
@@ -493,12 +485,16 @@
 
 		.skillHead{ display:flex; align-items:center; gap: 12px; }
 
-		.iconPh{
+		/* UPDATED: real icon image instead of placeholder block */
+		.skillIcon{
 			width: 40px;
 			height: 40px;
 			border-radius: 14px;
-			background: linear-gradient(135deg, rgba(114,139,225,0.28), rgba(246,85,52,0.18));
 			border: 1px solid rgba(255,255,255,0.12);
+			background: rgba(255,255,255,0.03);
+			display:block;
+			object-fit: contain;
+			padding: 7px; /* gives breathing room around the icon */
 			flex: 0 0 auto;
 		}
 
@@ -792,7 +788,7 @@
 				<details class="skillCard">
 					<summary>
 						<div class="skillHead">
-							<div class="iconPh" aria-hidden="true"></div>
+							<img class="skillIcon" src="assets/commercial-streamlining.webp" alt="Commercial Streamlining icon" />
 							<div class="skillTitleWrap">
 								<h3>Commercial Streamlining</h3>
 								<p>Merging teams and tools into one operating system.</p>
@@ -813,7 +809,7 @@
 				<details class="skillCard">
 					<summary>
 						<div class="skillHead">
-							<div class="iconPh" aria-hidden="true"></div>
+							<img class="skillIcon" src="assets/plg.webp" alt="Product‑Led Growth icon" />
 							<div class="skillTitleWrap">
 								<h3>Product‑Led Growth</h3>
 								<p>Improving activation, conversion, and retention.</p>
@@ -834,7 +830,7 @@
 				<details class="skillCard">
 					<summary>
 						<div class="skillHead">
-							<div class="iconPh" aria-hidden="true"></div>
+							<img class="skillIcon" src="assets/inbound.webp" alt="Inbound Marketing icon" />
 							<div class="skillTitleWrap">
 								<h3>Inbound Marketing</h3>
 								<p>Building demand through content and distribution.</p>
@@ -986,7 +982,6 @@
 			viewport.addEventListener('touchend', pointerUp);
 
 			window.addEventListener('resize', () => goTo(index, false));
-
 			goTo(index, false);
 		})();
 	</script>
