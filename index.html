@@ -221,7 +221,7 @@
 			max-width: var(--max);
 			margin: 0 auto;
 			padding: 14px 20px;
-			min-height: var(--header-h);
+			min-height: 84px;
 			display:flex;
 			align-items:center;
 		}
@@ -447,20 +447,32 @@
 			border-radius: 22px;
 			border: 1px solid var(--card-border);
 			background: var(--card-bg);
-			padding: 26px 24px 22px;
-			text-align: center;
+			padding: 24px 22px 20px;
+			text-align: left; /* changed */
 		}
-		.quoteHeader{ display:flex; flex-direction: column; align-items:center; gap: 10px; margin-bottom: 12px; }
+
+		/* (4) New quote header layout: avatar left, name+title right */
+		.quoteHeader{
+			display:flex;
+			flex-direction: row;
+			align-items:center;
+			justify-content:flex-start;
+			gap: 12px;
+			margin-bottom: 12px;
+		}
 		.avatarImg{
 			width: 56px; height: 56px; border-radius: 999px;
 			object-fit: cover; object-position: 50% 35%;
 			display:block;
 			border: 1px solid rgba(255,255,255,0.18);
 			box-shadow: 0 0 0 1px rgba(114,139,225,0.20), 0 0 18px rgba(114,139,225,0.12);
+			flex: 0 0 auto;
 		}
-		.quoteText{ margin: 0; color: rgba(255,255,255,0.78); font-size: 16px; line-height: 1.75; }
-		.quoteFooter{ margin-top: 16px; color: rgba(255,255,255,0.72); font-size: 13px; }
-		.quoteFooter strong{ color: rgba(255,255,255,0.90); font-weight: 750; }
+		.quoteMeta{ display:flex; flex-direction: column; gap: 2px; }
+		.quoteName{ font-size: 14px; font-weight: 750; color: rgba(255,255,255,0.92); line-height: 1.2; }
+		.quoteTitle{ font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.2; }
+
+		.quoteText{ margin: 0; color: rgba(255,255,255,0.78); font-size: 16px; line-height: 1.75; padding-top: 2px; }
 
 		.carouselArrows{ position: absolute; inset: 0; pointer-events: none; }
 		.arrowBtn{
@@ -667,6 +679,7 @@
 		</div>
 	</header>
 
+	<!-- Mobile bottom navigation (labels clarified) -->
 	<nav class="bottomNav" aria-label="Mobile menu">
 		<div class="bottomNavInner">
 			<a href="#why-me">
@@ -675,11 +688,11 @@
 			</a>
 			<a href="#calendar">
 				<img class="mobileIcon" src="assets/meeting-mobile.webp" alt="" aria-hidden="true" />
-				<span class="navLabel">Meeting</span>
+				<span class="navLabel">Book Meeting</span>
 			</a>
 			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
 				<img class="mobileIcon" src="assets/cv-mobile.webp" alt="" aria-hidden="true" />
-				<span class="navLabel">CV</span>
+				<span class="navLabel">Request CV</span>
 			</a>
 		</div>
 	</nav>
@@ -718,12 +731,13 @@
 			</div>
 		</section>
 
+		<!-- (2) Logos reordered: 42dm, hackenproof, label your data -->
 		<section class="socialProof" aria-label="Social proof">
 			<h2 class="sectionTitle center">Trusted by Challengers</h2>
 			<div class="logoRow" aria-label="Logos">
-				<div class="logoSlot"><img src="assets/label-your-data-logo-bw.webp" alt="Label Your Data"></div>
 				<div class="logoSlot"><img src="assets/42dm-logo-bw.webp" alt="42DM"></div>
 				<div class="logoSlot"><img src="assets/hackenproof-logo-bw.webp" alt="HackenProof"></div>
+				<div class="logoSlot"><img src="assets/label-your-data-logo-bw.webp" alt="Label Your Data"></div>
 			</div>
 		</section>
 
@@ -735,27 +749,19 @@
 			<div class="carousel" data-carousel>
 				<div class="carouselViewport" data-viewport>
 					<div class="carouselTrack" data-track>
+						<!-- (3) Quotes reordered: 42DM (Kate), HackenProof (Dmytro), Label Your Data (Karyna) -->
 						<div class="carouselSlide">
 							<article class="quoteCard">
 								<div class="quoteHeader">
 									<img class="avatarImg" src="assets/kate-vasylenko.webp" alt="Kate Vasylenko" />
+									<div class="quoteMeta">
+										<div class="quoteName">Kate Vasylenko</div>
+										<div class="quoteTitle">Founder of 42DM</div>
+									</div>
 								</div>
 								<p class="quoteText">
 									“He has a natural talent for mentoring colleagues and sharing his knowledge and expertise to help them grow in their own roles.”
 								</p>
-								<div class="quoteFooter"><strong>Kate Vasylenko</strong> &nbsp; Founder of 42DM</div>
-							</article>
-						</div>
-
-						<div class="carouselSlide">
-							<article class="quoteCard">
-								<div class="quoteHeader">
-									<img class="avatarImg" src="assets/karyna-naminas.jpeg" alt="Karyna Naminas" />
-								</div>
-								<p class="quoteText">
-									“Val built our inbound lead-generation engine and helped drive a 4× ARR increase. He also led our RevOps transformation across HubSpot and Notion, bringing strategic clarity and executional rigor.”
-								</p>
-								<div class="quoteFooter"><strong>Karyna Naminas</strong> &nbsp; CEO of Label Your Data</div>
 							</article>
 						</div>
 
@@ -763,11 +769,29 @@
 							<article class="quoteCard">
 								<div class="quoteHeader">
 									<img class="avatarImg" src="assets/dmytro-matviiv.webp" alt="Dmytro Matviiv" />
+									<div class="quoteMeta">
+										<div class="quoteName">Dmytro Matviiv</div>
+										<div class="quoteTitle">CEO of HackenProof</div>
+									</div>
 								</div>
 								<p class="quoteText">
 									“Valentine brought structure and focus to our marketing. He clarified messaging for both B2B and the hacker community, grew Twitter with consistently valuable posts, and rebuilt the blog into an SEO channel that drove high-intent organic traffic.”
 								</p>
-								<div class="quoteFooter"><strong>Dmytro Matviiv</strong> &nbsp; CEO of HackenProof</div>
+							</article>
+						</div>
+
+						<div class="carouselSlide">
+							<article class="quoteCard">
+								<div class="quoteHeader">
+									<img class="avatarImg" src="assets/karyna-naminas.jpeg" alt="Karyna Naminas" />
+									<div class="quoteMeta">
+										<div class="quoteName">Karyna Naminas</div>
+										<div class="quoteTitle">CEO of Label Your Data</div>
+									</div>
+								</div>
+								<p class="quoteText">
+									“Val built our inbound lead-generation engine and helped drive a 4× ARR increase. He also led our RevOps transformation across HubSpot and Notion, bringing strategic clarity and executional rigor.”
+								</p>
 							</article>
 						</div>
 					</div>
@@ -911,11 +935,6 @@
 		(function(){
 			const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-			// We will:
-			// 1) Show hero immediately on DOMContentLoaded
-			// 2) Delay ALL reveal-on-scroll registration until hero is visible
-			//    so nothing below can animate first.
-
 			function setHeroVisible(){
 				const hero = document.querySelector(".heroEntrance");
 				if (!hero) return;
@@ -924,7 +943,6 @@
 					hero.classList.add("is-visible");
 					return;
 				}
-
 				hero.classList.add("is-visible");
 			}
 
@@ -946,7 +964,7 @@
 					targets.push(sec);
 				});
 
-				// WHY CARDS: 1 second apart (0s, 1s, 2s, 3s)
+				/* Why cards: 1 second apart */
 				document.querySelectorAll(".whyCard").forEach((el, i) => {
 					el.classList.add("reveal");
 					el.dataset.stagger = "1";
@@ -954,7 +972,6 @@
 					targets.push(el);
 				});
 
-				// Skills: modest stagger
 				document.querySelectorAll("details.skillCard").forEach((el, i) => {
 					el.classList.add("reveal");
 					el.dataset.stagger = "1";
@@ -1055,7 +1072,7 @@
 				const nextBtn = root.querySelector('[data-next]');
 				const dotsWrap = root.querySelector('[data-dots]');
 
-				let index = Math.floor(slides.length / 2);
+				let index = 0; /* start from first (42DM) after reorder */
 
 				if (dotsWrap) dotsWrap.innerHTML = "";
 
@@ -1154,15 +1171,13 @@
 				goTo(index, false);
 			})();
 
-			/* ORDER FIX:
-			   Trigger hero as early as possible, then start reveal observers after hero animation completes. */
+			/* Order fix: hero first, then reveal observers */
 			document.addEventListener("DOMContentLoaded", () => {
 				setHeroVisible();
 
 				if (reduceMotion){
 					initRevealOnScroll();
 				} else {
-					// Wait for hero entrance (~950ms) so nothing below animates first
 					setTimeout(initRevealOnScroll, 980);
 				}
 			});
