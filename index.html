@@ -285,21 +285,21 @@
 			margin-top: 10px;
 		}
 
-		/* NEW: logo slots */
+		/* Logo slots — UPDATED to be larger */
 		.logoSlot{
-			height: 56px;
-			border-radius: 14px;
+			height: 72px;
+			border-radius: 16px;
 			border: 1px dashed rgba(255,255,255,0.20);
 			background: rgba(255,255,255,0.03);
 			display:flex;
 			align-items:center;
 			justify-content:center;
-			padding: 12px 16px;
+			padding: 14px 18px;
 		}
 
 		.logoSlot img{
-			max-height: 32px;
-			max-width: 180px;
+			max-height: 44px;
+			max-width: 220px;
 			width: auto;
 			height: auto;
 			object-fit: contain;
@@ -589,6 +589,9 @@
 
 		@media (max-width: 720px){
 			.logoRow{ grid-template-columns: 1fr; }
+			.logoSlot{ height: 64px; padding: 12px 16px; border-radius: 14px; }
+			.logoSlot img{ max-height: 38px; max-width: 220px; }
+
 			.afterSocialSpacer{ height: 42px; }
 
 			.carouselTrack{ padding: 0 calc(50% - 170px); }
@@ -821,7 +824,7 @@
 							<div class="bItem">Recycling product features into public demos</div>
 							<div class="bItem">Improving in‑product conversion rates</div>
 						</div>
-					</div>
+					</summary>
 				</details>
 
 				<details class="skillCard">
