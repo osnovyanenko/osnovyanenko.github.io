@@ -55,7 +55,7 @@
 				var(--bg);
 		}
 
-		/* 7) Subtle scanlines */
+		/* Subtle scanlines */
 		body::after{
 			content:"";
 			position: fixed;
@@ -115,7 +115,6 @@
 			font-weight: 650;
 		}
 
-		/* Red glow hover effect (applies to both) */
 		.btn:hover,
 		.btnGhost:hover{
 			text-decoration: none;
@@ -128,7 +127,7 @@
 				0 0 60px rgba(197,26,15,0.35);
 		}
 
-		/* 1) CTA breathing */
+		/* CTA breathing */
 		@keyframes neonBreathBlue{
 			0%, 100%{ box-shadow: 0 0 0 rgba(114,139,225,0.0); opacity: 0.95; }
 			50%{ box-shadow: 0 0 22px rgba(114,139,225,0.35); opacity: 1; }
@@ -137,8 +136,6 @@
 			box-shadow: 0 0 0 1px rgba(114,139,225,0.18);
 			animation: neonBreathBlue 8s ease-in-out infinite;
 		}
-
-		/* FIX: force hover glow to win over breathing animation */
 		.btn.is-cta:hover{
 			animation: none;
 			border-color: rgba(246,85,52,0.80);
@@ -163,15 +160,15 @@
 		.icon{ width: 18px; height: 18px; display:inline-block; }
 		.icon svg{ width: 18px; height: 18px; display:block; }
 
-		/* ===== Reveal on scroll (3) ===== */
+		/* ===== Reveal on scroll ===== */
 		.reveal{
 			opacity: 0;
-			transform: translateY(12px);
-			filter: blur(8px);
+			transform: translateY(16px);
+			filter: blur(10px);
 			transition:
-				opacity 650ms cubic-bezier(.2,.8,.2,1),
-				transform 650ms cubic-bezier(.2,.8,.2,1),
-				filter 650ms cubic-bezier(.2,.8,.2,1);
+				opacity 980ms cubic-bezier(.2,.8,.2,1),
+				transform 980ms cubic-bezier(.2,.8,.2,1),
+				filter 980ms cubic-bezier(.2,.8,.2,1);
 			will-change: opacity, transform, filter;
 		}
 		.reveal.is-visible{
@@ -180,6 +177,33 @@
 			filter: blur(0);
 		}
 		.reveal[data-stagger]{ transition-delay: var(--stagger, 0ms); }
+
+		/* Why cards: stronger entrance */
+		.whyCard.reveal{
+			transform: translateY(22px);
+			transition-duration: 1100ms;
+		}
+
+		/* ===== Hero premium entrance ===== */
+		.heroEntrance{
+			opacity: 0;
+			transform: translateY(14px);
+			filter: blur(10px);
+		}
+		.heroEntrance.is-visible{
+			opacity: 1;
+			transform: translateY(0);
+			filter: blur(0);
+			transition:
+				opacity 950ms cubic-bezier(.2,.8,.2,1),
+				transform 950ms cubic-bezier(.2,.8,.2,1),
+				filter 950ms cubic-bezier(.2,.8,.2,1);
+		}
+		.heroEntrance .heroMedia::before{
+			opacity: 0.35;
+			transition: opacity 1100ms cubic-bezier(.2,.8,.2,1), filter 1100ms cubic-bezier(.2,.8,.2,1);
+		}
+		.heroEntrance.is-visible .heroMedia::before{ opacity: 0.9; }
 
 		/* ===== Header (desktop) ===== */
 		.siteHeader{
@@ -193,7 +217,6 @@
 			background: rgba(2,2,4,0.76);
 			border-bottom: 1px solid rgba(255,255,255,0.08);
 		}
-
 		.headerInner{
 			max-width: var(--max);
 			margin: 0 auto;
@@ -202,13 +225,11 @@
 			display:flex;
 			align-items:center;
 		}
-
 		.page{
 			max-width: var(--max);
 			margin: 0 auto;
 			padding: calc(var(--header-h) + 28px) 20px 90px;
 		}
-
 		.nav{
 			width: 100%;
 			display:flex;
@@ -216,7 +237,6 @@
 			justify-content:space-between;
 			gap:16px;
 		}
-
 		.brand{
 			display:flex;
 			flex-direction:column;
@@ -225,7 +245,6 @@
 		}
 		.brand strong{ font-size:16px; letter-spacing:-0.01em; }
 		.brand span{ font-size:13px; color: var(--muted); }
-
 		.navlinks{
 			display:flex;
 			gap:16px;
@@ -236,7 +255,7 @@
 		}
 		.navlinks a{ color: rgba(255,255,255,0.86); }
 
-		/* ===== Mobile bottom nav (3 buttons) ===== */
+		/* ===== Mobile bottom nav ===== */
 		.bottomNav{
 			display:none;
 			position: fixed;
@@ -270,12 +289,12 @@
 			text-decoration: none;
 		}
 		.bottomNav a:active{ transform: translateY(1px); }
-		.bottomNav .navIcon{
+		.mobileIcon{
 			width: 22px;
 			height: 22px;
+			display:block;
+			object-fit: contain;
 			border-radius: 8px;
-			border: 1px solid rgba(255,255,255,0.14);
-			background: linear-gradient(135deg, rgba(114,139,225,0.22), rgba(246,85,52,0.12));
 		}
 		.bottomNav .navLabel{
 			font-size: 11px;
@@ -295,7 +314,7 @@
 		}
 		.sectionTitle.center{ text-align:center; }
 
-		/* ===== Hero (2) tilt hooks ===== */
+		/* ===== Hero (tilt hooks) ===== */
 		.hero{ padding: 26px 0 10px; }
 		.heroGrid{
 			display:grid;
@@ -316,7 +335,6 @@
 			transition: opacity 260ms ease, filter 260ms ease;
 		}
 		.heroMedia.is-hovered::before{ opacity: 1; filter: blur(18px); }
-
 		.heroImage{
 			position: relative;
 			z-index: 1;
@@ -336,7 +354,6 @@
 			object-position: 50% 45%;
 			display:block;
 		}
-
 		.kicker{
 			display:inline-flex;
 			align-items:center;
@@ -351,7 +368,6 @@
 			background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
 			animation: neonBreathBlue 6.5s ease-in-out infinite;
 		}
-
 		.heroTitle{
 			margin: 10px 0 12px;
 			font-size: 44px;
@@ -372,7 +388,7 @@
 			margin-top: 16px;
 		}
 
-		/* ===== Social proof (NOT swipe) ===== */
+		/* ===== Social proof ===== */
 		.socialProof{ padding: 14px 0 0; }
 		.logoRow{
 			display: grid;
@@ -473,7 +489,7 @@
 		}
 		.dot.active{ background: rgba(114,139,225,0.95); box-shadow: 0 0 18px rgba(114,139,225,0.35); }
 
-		/* ===== Why cards (4) ===== */
+		/* ===== Why cards ===== */
 		.whyChoose{ padding: 54px 0 0; }
 		.whyGrid{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
 		.whyCard{
@@ -497,7 +513,7 @@
 		.whyBody h3{ margin: 0 0 6px; font-size: 14px; letter-spacing: -0.01em; }
 		.whyBody p{ margin: 0; font-size: 13px; line-height: 1.45; color: rgba(10,14,22,0.62); }
 
-		/* ===== Skills (5) ===== */
+		/* ===== Skills ===== */
 		.skillsUse{ padding: 54px 0 0; }
 		.skillsGrid{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
 		details.skillCard{ border-radius: 18px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 16px 18px; }
@@ -537,7 +553,7 @@
 		.splitBullets{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; color: rgba(255,255,255,0.74); font-size: 14px; line-height: 1.6; }
 		.bItem{ border-left: 2px solid rgba(114,139,225,0.40); padding-left: 10px; }
 
-		/* ===== Calendar (8) ===== */
+		/* ===== Calendar ===== */
 		.calendarEmbed{ padding-top: 18px; }
 		.calendarCard{ border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); overflow: hidden; }
 		.calendarFrameWrap{ background: #ffffff; border-radius: 20px; overflow: hidden; }
@@ -550,7 +566,6 @@
 		}
 		.calendarCard.pulse{ animation: calendarPulse 900ms ease-out 1; }
 
-		/* ===== Footer ===== */
 		.footer{
 			padding-top: 54px;
 			color: var(--muted);
@@ -562,7 +577,6 @@
 			border: 0;
 		}
 
-		/* ===== Responsive ===== */
 		@media (max-width: 1100px){
 			.carouselTrack{ padding: 0 calc(50% - 240px); }
 			.carouselSlide{ flex-basis: 480px; max-width: 480px; }
@@ -580,7 +594,6 @@
 			.page{ padding-top: calc(var(--header-h) + 18px); }
 		}
 
-		/* MOBILE */
 		@media (max-width: 720px){
 			.siteHeader{ display:none; }
 			.bottomNav{ display:block; }
@@ -590,13 +603,12 @@
 				padding-bottom: calc(90px + var(--bottom-nav-h));
 			}
 
-			/* Logos remain row of 3 (no swipe) */
 			.logoRow{ gap: 10px; }
 			.logoSlot{ height: 64px; padding: 10px 12px; border-radius: 14px; }
 			.logoSlot img{ max-height: 38px; max-width: 180px; }
 			.afterSocialSpacer{ height: 36px; }
 
-			/* FIX: mobile testimonials become native scroll + snap (no transform bugs) */
+			/* Mobile testimonials = native scroll + snap */
 			.carouselViewport{
 				overflow-x: auto;
 				-webkit-overflow-scrolling: touch;
@@ -655,26 +667,25 @@
 		</div>
 	</header>
 
-	<!-- Mobile bottom navigation (3 buttons only) -->
 	<nav class="bottomNav" aria-label="Mobile menu">
 		<div class="bottomNavInner">
 			<a href="#why-me">
-				<span class="navIcon" aria-hidden="true"></span>
+				<img class="mobileIcon" src="assets/why-me-mobile.webp" alt="" aria-hidden="true" />
 				<span class="navLabel">Why me</span>
 			</a>
 			<a href="#calendar">
-				<span class="navIcon" aria-hidden="true"></span>
+				<img class="mobileIcon" src="assets/meeting-mobile.webp" alt="" aria-hidden="true" />
 				<span class="navLabel">Meeting</span>
 			</a>
 			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
-				<span class="navIcon" aria-hidden="true"></span>
+				<img class="mobileIcon" src="assets/cv-mobile.webp" alt="" aria-hidden="true" />
 				<span class="navLabel">CV</span>
 			</a>
 		</div>
 	</nav>
 
 	<main class="page">
-		<section class="hero" aria-label="Hero">
+		<section class="hero heroEntrance" id="hero" aria-label="Hero">
 			<div class="heroGrid">
 				<div class="heroMedia">
 					<div class="heroImage">
@@ -900,7 +911,75 @@
 		(function(){
 			const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-			/* 2) Hero parallax tilt (desktop only) */
+			// We will:
+			// 1) Show hero immediately on DOMContentLoaded
+			// 2) Delay ALL reveal-on-scroll registration until hero is visible
+			//    so nothing below can animate first.
+
+			function setHeroVisible(){
+				const hero = document.querySelector(".heroEntrance");
+				if (!hero) return;
+
+				if (reduceMotion){
+					hero.classList.add("is-visible");
+					return;
+				}
+
+				hero.classList.add("is-visible");
+			}
+
+			function initRevealOnScroll(){
+				const targets = [];
+
+				const sections = [
+					document.querySelector(".socialProof"),
+					document.querySelector(".testimonials"),
+					document.querySelector(".whyChoose"),
+					document.querySelector(".skillsUse"),
+					document.querySelector(".calendarEmbed")
+				].filter(Boolean);
+
+				sections.forEach(sec => {
+					sec.classList.add("reveal");
+					sec.dataset.stagger = "1";
+					sec.style.setProperty("--stagger", "0ms");
+					targets.push(sec);
+				});
+
+				// WHY CARDS: 1 second apart (0s, 1s, 2s, 3s)
+				document.querySelectorAll(".whyCard").forEach((el, i) => {
+					el.classList.add("reveal");
+					el.dataset.stagger = "1";
+					el.style.setProperty("--stagger", `${i * 1000}ms`);
+					targets.push(el);
+				});
+
+				// Skills: modest stagger
+				document.querySelectorAll("details.skillCard").forEach((el, i) => {
+					el.classList.add("reveal");
+					el.dataset.stagger = "1";
+					el.style.setProperty("--stagger", `${i * 150}ms`);
+					targets.push(el);
+				});
+
+				if (reduceMotion){
+					targets.forEach(el => el.classList.add("is-visible"));
+					return;
+				}
+
+				const io = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting){
+							entry.target.classList.add("is-visible");
+							io.unobserve(entry.target);
+						}
+					});
+				}, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+
+				targets.forEach(el => io.observe(el));
+			}
+
+			/* Hero tilt (desktop only) */
 			(function heroTilt(){
 				if (reduceMotion) return;
 
@@ -946,57 +1025,7 @@
 				imgWrap.addEventListener("mouseleave", onLeave);
 			})();
 
-			/* 3) Reveal on scroll (staggered) */
-			(function revealOnScroll(){
-				const targets = [];
-
-				const sections = [
-					document.querySelector(".socialProof"),
-					document.querySelector(".testimonials"),
-					document.querySelector(".whyChoose"),
-					document.querySelector(".skillsUse"),
-					document.querySelector(".calendarEmbed")
-				].filter(Boolean);
-
-				sections.forEach(sec => {
-					sec.classList.add("reveal");
-					sec.dataset.stagger = "1";
-					sec.style.setProperty("--stagger", "0ms");
-					targets.push(sec);
-				});
-
-				document.querySelectorAll(".whyCard").forEach((el, i) => {
-					el.classList.add("reveal");
-					el.dataset.stagger = "1";
-					el.style.setProperty("--stagger", `${i * 90}ms`);
-					targets.push(el);
-				});
-
-				document.querySelectorAll("details.skillCard").forEach((el, i) => {
-					el.classList.add("reveal");
-					el.dataset.stagger = "1";
-					el.style.setProperty("--stagger", `${i * 90}ms`);
-					targets.push(el);
-				});
-
-				if (reduceMotion){
-					targets.forEach(el => el.classList.add("is-visible"));
-					return;
-				}
-
-				const io = new IntersectionObserver((entries) => {
-					entries.forEach(entry => {
-						if (entry.isIntersecting){
-							entry.target.classList.add("is-visible");
-							io.unobserve(entry.target);
-						}
-					});
-				}, { threshold: 0.15 });
-
-				targets.forEach(el => io.observe(el));
-			})();
-
-			/* 8) Calendar spotlight when navigating to #calendar */
+			/* Calendar spotlight when navigating to #calendar */
 			(function calendarPulseOnHash(){
 				const card = document.getElementById("calendarCard");
 				if (!card) return;
@@ -1028,7 +1057,6 @@
 
 				let index = Math.floor(slides.length / 2);
 
-				// reset dots (avoid duplicates if hot-reloaded)
 				if (dotsWrap) dotsWrap.innerHTML = "";
 
 				const dots = slides.map((_, i) => {
@@ -1123,9 +1151,21 @@
 				viewport.addEventListener('touchend', pointerUp);
 
 				window.addEventListener('resize', () => goTo(index, false));
-
 				goTo(index, false);
 			})();
+
+			/* ORDER FIX:
+			   Trigger hero as early as possible, then start reveal observers after hero animation completes. */
+			document.addEventListener("DOMContentLoaded", () => {
+				setHeroVisible();
+
+				if (reduceMotion){
+					initRevealOnScroll();
+				} else {
+					// Wait for hero entrance (~950ms) so nothing below animates first
+					setTimeout(initRevealOnScroll, 980);
+				}
+			});
 		})();
 	</script>
 </body>
