@@ -7,6 +7,8 @@
 	<title>Valentine Osnovyanenko: Marketing Partner for SaaS Founders</title>
 	<meta name="description" content="Find out how Val Osnovyanenko can be useful for your product business." />
 
+	<link rel="icon" href="assets/val-os.ico" />
+
 	<!-- Google Tag Manager -->
 	<script>
 	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -182,12 +184,19 @@
 				filter 980ms cubic-bezier(.2,.8,.2,1);
 			will-change: opacity, transform, filter;
 		}
+
+		/* IMPORTANT FIX:
+		   stagger delay should only affect the entrance. Once visible, we remove any delay,
+		   otherwise hover transitions feel “queued”. */
+		.reveal[data-stagger]{
+			transition-delay: var(--stagger, 0ms);
+		}
 		.reveal.is-visible{
 			opacity: 1;
 			transform: translateY(0);
 			filter: blur(0);
+			transition-delay: 0ms; /* <-- makes hover instant after entrance */
 		}
-		.reveal[data-stagger]{ transition-delay: var(--stagger, 0ms); }
 
 		/* Why cards: stronger entrance */
 		.whyCard.reveal{
@@ -524,8 +533,6 @@
 			min-height: 330px;
 			transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease;
 		}
-
-		/* (1) Ensure ALL cards get the hover lift + glow */
 		.whyCard:hover{
 			border-color: rgba(246,85,52,0.35);
 			box-shadow:
@@ -533,6 +540,7 @@
 				0 0 26px rgba(246,85,52,0.20),
 				0 0 60px rgba(197,26,15,0.14);
 			transform: translateY(-2px);
+			transition-delay: 0ms; /* <-- ensure hover is instant */
 		}
 
 		.whyArt{ aspect-ratio: 2 / 3; background: rgba(255,255,255,0.02); display:block; min-height: 190px; overflow: hidden; }
@@ -689,7 +697,7 @@
 
 					<a class="btn is-cta" href="#calendar">Book a meeting</a>
 
-					<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+					<a class="btnGhost" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
 						<span class="icon" aria-hidden="true">
 							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 								<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
@@ -712,7 +720,7 @@
 				<img class="mobileIcon" src="assets/meeting-mobile.webp" alt="" aria-hidden="true" />
 				<span class="navLabel">Book Meeting</span>
 			</a>
-			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+			<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
 				<img class="mobileIcon" src="assets/cv-mobile.webp" alt="" aria-hidden="true" />
 				<span class="navLabel">Request CV</span>
 			</a>
@@ -740,7 +748,7 @@
 					<div class="ctaRow">
 						<a class="btn is-cta" href="#calendar">Book a meeting</a>
 
-						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+						<a class="btnGhost" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
 							<span class="icon" aria-hidden="true">
 								<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 									<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
@@ -947,7 +955,7 @@
 		<footer class="footer">
 			<span>© 2026 Valentine Osnovyanenko</span>
 			<span>·</span>
-			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">LinkedIn</a>
+			<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
 		</footer>
 	</main>
 
@@ -958,11 +966,6 @@
 			function setHeroVisible(){
 				const hero = document.querySelector(".heroEntrance");
 				if (!hero) return;
-
-				if (reduceMotion){
-					hero.classList.add("is-visible");
-					return;
-				}
 				hero.classList.add("is-visible");
 			}
 
@@ -1139,7 +1142,7 @@
 				}
 
 				if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
-				if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
+				if (nextBtn) nextBtn.disabled = false, nextBtn.addEventListener('click', () => goTo(index + 1));
 
 				let isDown = false;
 				let startX = 0;
