@@ -184,18 +184,12 @@
 				filter 980ms cubic-bezier(.2,.8,.2,1);
 			will-change: opacity, transform, filter;
 		}
-
-		/* IMPORTANT FIX:
-		   stagger delay should only affect the entrance. Once visible, we remove any delay,
-		   otherwise hover transitions feel “queued”. */
-		.reveal[data-stagger]{
-			transition-delay: var(--stagger, 0ms);
-		}
+		.reveal[data-stagger]{ transition-delay: var(--stagger, 0ms); }
 		.reveal.is-visible{
 			opacity: 1;
 			transform: translateY(0);
 			filter: blur(0);
-			transition-delay: 0ms; /* <-- makes hover instant after entrance */
+			transition-delay: 0ms; /* make hover instant after entrance */
 		}
 
 		/* Why cards: stronger entrance */
@@ -412,7 +406,7 @@
 		.socialProof{ padding: 14px 0 0; }
 		.logoRow{
 			display: grid;
-			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-template-columns: repeat(4, minmax(0, 1fr));
 			gap: 14px;
 			align-items: center;
 			margin-top: 10px;
@@ -540,7 +534,7 @@
 				0 0 26px rgba(246,85,52,0.20),
 				0 0 60px rgba(197,26,15,0.14);
 			transform: translateY(-2px);
-			transition-delay: 0ms; /* <-- ensure hover is instant */
+			transition-delay: 0ms;
 		}
 
 		.whyArt{ aspect-ratio: 2 / 3; background: rgba(255,255,255,0.02); display:block; min-height: 190px; overflow: hidden; }
@@ -594,8 +588,8 @@
 		/* ===== Calendar ===== */
 		.calendarEmbed{ padding-top: 18px; }
 		.calendarCard{ border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); overflow: hidden; }
-		.calendarFrameWrap{ background: #ffffff; border-radius: 20px; overflow: hidden; }
-		.calendarFrame{ width: 100%; height: 700px; border: 0; display:block; background: #ffffff; }
+		.calendarFrameWrap{ background: rgba(255,255,255,0.04); border-radius: 20px; overflow: hidden; }
+		.calendarFrame{ width: 100%; height: 700px; border: 0; display:block; background: transparent; }
 
 		@keyframes calendarPulse{
 			0%{ box-shadow: 0 0 0 0 rgba(114,139,225,0.0); border-color: rgba(255,255,255,0.12); }
@@ -641,7 +635,7 @@
 				padding-bottom: calc(90px + var(--bottom-nav-h));
 			}
 
-			.logoRow{ gap: 10px; }
+			.logoRow{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 			.logoSlot{ height: 64px; padding: 10px 12px; border-radius: 14px; }
 			.logoSlot img{ max-height: 38px; max-width: 180px; }
 			.afterSocialSpacer{ height: 36px; }
@@ -697,7 +691,7 @@
 
 					<a class="btn is-cta" href="#calendar">Book a meeting</a>
 
-					<a class="btnGhost" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+					<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
 						<span class="icon" aria-hidden="true">
 							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 								<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
@@ -720,7 +714,7 @@
 				<img class="mobileIcon" src="assets/meeting-mobile.webp" alt="" aria-hidden="true" />
 				<span class="navLabel">Book Meeting</span>
 			</a>
-			<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
 				<img class="mobileIcon" src="assets/cv-mobile.webp" alt="" aria-hidden="true" />
 				<span class="navLabel">Request CV</span>
 			</a>
@@ -748,7 +742,7 @@
 					<div class="ctaRow">
 						<a class="btn is-cta" href="#calendar">Book a meeting</a>
 
-						<a class="btnGhost" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
 							<span class="icon" aria-hidden="true">
 								<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 									<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
@@ -766,6 +760,7 @@
 			<div class="logoRow" aria-label="Logos">
 				<div class="logoSlot"><img src="assets/42dm-logo-bw.webp" alt="42DM"></div>
 				<div class="logoSlot"><img src="assets/hackenproof-logo-bw.webp" alt="HackenProof"></div>
+				<div class="logoSlot"><img src="assets/simplydepo.webp" alt="SimplyDepo"></div>
 				<div class="logoSlot"><img src="assets/label-your-data-logo-bw.webp" alt="Label Your Data"></div>
 			</div>
 		</section>
@@ -804,6 +799,21 @@
 								</div>
 								<p class="quoteText">
 									“Valentine brought structure and focus to our marketing. He clarified messaging for both B2B and the hacker community, grew Twitter with consistently valuable posts, and rebuilt the blog into an SEO channel that drove high-intent organic traffic.”
+								</p>
+							</article>
+						</div>
+
+						<div class="carouselSlide">
+							<article class="quoteCard">
+								<div class="quoteHeader">
+									<img class="avatarImg" src="assets/ivan-khymych.webp" alt="Ivan Khymych" />
+									<div class="quoteMeta">
+										<div class="quoteName">Ivan Khymych</div>
+										<div class="quoteTitle">Founder of SimplyDepo</div>
+									</div>
+								</div>
+								<p class="quoteText">
+									“Val brought strong technical depth to product marketing by implementing HTML tags, aligning data collection across the stack, and using AI like a data scientist to keep our data clean and actionable.”
 								</p>
 							</article>
 						</div>
@@ -938,16 +948,11 @@
 			</div>
 		</section>
 
+		<!-- Calendar embed switched to YouCanBookMe script -->
 		<section class="calendarEmbed" id="calendar" aria-label="Calendar">
 			<div class="calendarCard" id="calendarCard">
-				<div class="calendarFrameWrap">
-					<iframe
-						class="calendarFrame"
-						src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fl52OMBKffQzG6Ab0-1T44N7-qT4r7Y-CHiF5Ng45bqBUEyb_xkbgIy85i07xo9O3FeZu5Fjz?gv=true"
-						title="Google Calendar appointment scheduling"
-						loading="lazy"
-						allow="fullscreen"
-					></iframe>
+				<div class="calendarFrameWrap" style="padding:16px;">
+					<script src="https://embed.ycb.me" async="true" data-domain="osnovyanenko" data-content="all" data-displaymode="auto"></script>
 				</div>
 			</div>
 		</section>
@@ -955,7 +960,7 @@
 		<footer class="footer">
 			<span>© 2026 Valentine Osnovyanenko</span>
 			<span>·</span>
-			<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">LinkedIn</a>
 		</footer>
 	</main>
 
@@ -1065,22 +1070,6 @@
 				imgWrap.addEventListener("mouseleave", onLeave);
 			})();
 
-			/* Calendar spotlight when navigating to #calendar */
-			(function calendarPulseOnHash(){
-				const card = document.getElementById("calendarCard");
-				if (!card) return;
-
-				function pulse(){
-					if (location.hash !== "#calendar") return;
-					card.classList.remove("pulse");
-					void card.offsetWidth;
-					card.classList.add("pulse");
-				}
-
-				window.addEventListener("hashchange", pulse);
-				window.addEventListener("load", pulse);
-			})();
-
 			/* Desktop carousel only. Mobile is native scroll via CSS. */
 			(function initCarouselDesktop(){
 				if (window.matchMedia("(max-width: 720px)").matches) return;
@@ -1142,7 +1131,7 @@
 				}
 
 				if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
-				if (nextBtn) nextBtn.disabled = false, nextBtn.addEventListener('click', () => goTo(index + 1));
+				if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
 
 				let isDown = false;
 				let startX = 0;
