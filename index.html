@@ -140,7 +140,6 @@
 				0 0 60px rgba(197,26,15,0.35);
 		}
 
-		/* CTA breathing */
 		@keyframes neonBreathBlue{
 			0%, 100%{ box-shadow: 0 0 0 rgba(114,139,225,0.0); opacity: 0.95; }
 			50%{ box-shadow: 0 0 22px rgba(114,139,225,0.35); opacity: 1; }
@@ -189,10 +188,8 @@
 			opacity: 1;
 			transform: translateY(0);
 			filter: blur(0);
-			transition-delay: 0ms; /* make hover instant after entrance */
+			transition-delay: 0ms;
 		}
-
-		/* Why cards: stronger entrance */
 		.whyCard.reveal{
 			transform: translateY(22px);
 			transition-duration: 1100ms;
@@ -328,7 +325,7 @@
 		}
 		.sectionTitle.center{ text-align:center; }
 
-		/* ===== Hero (tilt hooks) ===== */
+		/* ===== Hero ===== */
 		.hero{ padding: 26px 0 10px; }
 		.heroGrid{
 			display:grid;
@@ -420,6 +417,7 @@
 			align-items:center;
 			justify-content:center;
 			padding: 14px 18px;
+			overflow: hidden;
 		}
 		.logoSlot img{
 			max-height: 44px;
@@ -430,9 +428,17 @@
 			display:block;
 			opacity: 0.92;
 		}
+		/* SimplyDepo ~2x larger */
+		.logoSlot img.logo-simplydepo{
+			max-height: 88px;
+			max-width: 360px;
+			transform: scale(1.25);
+			transform-origin: center;
+			opacity: 0.98;
+		}
 		.afterSocialSpacer{ height: 54px; }
 
-		/* ===== Testimonials carousel ===== */
+		/* ===== Testimonials ===== */
 		.testimonials{ padding: 0; }
 		.carousel{ margin-top: 16px; position: relative; user-select: none; }
 		.carouselViewport{ overflow: hidden; padding: 14px 0 18px; cursor: grab; }
@@ -464,7 +470,6 @@
 			padding: 24px 22px 20px;
 			text-align: left;
 		}
-
 		.quoteHeader{
 			display:flex;
 			flex-direction: row;
@@ -484,7 +489,6 @@
 		.quoteMeta{ display:flex; flex-direction: column; gap: 2px; }
 		.quoteName{ font-size: 14px; font-weight: 750; color: rgba(255,255,255,0.92); line-height: 1.2; }
 		.quoteTitle{ font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.2; }
-
 		.quoteText{ margin: 0; color: rgba(255,255,255,0.78); font-size: 16px; line-height: 1.75; padding-top: 2px; }
 
 		.carouselArrows{ position: absolute; inset: 0; pointer-events: none; }
@@ -514,7 +518,7 @@
 		}
 		.dot.active{ background: rgba(114,139,225,0.95); box-shadow: 0 0 18px rgba(114,139,225,0.35); }
 
-		/* ===== Why cards (HOVER) ===== */
+		/* ===== Why cards ===== */
 		.whyChoose{ padding: 54px 0 0; }
 		.whyGrid{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
 
@@ -536,11 +540,9 @@
 			transform: translateY(-2px);
 			transition-delay: 0ms;
 		}
-
 		.whyArt{ aspect-ratio: 2 / 3; background: rgba(255,255,255,0.02); display:block; min-height: 190px; overflow: hidden; }
 		.whyArt img{ width: 100%; height: 100%; display:block; object-fit: cover; object-position: 50% 50%; transition: transform 300ms cubic-bezier(.2,.8,.2,1), filter 300ms cubic-bezier(.2,.8,.2,1); }
 		.whyCard:hover .whyArt img{ transform: scale(1.045); filter: contrast(1.04) saturate(1.03); }
-
 		.whyBody{ background: rgba(255,255,255,0.96); color: rgba(10,14,22,0.92); padding: 14px 14px 16px; flex: 1 1 auto; }
 		.whyBody h3{ margin: 0 0 6px; font-size: 14px; letter-spacing: -0.01em; }
 		.whyBody p{ margin: 0; font-size: 13px; line-height: 1.45; color: rgba(10,14,22,0.62); }
@@ -548,6 +550,7 @@
 		/* ===== Skills ===== */
 		.skillsUse{ padding: 54px 0 0; }
 		.skillsGrid{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+
 		details.skillCard{ border-radius: 18px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 16px 18px; }
 		details.skillCard summary{
 			list-style: none;
@@ -585,18 +588,10 @@
 		.splitBullets{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; color: rgba(255,255,255,0.74); font-size: 14px; line-height: 1.6; }
 		.bItem{ border-left: 2px solid rgba(114,139,225,0.40); padding-left: 10px; }
 
-		/* ===== Calendar ===== */
+		/* ===== Calendar (YouCanBookMe) ===== */
 		.calendarEmbed{ padding-top: 18px; }
 		.calendarCard{ border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); overflow: hidden; }
-		.calendarFrameWrap{ background: rgba(255,255,255,0.04); border-radius: 20px; overflow: hidden; }
-		.calendarFrame{ width: 100%; height: 700px; border: 0; display:block; background: transparent; }
-
-		@keyframes calendarPulse{
-			0%{ box-shadow: 0 0 0 0 rgba(114,139,225,0.0); border-color: rgba(255,255,255,0.12); }
-			40%{ box-shadow: 0 0 0 6px rgba(114,139,225,0.22); border-color: rgba(114,139,225,0.55); }
-			100%{ box-shadow: 0 0 0 0 rgba(114,139,225,0.0); border-color: rgba(255,255,255,0.12); }
-		}
-		.calendarCard.pulse{ animation: calendarPulse 900ms ease-out 1; }
+		.calendarFrameWrap{ background: rgba(255,255,255,0.04); border-radius: 20px; overflow: hidden; padding: 16px; }
 
 		.footer{
 			padding-top: 54px;
@@ -626,6 +621,32 @@
 			.page{ padding-top: calc(var(--header-h) + 18px); }
 		}
 
+		/* Mobile + touch devices: ALWAYS enable native swipe for quotes */
+		@media (hover: none) and (pointer: coarse){
+			.carouselViewport{
+				overflow-x: auto !important;
+				-webkit-overflow-scrolling: touch;
+				scroll-snap-type: x mandatory;
+				padding: 14px 0 18px;
+				cursor: auto !important;
+			}
+			.carouselViewport::-webkit-scrollbar{ display:none; }
+			.carouselTrack{
+				padding: 0 16px !important;
+				transform: none !important;
+				transition: none !important;
+			}
+			.carouselSlide{
+				flex: 0 0 86% !important;
+				max-width: 86% !important;
+				scroll-snap-align: center;
+				opacity: 1 !important;
+				transform: none !important;
+			}
+			.carouselArrows{ display:none !important; }
+			.dots{ display:none !important; }
+		}
+
 		@media (max-width: 720px){
 			.siteHeader{ display:none; }
 			.bottomNav{ display:block; }
@@ -635,37 +656,31 @@
 				padding-bottom: calc(90px + var(--bottom-nav-h));
 			}
 
+			/* Logos */
 			.logoRow{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 			.logoSlot{ height: 64px; padding: 10px 12px; border-radius: 14px; }
 			.logoSlot img{ max-height: 38px; max-width: 180px; }
+			.logoSlot img.logo-simplydepo{
+				max-height: 64px;
+				max-width: 260px;
+				transform: scale(1.25);
+			}
+
 			.afterSocialSpacer{ height: 36px; }
 
-			/* Mobile testimonials = native scroll + snap */
-			.carouselViewport{
-				overflow-x: auto;
-				-webkit-overflow-scrolling: touch;
-				scroll-snap-type: x mandatory;
-				padding: 14px 0 18px;
-				cursor: auto;
+			/* Why section: compact 2x2 */
+			.whyGrid{
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 10px;
 			}
-			.carouselViewport::-webkit-scrollbar{ display:none; }
-			.carouselTrack{
-				padding: 0 16px;
-				transform: none !important;
-				transition: none !important;
+			.whyCard{
+				min-height: 0;
+				border-radius: 16px;
 			}
-			.carouselSlide{
-				flex: 0 0 86%;
-				max-width: 86%;
-				scroll-snap-align: center;
-				opacity: 1;
-				transform: none;
-			}
-			.carouselArrows{ display:none; }
-			.dots{ display:none; }
-
-			.whyGrid{ grid-template-columns: 1fr; }
-			.calendarFrame{ height: 620px; }
+			.whyArt{ min-height: 120px; }
+			.whyBody{ padding: 10px 10px 12px; }
+			.whyBody h3{ font-size: 13px; margin-bottom: 4px; }
+			.whyBody p{ font-size: 12px; line-height: 1.35; }
 		}
 	</style>
 </head>
@@ -760,7 +775,7 @@
 			<div class="logoRow" aria-label="Logos">
 				<div class="logoSlot"><img src="assets/42dm-logo-bw.webp" alt="42DM"></div>
 				<div class="logoSlot"><img src="assets/hackenproof-logo-bw.webp" alt="HackenProof"></div>
-				<div class="logoSlot"><img src="assets/simplydepo.webp" alt="SimplyDepo"></div>
+				<div class="logoSlot"><img class="logo-simplydepo" src="assets/simplydepo.webp" alt="SimplyDepo"></div>
 				<div class="logoSlot"><img src="assets/label-your-data-logo-bw.webp" alt="Label Your Data"></div>
 			</div>
 		</section>
@@ -948,10 +963,9 @@
 			</div>
 		</section>
 
-		<!-- Calendar embed switched to YouCanBookMe script -->
 		<section class="calendarEmbed" id="calendar" aria-label="Calendar">
 			<div class="calendarCard" id="calendarCard">
-				<div class="calendarFrameWrap" style="padding:16px;">
+				<div class="calendarFrameWrap">
 					<script src="https://embed.ycb.me" async="true" data-domain="osnovyanenko" data-content="all" data-displaymode="auto"></script>
 				</div>
 			</div>
@@ -992,7 +1006,6 @@
 					targets.push(sec);
 				});
 
-				/* Why cards: 1 second apart */
 				document.querySelectorAll(".whyCard").forEach((el, i) => {
 					el.classList.add("reveal");
 					el.dataset.stagger = "1";
@@ -1070,9 +1083,12 @@
 				imgWrap.addEventListener("mouseleave", onLeave);
 			})();
 
-			/* Desktop carousel only. Mobile is native scroll via CSS. */
+			/* Desktop carousel ONLY when not touch-capable (fix: prevents breaking swipe on tablets) */
 			(function initCarouselDesktop(){
-				if (window.matchMedia("(max-width: 720px)").matches) return;
+				const isTouch = ("ontouchstart" in window) || (navigator.maxTouchPoints > 0) ||
+					(window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches);
+
+				if (isTouch) return; // <-- critical fix
 
 				const root = document.querySelector('[data-carousel]');
 				if (!root) return;
@@ -1175,15 +1191,11 @@
 				window.addEventListener('mousemove', (e) => pointerMove(e.clientX));
 				window.addEventListener('mouseup', pointerUp);
 
-				viewport.addEventListener('touchstart', (e) => { pointerDown(e.touches[0].clientX); }, {passive:true});
-				viewport.addEventListener('touchmove', (e) => { pointerMove(e.touches[0].clientX); }, {passive:true});
-				viewport.addEventListener('touchend', pointerUp);
-
 				window.addEventListener('resize', () => goTo(index, false));
 				goTo(index, false);
 			})();
 
-			/* Order fix: hero first, then reveal observers */
+			/* Hero first, then reveal observers */
 			document.addEventListener("DOMContentLoaded", () => {
 				setHeroVisible();
 
