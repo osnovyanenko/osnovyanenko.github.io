@@ -2,12 +2,33 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
 	<title>Valentine Osnovyanenko: Marketing Partner for SaaS Founders</title>
-	<meta name="description" content="Find out how Val Osnovyanenko can be useful for your product business." />
+	<meta name="description" content="Fractional marketing partner for SaaS founders and CEOs. Inbound, product-led growth and RevOps from someone who has done it at 42DM, HackenProof, SimplyDepo and Label Your Data." />
+	<meta name="theme-color" content="#050507" />
 
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://osnovyanenko.com/" />
+	<meta property="og:title" content="Valentine Osnovyanenko: Marketing Partner for SaaS Founders" />
+	<meta property="og:description" content="Fractional marketing partner for founders and CEOs. Inbound, product-led growth and RevOps." />
+	<meta property="og:image" content="https://osnovyanenko.com/assets/val-os.webp" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<link rel="canonical" href="https://osnovyanenko.com/" />
 	<link rel="icon" href="assets/val-os.ico" />
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Valentine Osnovyanenko",
+		"jobTitle": "Fractional Marketing Partner",
+		"url": "https://osnovyanenko.com/",
+		"image": "https://osnovyanenko.com/assets/val-os.webp",
+		"sameAs": ["https://www.linkedin.com/in/osnovyanenko/"]
+	}
+	</script>
 
 	<!-- Google Tag Manager -->
 	<script>
@@ -19,668 +40,559 @@
 	</script>
 	<!-- End Google Tag Manager -->
 
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+	<link rel="preload" as="image" href="assets/val-os.webp" />
+
 	<style>
 		:root{
-			--bg: #020204;
+			--bg: #050507;
+			--bg-2: #0b0b10;
+			--surface: rgba(255,255,255,0.035);
+			--surface-2: rgba(255,255,255,0.06);
+			--line: rgba(255,255,255,0.09);
+			--line-2: rgba(255,255,255,0.16);
 
-			--text: rgba(255,255,255,0.92);
-			--muted: rgba(255,255,255,0.68);
+			--text: #f2f2f5;
+			--muted: rgba(242,242,245,0.62);
+			--faint: rgba(242,242,245,0.38);
 
-			--accent: #728BE1;
-			--accent2: #F65534;
-			--accent3: #C51A0F;
+			--blue: #728BE1;
+			--blue-2: #9AAAF0;
+			--orange: #F65534;
+			--red: #C51A0F;
 
-			--link: #9AAAF0;
-			--max: 1080px;
+			--grad: linear-gradient(100deg, var(--blue-2) 0%, var(--blue) 35%, var(--orange) 75%, var(--red) 100%);
 
-			--card-bg: rgba(255,255,255,0.03);
-			--card-border: rgba(255,255,255,0.12);
+			--sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+			--serif: "Instrument Serif", ui-serif, Georgia, serif;
 
-			--header-h: 84px;
-			--bottom-nav-h: 74px;
+			--max: 1240px;
+			--gutter: clamp(16px, 4vw, 40px);
+			--radius: 22px;
+			--ease: cubic-bezier(.2,.8,.2,1);
 		}
 
-		*{ box-sizing:border-box; }
-		html,body{ height:100%; }
-		html{ scroll-behavior: smooth; }
+		*,*::before,*::after{ box-sizing:border-box; }
+		html{ -webkit-text-size-adjust:100%; overflow-x: clip; }
+		html.lenis, html.lenis body{ height:auto; }
+		.lenis.lenis-smooth{ scroll-behavior:auto !important; }
+		.lenis.lenis-smooth [data-lenis-prevent]{ overscroll-behavior:contain; }
 
 		body{
 			margin:0;
-			font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+			font-family: var(--sans);
+			font-size: 17px;
+			line-height: 1.55;
 			color: var(--text);
 			background: var(--bg);
-			line-height:1.5;
 			overflow-x: hidden;
-			position: relative;
+			overflow-x: clip;
+			-webkit-font-smoothing: antialiased;
+			text-rendering: optimizeLegibility;
+		}
+		img{ display:block; max-width:100%; height:auto; }
+		a{ color:inherit; text-decoration:none; }
+		button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+		::selection{ background: var(--orange); color:#fff; }
+
+		.skip{ position:absolute; left:-9999px; top:8px; z-index:1000; padding:10px 14px; background:#fff; color:#000; border-radius:10px; }
+		.skip:focus{ left:8px; }
+		:focus-visible{ outline:2px solid var(--blue-2); outline-offset:3px; border-radius:8px; }
+
+		.wrap{ width:100%; max-width:var(--max); margin:0 auto; padding:0 var(--gutter); }
+
+		/* ---------- Ambient background ---------- */
+		.ambient{ position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; }
+		.orb{ position:absolute; border-radius:50%; filter: blur(90px); opacity:.55; will-change: transform; }
+		.orb.o1{ width:46vw; height:46vw; left:-12vw; top:-14vw; background: radial-gradient(circle, rgba(114,139,225,.55), transparent 65%); animation: drift1 22s ease-in-out infinite alternate; }
+		.orb.o2{ width:40vw; height:40vw; right:-14vw; top:10vh; background: radial-gradient(circle, rgba(246,85,52,.38), transparent 65%); animation: drift2 26s ease-in-out infinite alternate; }
+		.orb.o3{ width:50vw; height:50vw; left:20vw; bottom:-30vw; background: radial-gradient(circle, rgba(197,26,15,.28), transparent 65%); animation: drift3 30s ease-in-out infinite alternate; }
+		@keyframes drift1{ to{ transform: translate(10vw, 12vh) scale(1.1); } }
+		@keyframes drift2{ to{ transform: translate(-8vw, 20vh) scale(.9); } }
+		@keyframes drift3{ to{ transform: translate(-10vw, -10vh) scale(1.15); } }
+
+		.grain{
+			position:fixed; inset:-50%; z-index:100; pointer-events:none; opacity:.07;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+			animation: grain 1s steps(6) infinite;
+		}
+		@keyframes grain{
+			0%{ transform: translate(0,0); } 20%{ transform: translate(-3%,2%); } 40%{ transform: translate(2%,-3%); }
+			60%{ transform: translate(-2%,-1%); } 80%{ transform: translate(3%,3%); } 100%{ transform: translate(0,0); }
 		}
 
-		/* Background */
-		body::before{
-			content:"";
-			position: fixed;
-			inset: 0;
-			z-index: -2;
-			pointer-events: none;
+		/* Cursor glow (desktop only, set in JS) */
+		.cursorGlow{
+			position:fixed; left:0; top:0; width:520px; height:520px; margin:-260px 0 0 -260px; z-index:0;
+			border-radius:50%; pointer-events:none; opacity:0; transition: opacity .4s var(--ease);
+			background: radial-gradient(circle, rgba(114,139,225,.12), rgba(246,85,52,.05) 40%, transparent 70%);
+		}
+		.has-cursor .cursorGlow{ opacity:1; }
+
+		/* ---------- Header ---------- */
+		.progress{ position:fixed; left:0; top:0; height:2px; width:100%; z-index:60; transform-origin:0 50%; transform: scaleX(0); background: var(--grad); }
+
+		.header{
+			position:fixed; top:14px; left:0; right:0; z-index:50;
+			display:flex; justify-content:center; padding:0 var(--gutter);
+			transition: transform .5s var(--ease);
+		}
+		.header.is-hidden{ transform: translateY(-120%); }
+		.headerInner{
+			width:100%; max-width: var(--max);
+			display:flex; align-items:center; justify-content:space-between; gap:16px;
+			padding: 10px 10px 10px 18px;
+			border:1px solid var(--line);
+			border-radius: 999px;
+			background: rgba(10,10,14,.55);
+			backdrop-filter: blur(18px) saturate(140%);
+			-webkit-backdrop-filter: blur(18px) saturate(140%);
+		}
+		.brand{ display:flex; align-items:center; gap:10px; font-weight:600; letter-spacing:-.01em; white-space:nowrap; }
+		.brandMark{
+			width:30px; height:30px; border-radius:50%; overflow:hidden; flex:0 0 auto;
+			box-shadow: 0 0 0 1px var(--line-2);
+		}
+		.brandMark img{ width:100%; height:100%; object-fit:cover; }
+		.brand small{ display:block; font-weight:400; font-size:12px; color: var(--muted); line-height:1.1; }
+		.brand span{ line-height:1.15; font-size:15px; }
+
+		.navLinks{ display:flex; align-items:center; gap:4px; }
+		.navLinks a.lnk{
+			position:relative; padding:8px 14px; border-radius:999px; font-size:14.5px; color: var(--muted);
+			transition: color .25s var(--ease), background .25s var(--ease);
+		}
+		.navLinks a.lnk:hover{ color: var(--text); background: var(--surface-2); }
+
+		/* ---------- Buttons ---------- */
+		.btn{
+			--bx:50%; --by:50%;
+			position:relative; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+			height:48px; padding:0 22px; border-radius:999px;
+			font-weight:600; font-size:15.5px; letter-spacing:-.005em; white-space:nowrap;
+			color:#fff; isolation:isolate; overflow:hidden;
+			background: linear-gradient(135deg, var(--blue), #5a72cf);
+			box-shadow: 0 10px 30px -10px rgba(114,139,225,.7), inset 0 1px 0 rgba(255,255,255,.25);
+			transition: box-shadow .3s var(--ease);
+		}
+		.btn::before{
+			content:""; position:absolute; inset:0; z-index:-1; opacity:0; transition: opacity .35s var(--ease);
+			background: radial-gradient(140px circle at var(--bx) var(--by), var(--orange), transparent 70%), linear-gradient(135deg, #7d95ea, var(--blue));
+		}
+		.btn:hover::before{ opacity:1; }
+		.btn:hover{ box-shadow: 0 16px 40px -12px rgba(246,85,52,.6), inset 0 1px 0 rgba(255,255,255,.25); }
+		.btn .arrow{ display:inline-block; transition: transform .35s var(--ease); }
+		.btn:hover .arrow{ transform: translateX(4px); }
+		.btn.sm{ height:40px; padding:0 18px; font-size:14.5px; }
+
+		.btnGhost{
+			display:inline-flex; align-items:center; justify-content:center; gap:10px; height:48px; padding:0 20px; border-radius:999px;
+			font-weight:600; font-size:15.5px; white-space:nowrap;
+			border:1px solid var(--line-2); background: var(--surface);
+			transition: background .25s var(--ease), border-color .25s var(--ease);
+		}
+		.btnGhost:hover{ background: var(--surface-2); border-color: rgba(255,255,255,.28); }
+		.btnGhost svg{ width:16px; height:16px; }
+
+		.magnetic{ will-change: transform; }
+
+		/* ---------- Type ---------- */
+		.h2{
+			margin:16px 0 0; font-weight:600; letter-spacing:-.035em; line-height:1.02;
+			font-size: clamp(38px, 5.6vw, 76px);
+		}
+		.serif{ font-family: var(--serif); font-weight:400; font-style:italic; letter-spacing:-.01em; }
+		.red{ color: var(--orange); }
+		.blue{ color: var(--blue); }
+		.gradText{ background: var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+		.sectionHead{ max-width: 820px; }
+		.sectionHead p{ color: var(--muted); font-size: clamp(17px, 1.4vw, 19px); margin:20px 0 0; max-width: 560px; }
+
+		section{ position:relative; }
+		.section{ padding: clamp(90px, 13vw, 170px) 0; }
+
+		/* split text */
+		.line{ display:block; overflow:hidden; padding-bottom:.16em; margin-bottom:-.16em; }
+		.word{ display:inline-block; will-change: transform; }
+
+		/* ---------- Hero ---------- */
+		.hero{ overflow-x: clip; min-height: 100svh; display:flex; align-items:center; padding: 116px 0 56px; }
+		.heroGrid{ display:grid; grid-template-columns: 1.25fr .85fr; gap: clamp(32px, 5vw, 80px); align-items:center; }
+
+		.status{
+			display:inline-flex; align-items:center; gap:10px; padding:7px 14px 7px 10px; border-radius:999px;
+			border:1px solid var(--line-2); background: var(--surface); font-size:13.5px; color: var(--muted);
+		}
+		.pulse{ position:relative; width:8px; height:8px; border-radius:50%; background:#3ddc84; }
+		.pulse::after{ content:""; position:absolute; inset:-4px; border-radius:50%; border:2px solid #3ddc84; opacity:0; animation: pulse 2.2s var(--ease) infinite; }
+		@keyframes pulse{ 0%{ transform:scale(.6); opacity:.9; } 100%{ transform:scale(1.9); opacity:0; } }
+
+		.heroTitle{
+			margin: 22px 0 0; font-weight:600; letter-spacing:-.045em; line-height:1.04;
+			font-size: clamp(48px, 7vw, 104px);
+		}
+		.heroTitle .serif{ font-size:1.08em; letter-spacing:-.02em; padding-right:.04em; }
+		.lede{ margin: 22px 0 0; max-width: 540px; color: var(--muted); font-size: clamp(17px, 1.45vw, 20px); }
+		.ctaRow{ display:flex; flex-wrap:wrap; gap:12px; margin-top: 28px; }
+
+		.heroMeta{ display:flex; gap: clamp(20px, 4vw, 48px); margin-top: 36px; padding-top: 22px; border-top:1px solid var(--line); max-width: 560px; }
+		.heroMeta div{ display:flex; flex-direction:column; gap:2px; }
+		.heroMeta strong{ font-size: clamp(26px, 2.6vw, 34px); font-weight:600; letter-spacing:-.03em; line-height:1.1; }
+		.heroMeta div > span{ font-size:13.5px; color: var(--faint); }
+
+		.portrait{ position:relative; perspective: 1000px; justify-self:end; width:100%; max-width: 460px; }
+		.portraitCard{
+			--mx:50%; --my:30%;
+			position:relative; border-radius: 28px; overflow:hidden; aspect-ratio: 1213/1241;
+			transform-style: preserve-3d; transition: transform .6s var(--ease);
+			box-shadow: 0 40px 100px -30px rgba(0,0,0,.9), 0 0 0 1px var(--line-2);
+		}
+		.portraitCard img{ width:100%; height:100%; object-fit:cover; will-change: transform; }
+		.portraitCard::after{
+			content:""; position:absolute; inset:0; pointer-events:none;
 			background:
-				radial-gradient(900px 520px at 12% 10%, rgba(114,139,225,0.18), transparent 60%),
-				radial-gradient(820px 520px at 88% 16%, rgba(246,85,52,0.12), transparent 58%),
-				radial-gradient(900px 640px at 60% 92%, rgba(197,26,15,0.08), transparent 60%),
-				var(--bg);
+				radial-gradient(420px circle at var(--mx) var(--my), rgba(255,255,255,.14), transparent 45%),
+				linear-gradient(180deg, transparent 55%, rgba(5,5,7,.75));
+			mix-blend-mode: soft-light;
+		}
+		.portraitRing{
+			position:absolute; inset:-1px; border-radius: 29px; pointer-events:none; z-index:2; padding:1px;
+			background: conic-gradient(from var(--ang, 0deg), transparent 0 60%, var(--blue) 72%, var(--orange) 84%, transparent 96%);
+			-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+			-webkit-mask-composite: xor; mask-composite: exclude;
+			animation: spin 6s linear infinite;
+		}
+		@property --ang{ syntax:"<angle>"; inherits:false; initial-value:0deg; }
+		@keyframes spin{ to{ --ang: 360deg; } }
+		.portraitGlow{
+			position:absolute; inset: 10% -8% -6%; z-index:-1; border-radius: 40px; filter: blur(60px); opacity:.55;
+			background: linear-gradient(120deg, var(--blue), var(--orange));
+		}
+		.portraitTag{
+			position:absolute; left:-28px; bottom: 34px; z-index:3;
+			display:flex; align-items:center; gap:12px; padding:12px 16px; border-radius:18px;
+			background: rgba(12,12,18,.72); border:1px solid var(--line-2);
+			backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+			box-shadow: 0 20px 50px -20px rgba(0,0,0,.8);
+			animation: float 6s ease-in-out infinite;
+		}
+		.portraitTag b{ font-size:26px; letter-spacing:-.03em; line-height:1; }
+		.portraitTag span{ font-size:12.5px; color: var(--muted); line-height:1.25; }
+		.portraitTag.t2{ left:auto; right:-22px; top: 40px; bottom:auto; animation-delay: -3s; }
+		.portraitTag.t2 .ico{ width:30px; height:30px; border-radius:10px; display:grid; place-items:center; background: rgba(246,85,52,.16); color: var(--orange); }
+		@keyframes float{ 50%{ transform: translateY(-10px); } }
+
+		.scrollHint{
+			position:absolute; left:50%; bottom: 26px; transform: translateX(-50%);
+			display:flex; flex-direction:column; align-items:center; gap:8px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color: var(--faint);
+		}
+		.scrollHint i{ width:1px; height:42px; background: linear-gradient(var(--faint), transparent); position:relative; overflow:hidden; }
+		.scrollHint i::after{ content:""; position:absolute; left:0; top:-40%; width:1px; height:40%; background:#fff; animation: drip 1.8s var(--ease) infinite; }
+		@keyframes drip{ to{ top:100%; } }
+
+		/* ---------- Logos marquee ---------- */
+		.logos{ padding: 40px 0 10px; }
+		.logosLabel{ text-align:center; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color: var(--faint); margin-bottom: 26px; }
+		.marquee{
+			position:relative; overflow:hidden;
+			-webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+			mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+		}
+		.marqueeTrack{ display:flex; width:max-content; animation: marquee 32s linear infinite; }
+		.marquee:hover .marqueeTrack{ animation-play-state: paused; }
+		.marqueeGroup{ display:flex; align-items:center; gap: clamp(56px, 8vw, 120px); padding-right: clamp(56px, 8vw, 120px); }
+		.marqueeGroup img{ height: 40px; width:auto; opacity:.55; filter: grayscale(1) brightness(1.4); transition: opacity .3s var(--ease); }
+		.marqueeGroup img:hover{ opacity:1; }
+		.marqueeGroup img.tall{ height:120px; margin:-40px -20px; }
+		@keyframes marquee{ to{ transform: translateX(-50%); } }
+
+		/* ---------- Testimonials bento ---------- */
+		.bento{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 64px; }
+		.card{
+			--sx:50%; --sy:50%;
+			position:relative; border-radius: var(--radius); padding: clamp(24px, 3vw, 36px);
+			background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+			border:1px solid var(--line);
+			overflow:hidden; isolation:isolate;
+		}
+		.card::before{
+			content:""; position:absolute; inset:0; z-index:-1; opacity:0; transition: opacity .4s var(--ease);
+			background: radial-gradient(500px circle at var(--sx) var(--sy), rgba(114,139,225,.13), transparent 45%);
+		}
+		.card::after{
+			content:""; position:absolute; inset:0; border-radius: inherit; padding:1px; pointer-events:none; opacity:0; transition: opacity .4s var(--ease);
+			background: radial-gradient(320px circle at var(--sx) var(--sy), rgba(246,85,52,.7), transparent 50%);
+			-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+			-webkit-mask-composite: xor; mask-composite: exclude;
+		}
+		.card:hover::before, .card:hover::after{ opacity:1; }
+
+		.quote{ display:flex; flex-direction:column; justify-content:space-between; gap: 32px; min-height: 320px; }
+		.quote blockquote{ margin:0; font-size: clamp(19px, 1.65vw, 23px); line-height:1.42; letter-spacing:-.015em; }
+		.quote blockquote::before{
+			content:"\201C"; display:block; font-family: var(--serif); font-size: 120px; line-height:1; height: 56px; margin-bottom: 4px;
+			color: var(--blue);
+		}
+		.who{ display:flex; align-items:center; gap: 14px; }
+		.who img{ width:48px; height:48px; border-radius:50%; object-fit:cover; box-shadow: 0 0 0 1px var(--line-2); }
+		.who b{ display:block; font-weight:600; font-size:15.5px; }
+		.who span{ font-size:14px; color: var(--muted); }
+
+		.q-lyd{ grid-column: span 7; }
+		.q-kate{ grid-column: span 5; }
+		.q-dmytro{ grid-column: span 7; }
+		.q-ivan{ grid-column: span 5; }
+
+		.bigStat{ display:flex; align-items:flex-end; gap:16px; margin-bottom: 4px; }
+		.bigStat .num [data-count]{ display:inline-block; min-width:.58em; color: var(--orange); }
+		.bigStat .num{ display:inline-block; transform-origin: 0% 85%; }
+		.bigStat .num{
+			font-size: clamp(88px, 11vw, 150px); font-weight:700; letter-spacing:-.06em; line-height:.8;
+		}
+		.bigStat .numX{ color: var(--orange); }
+		.bigStat .lbl{ font-size: 15px; color: var(--muted); line-height:1.3; padding-bottom: 8px; }
+		.tagRow{ display:flex; flex-wrap:wrap; gap:8px; }
+		.tag{ font-size:12.5px; padding:5px 11px; border-radius:999px; border:1px solid var(--line-2); color: var(--muted); }
+
+		/* ---------- Case studies (one card, industry dropdown) ---------- */
+		.csBox{ padding: clamp(22px, 3vw, 36px); }
+		.csHead{ display:flex; align-items:center; justify-content:space-between; gap: 16px 32px; flex-wrap:wrap; }
+		.csAsk{ margin:0; font-size: clamp(26px, 2.8vw, 38px); font-weight:600; letter-spacing:-.035em; line-height:1.1; }
+		.csAsk label{ cursor:pointer; }
+		.csHint{ margin: 6px 0 0; color: var(--muted); font-size: 15.5px; }
+		.csSelectWrap{ position:relative; }
+		.csSelectWrap::after{
+			content:""; position:absolute; right: 20px; top: 50%; width: 8px; height: 8px; margin-top: -6px; pointer-events:none;
+			border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); color: var(--muted);
+		}
+		.csSelect{
+			-webkit-appearance:none; appearance:none; height: 52px; min-width: 260px; padding: 0 50px 0 20px; border-radius: 999px;
+			font: 500 16px var(--sans); color: var(--text); cursor:pointer;
+			background: var(--surface-2); border: 1px solid var(--line-2);
+			transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+		}
+		.csSelect:hover{ border-color: rgba(255,255,255,.3); }
+		.csSelect:focus-visible{ outline:none; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(114,139,225,.2); }
+		.csSelect option{ background:#14141b; color: var(--text); }
+		.csBox.is-empty .csSelect{ border-color: rgba(114,139,225,.55); box-shadow: 0 0 0 0 rgba(114,139,225,.4); animation: csNudge 2.4s var(--ease) infinite; }
+		@keyframes csNudge{ 0%{ box-shadow: 0 0 0 0 rgba(114,139,225,.4); } 70%{ box-shadow: 0 0 0 10px rgba(114,139,225,0); } 100%{ box-shadow: 0 0 0 0 rgba(114,139,225,0); } }
+
+		.csTabs{ display:flex; flex-wrap:wrap; gap: 6px; margin-top: 24px; }
+		.csTabs[hidden]{ display:none; }
+		.csTab{
+			height: 36px; padding: 0 14px; border-radius: 999px; font-size: 14px; font-weight:500; color: var(--muted);
+			border: 1px solid var(--line); transition: color .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+		}
+		.csTab:hover{ color: var(--text); }
+		.csTab[aria-selected="true"]{ color: var(--text); background: var(--surface-2); border-color: var(--line-2); }
+
+		.csCase{ margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+		.csCase[hidden]{ display:none; }
+		.csMeta{ display:flex; align-items:baseline; flex-wrap:wrap; gap: 4px 14px; }
+		.csMeta h3{ margin:0; font-size: 22px; font-weight:600; letter-spacing:-.02em; }
+		.csMeta span{ font-size: 14px; color: var(--faint); }
+		.csMeta span + span::before{ content:"·"; margin-right: 14px; }
+		.csGrid{ display:grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 12px; margin-top: 16px; }
+		.csCol{ position:relative; border-radius: 16px; padding: 18px 20px; border: 1px solid var(--line); overflow:hidden; }
+		.csCol p{ margin: 8px 0 0; font-size: 15.5px; line-height: 1.45; }
+		.csList{ margin: 8px 0 0; padding-left: 18px; font-size: 15.5px; line-height: 1.45; }
+		.csList li + li{ margin-top: 4px; }
+		.csList li::marker{ color: var(--blue); }
+		.csLabel{ font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+		.csChallenge{ background: linear-gradient(160deg, rgba(114,139,225,.12), rgba(114,139,225,.03)); border-color: rgba(114,139,225,.22); }
+		.csChallenge .csLabel{ color: var(--blue); }
+		.csSolution{ background: linear-gradient(160deg, rgba(246,85,52,.12), rgba(246,85,52,.03)); border-color: rgba(246,85,52,.24); display:flex; flex-direction:column; align-items:flex-start; }
+		.csSolution .csLabel{ color: var(--orange); }
+		.csSolution p{ color: var(--muted); }
+		.csSolution .btn{ margin-top: auto; height: 38px; padding: 0 16px; font-size: 14px; gap: 8px;
+			background: linear-gradient(135deg, var(--orange), #d8401f); box-shadow: 0 10px 26px -10px rgba(246,85,52,.7), inset 0 1px 0 rgba(255,255,255,.25); }
+		.csSolution p + .btn{ margin-top: 14px; }
+		.csResults{ background: linear-gradient(180deg, rgba(114,139,225,.10), rgba(114,139,225,.02)); }
+		.csResults .csLabel{ color: var(--muted); }
+		.csResults ul{ list-style:none; margin: 6px 0 0; padding:0; }
+		.csResults li{ display:flex; align-items:baseline; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+		.csResults li:last-child{ border-bottom: 0; padding-bottom: 0; }
+		.csResults b{ flex: 0 0 auto; min-width: 74px; font-size: 22px; font-weight: 700; letter-spacing: -.03em; line-height:1.1; }
+		.csResults li span{ font-size: 14px; color: var(--muted); line-height: 1.3; }
+
+		/* ---------- Why me (horizontal) ---------- */
+		.why{ padding-top: clamp(90px, 13vw, 170px); }
+		.whyPin{ overflow:hidden; }
+		.whyTrack{ display:flex; gap: 20px; padding: 0 var(--gutter); width:max-content; }
+		.whyIntro{ width: min(420px, 80vw); flex:0 0 auto; display:flex; flex-direction:column; justify-content:center; padding-right: 30px; }
+		.whyCard{
+			position:relative; flex:0 0 auto; width: clamp(280px, 26vw, 360px); aspect-ratio: 2/3;
+			border-radius: var(--radius); overflow:hidden; border:1px solid var(--line);
+			background:#000;
+		}
+		.whyCard img{ position:absolute; inset:-6% -14%; width:128%; height:112%; max-width:none; object-fit:cover; will-change: transform; transition: transform 1.2s var(--ease), filter .6s var(--ease); filter: saturate(1.05); }
+		.whyCard:hover img{ filter: saturate(1.3) brightness(1.08); }
+		.whyCard .body{
+			position:absolute; left:0; right:0; bottom:0; padding: 90px 24px 24px;
+			background: linear-gradient(180deg, transparent, rgba(5,5,7,.88) 45%, rgba(5,5,7,.98));
+		}
+		.whyCard .idx{ font-size:12.5px; letter-spacing:.14em; color: var(--faint); font-variant-numeric: tabular-nums; }
+		.whyCard h3{ margin: 8px 0 8px; font-size: 26px; letter-spacing:-.03em; font-weight:600; line-height:1.1; }
+		.whyCard p{ margin:0; color: var(--muted); font-size: 15.5px; line-height:1.5; }
+		.whyCard .body .more{ display:grid; grid-template-rows: 1fr; transition: grid-template-rows .5s var(--ease); }
+
+		/* ---------- Skills (stacking) ---------- */
+		.stack{ margin-top: 64px; display:flex; flex-direction:column; gap: 24px; }
+		.skill{
+			position: sticky; top: calc(96px + var(--i) * 18px);
+			border-radius: 28px; padding: clamp(28px, 4vw, 52px);
+			background: linear-gradient(160deg, #13131b, #0b0b10 60%);
+			border:1px solid var(--line-2);
+			display:grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items:center;
+			overflow:hidden; transform-origin: 50% 0; will-change: transform;
+			box-shadow: 0 -30px 60px -30px rgba(0,0,0,.9);
+		}
+		.skill::before{
+			content:""; position:absolute; width: 460px; height: 460px; right: -140px; top: -180px; border-radius:50%; filter: blur(70px); opacity:.35; z-index:0;
+			background: var(--orange);
+		}
+		.skill > *{ position:relative; z-index:1; }
+		.skill > .skillShade{ position:absolute; inset:0; z-index:2; pointer-events:none; background: var(--bg); opacity:0; }
+		.skillTop{ display:flex; align-items:center; gap:16px; }
+		.skillNum{ font-size: 14px; color: var(--faint); font-variant-numeric: tabular-nums; letter-spacing:.1em; }
+		.skillIcon{ width:56px; height:56px; padding:12px; border-radius:16px; background: rgba(255,255,255,.05); border:1px solid var(--line-2); }
+		.skill h3{ margin: 26px 0 12px; font-size: clamp(32px, 4vw, 54px); line-height:1; letter-spacing:-.04em; font-weight:600; }
+		.skill .sub{ margin:0; color: var(--muted); font-size: clamp(17px, 1.4vw, 19px); max-width: 420px; }
+		.bullets{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
+		.bullets li{
+			display:flex; align-items:center; gap: 16px; padding: 20px 0; font-size: clamp(17px, 1.5vw, 20px); letter-spacing:-.01em;
+			border-top:1px solid var(--line);
+		}
+		.bullets li:last-child{ border-bottom:1px solid var(--line); }
+		.bullets li::before{
+			content:""; flex:0 0 auto; width: 10px; height: 10px; border-radius: 3px; transform: rotate(45deg);
+			background: var(--orange); box-shadow: 0 0 16px rgba(246,85,52,.8);
 		}
 
-		/* Subtle scanlines */
-		body::after{
-			content:"";
-			position: fixed;
-			inset: 0;
-			z-index: -1;
-			pointer-events: none;
-			background:
-				repeating-linear-gradient(
-					to bottom,
-					rgba(255,255,255,0.018) 0px,
-					rgba(255,255,255,0.018) 1px,
-					rgba(0,0,0,0) 3px,
-					rgba(0,0,0,0) 6px
-				);
-			mix-blend-mode: overlay;
-			opacity: 0.25;
-			animation: scanMove 14s linear infinite;
+		/* ---------- Process ---------- */
+		.steps{ position:relative; margin-top: 64px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+		.stepsLine{ position:absolute; left: 0; right:0; top: 27px; height:1px; background: var(--line); }
+		/* Hard colour switch at circle 02 (--split is measured in JS): blue before it, red after */
+		.stepsLine i{ position:absolute; inset:0; background: linear-gradient(var(--dir, 90deg), var(--blue) var(--split, 50%), var(--orange) var(--split, 50%)); }
+		.step{ position:relative; padding-right: 20px; }
+		.stepDot{
+			width:54px; height:54px; border-radius:50%; display:grid; place-items:center; font-weight:600; font-size:15px;
+			background: var(--bg); border:1px solid var(--line-2); position:relative; z-index:1;
+			transition: border-color .4s var(--ease), box-shadow .4s var(--ease);
 		}
-		@keyframes scanMove{
-			0%{ transform: translateY(0); }
-			100%{ transform: translateY(18px); }
+		.step:nth-of-type(2).is-on .stepDot{ border-color: var(--blue); box-shadow: 0 0 0 6px rgba(114,139,225,.14), 0 0 30px rgba(114,139,225,.4); }
+		.step:nth-of-type(3).is-on .stepDot{
+			border-color: transparent;
+			background: linear-gradient(var(--bg), var(--bg)) padding-box, linear-gradient(90deg, var(--blue), var(--orange)) border-box;
+			box-shadow: -10px 0 26px -6px rgba(114,139,225,.45), 10px 0 26px -6px rgba(246,85,52,.45), 0 0 0 6px rgba(180,110,140,.1);
+		}
+		.step:nth-of-type(4).is-on .stepDot{ border-color: var(--orange); box-shadow: 0 0 0 6px rgba(246,85,52,.12), 0 0 30px rgba(246,85,52,.35); }
+		.step h3{ margin: 26px 0 10px; font-size: 24px; letter-spacing:-.03em; font-weight:600; }
+		.step p{ margin:0; color: var(--muted); max-width: 320px; }
+
+		/* ---------- CTA + calendar ---------- */
+		.cta{ text-align:center; }
+		.ctaTitle{
+			margin: 18px auto 0; max-width: 1100px; font-weight:600; letter-spacing:-.05em; line-height:1;
+			font-size: clamp(48px, 9vw, 140px);
+		}
+		.cta .sectionHeadP{ color: var(--muted); max-width: 520px; margin: 36px auto 0; font-size: clamp(17px, 1.4vw, 19px); }
+		.calendarCard{
+			margin: 56px auto 0; max-width: 1040px; text-align:left;
+			border-radius: 28px; padding: clamp(10px, 1.6vw, 18px);
+			background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+			border:1px solid var(--line-2);
+			box-shadow: 0 40px 120px -40px rgba(114,139,225,.35);
+			min-height: 640px;
+		}
+		.calendarInner{ border-radius: 20px; overflow:hidden; background:#fff; min-height: 620px; }
+		.calendarInner iframe{ display:block; width:100% !important; border:0; }
+		.ctaAlt{ margin-top: 22px; font-size:15px; color: var(--muted); }
+		.ctaAlt a{ color: var(--blue-2); border-bottom:1px solid rgba(154,170,240,.4); }
+
+		/* ---------- Footer ---------- */
+		.footer{ padding: 40px 0 32px; overflow:hidden; }
+		.wordmark{
+			font-weight:700; letter-spacing:-.06em; line-height:.8; text-align:center; white-space:nowrap;
+			font-size: min(12.5vw, 168px);
+			background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.02));
+			-webkit-background-clip:text; background-clip:text; color:transparent;
+			user-select:none;
+		}
+		.footRow{ display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-top: 30px; padding-top: 22px; border-top:1px solid var(--line); font-size:14px; color: var(--faint); }
+		.footRow nav{ display:flex; gap: 20px; }
+		.footRow a:hover{ color: var(--text); }
+
+		/* ---------- Mobile sticky CTA ---------- */
+		.mobileCta{ display:none; }
+
+		/* ---------- Responsive ---------- */
+		@media (max-width: 1080px){
+			.q-lyd, .q-kate, .q-dmytro, .q-ivan{ grid-column: span 12; }
+			.quote{ min-height: 0; }
+		}
+		@media (max-width: 900px){
+			.csGrid{ grid-template-columns: 1fr 1fr; }
+			.csResults{ grid-column: 1 / -1; }
+			.navLinks a.lnk, .navLinks .btnGhost{ display:none; }
+			.hero{ padding-top: 110px; }
+			.heroGrid{ grid-template-columns: 1fr; }
+			.portrait{ justify-self:center; max-width: 320px; order:-1; margin: 0 auto; }
+			.portraitGlow{ inset: 10% 4% -6%; }
+			.portraitTag{ left: -8px; }
+			.portraitTag.t2{ right: -8px; }
+			.scrollHint{ display:none; }
+			.skill{ grid-template-columns: 1fr; position: relative; top:auto; }
+			.steps{ grid-template-columns: 1fr; gap: 36px; }
+			.stepsLine{ left: 27px; right:auto; top: 0; bottom: 0; width:1px; height:auto; }
+			.stepsLine i{ --dir: 180deg; }
+			.step{ display:grid; grid-template-columns: 54px 1fr; column-gap: 20px; }
+			.step h3{ margin-top: 12px; }
+			.step p{ grid-column: 2; }
+
+			.whyPin{ overflow-x:auto; scroll-snap-type: x mandatory; scrollbar-width:none; -webkit-overflow-scrolling: touch; }
+			.whyPin::-webkit-scrollbar{ display:none; }
+			.whyTrack{ padding-bottom: 6px; }
+			.whyIntro{ display:none; }
+			.whyCard{ scroll-snap-align: center; width: 78vw; max-width: 340px; }
+			.whyCard img{ inset:0; width:100%; height:100%; }
+			.whyMobileHead{ display:block !important; margin-bottom: 36px; }
+
+			.mobileCta{
+				display:flex; position:fixed; left: 16px; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index:55;
+				gap: 10px; padding: 8px; border-radius: 999px;
+				background: rgba(12,12,18,.75); border:1px solid var(--line-2);
+				backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+				transform: translateY(140%); transition: transform .5s var(--ease);
+			}
+			.mobileCta.is-on{ transform:none; }
+			.mobileCta .btn{ flex:1; height:46px; }
+			.mobileCta .btnGhost{ height:46px; padding: 0 16px; }
+			.footer{ padding-bottom: 100px; }
+		}
+		@media (max-width: 520px){
+			.csGrid{ grid-template-columns: 1fr; }
+			.csSelectWrap, .csSelect{ width: 100%; }
+			.csMeta{ flex-direction: column; gap: 2px; }
+			.csMeta span + span::before{ content: none; }
+			body{ font-size:16px; }
+			.brand small{ display:none; }
+			.heroMeta{ gap: 18px; }
+			.heroMeta strong{ font-size: 24px; }
+			.ctaRow .btn, .ctaRow .btnGhost{ flex: 1 1 auto; }
+			.portraitTag{ padding: 10px 12px; }
+			.portraitTag b{ font-size: 22px; }
+			.calendarCard{ min-height: 560px; }
 		}
 
 		@media (prefers-reduced-motion: reduce){
-			*{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-		}
-
-		hr{ display:none !important; }
-		a{ color: var(--link); text-decoration:none; }
-		a:hover{ text-decoration:underline; }
-
-		/* ===== Buttons ===== */
-		.btn, .btnGhost{
-			display:inline-flex;
-			align-items:center;
-			justify-content:center;
-			gap: 10px;
-			padding: 12px 16px;
-			border-radius: 14px;
-			text-decoration:none;
-			white-space: nowrap;
-			outline: none;
-			-webkit-tap-highlight-color: transparent;
-			transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
-			color: rgba(255,255,255,0.96);
-		}
-
-		.btn{
-			border: 1px solid rgba(114,139,225,0.45);
-			background: linear-gradient(180deg, rgba(114,139,225,0.95), rgba(114,139,225,0.82));
-			font-weight: 700;
-		}
-
-		.btnGhost{
-			border: 1px solid rgba(255,255,255,0.14);
-			background: rgba(255,255,255,0.04);
-			font-weight: 650;
-		}
-
-		.btn:hover,
-		.btnGhost:hover{
-			text-decoration: none;
-			border-color: rgba(246,85,52,0.80);
-			background: linear-gradient(180deg, rgba(246,85,52,0.98), rgba(197,26,15,0.88));
-			color: rgba(255,255,255,0.98);
-			box-shadow:
-				0 0 0 1px rgba(246,85,52,0.38),
-				0 0 26px rgba(246,85,52,0.55),
-				0 0 60px rgba(197,26,15,0.35);
-		}
-
-		@keyframes neonBreathBlue{
-			0%, 100%{ box-shadow: 0 0 0 rgba(114,139,225,0.0); opacity: 0.95; }
-			50%{ box-shadow: 0 0 22px rgba(114,139,225,0.35); opacity: 1; }
-		}
-		.btn.is-cta{
-			box-shadow: 0 0 0 1px rgba(114,139,225,0.18);
-			animation: neonBreathBlue 8s ease-in-out infinite;
-		}
-		.btn.is-cta:hover{
-			animation: none;
-			border-color: rgba(246,85,52,0.80);
-			background: linear-gradient(180deg, rgba(246,85,52,0.98), rgba(197,26,15,0.88));
-			color: rgba(255,255,255,0.98);
-			box-shadow:
-				0 0 0 1px rgba(246,85,52,0.38),
-				0 0 26px rgba(246,85,52,0.55),
-				0 0 60px rgba(197,26,15,0.35);
-		}
-
-		.btn:active,
-		.btnGhost:active{ transform: translateY(1px); }
-
-		.btn:focus-visible,
-		.btnGhost:focus-visible{
-			box-shadow:
-				0 0 0 2px rgba(114,139,225,0.55),
-				0 0 26px rgba(114,139,225,0.25);
-		}
-
-		.icon{ width: 18px; height: 18px; display:inline-block; }
-		.icon svg{ width: 18px; height: 18px; display:block; }
-
-		/* ===== Reveal on scroll ===== */
-		.reveal{
-			opacity: 0;
-			transform: translateY(16px);
-			filter: blur(10px);
-			transition:
-				opacity 980ms cubic-bezier(.2,.8,.2,1),
-				transform 980ms cubic-bezier(.2,.8,.2,1),
-				filter 980ms cubic-bezier(.2,.8,.2,1);
-			will-change: opacity, transform, filter;
-		}
-		.reveal[data-stagger]{ transition-delay: var(--stagger, 0ms); }
-		.reveal.is-visible{
-			opacity: 1;
-			transform: translateY(0);
-			filter: blur(0);
-			transition-delay: 0ms;
-		}
-		.whyCard.reveal{
-			transform: translateY(22px);
-			transition-duration: 1100ms;
-		}
-
-		/* ===== Hero premium entrance ===== */
-		.heroEntrance{
-			opacity: 0;
-			transform: translateY(14px);
-			filter: blur(10px);
-		}
-		.heroEntrance.is-visible{
-			opacity: 1;
-			transform: translateY(0);
-			filter: blur(0);
-			transition:
-				opacity 950ms cubic-bezier(.2,.8,.2,1),
-				transform 950ms cubic-bezier(.2,.8,.2,1),
-				filter 950ms cubic-bezier(.2,.8,.2,1);
-		}
-		.heroEntrance .heroMedia::before{
-			opacity: 0.35;
-			transition: opacity 1100ms cubic-bezier(.2,.8,.2,1), filter 1100ms cubic-bezier(.2,.8,.2,1);
-		}
-		.heroEntrance.is-visible .heroMedia::before{ opacity: 0.9; }
-
-		/* ===== Header (desktop) ===== */
-		.siteHeader{
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			z-index: 9999;
-			backdrop-filter: blur(10px);
-			-webkit-backdrop-filter: blur(10px);
-			background: rgba(2,2,4,0.76);
-			border-bottom: 1px solid rgba(255,255,255,0.08);
-		}
-		.headerInner{
-			max-width: var(--max);
-			margin: 0 auto;
-			padding: 14px 20px;
-			min-height: 84px;
-			display:flex;
-			align-items:center;
-		}
-		.page{
-			max-width: var(--max);
-			margin: 0 auto;
-			padding: calc(var(--header-h) + 28px) 20px 90px;
-		}
-		.nav{
-			width: 100%;
-			display:flex;
-			align-items:center;
-			justify-content:space-between;
-			gap:16px;
-		}
-		.brand{
-			display:flex;
-			flex-direction:column;
-			gap:2px;
-			min-width: 260px;
-		}
-		.brand strong{ font-size:16px; letter-spacing:-0.01em; }
-		.brand span{ font-size:13px; color: var(--muted); }
-		.navlinks{
-			display:flex;
-			gap:16px;
-			flex-wrap:wrap;
-			font-size:14px;
-			align-items:center;
-			justify-content:flex-end;
-		}
-		.navlinks a{ color: rgba(255,255,255,0.86); }
-
-		/* ===== Mobile bottom nav ===== */
-		.bottomNav{
-			display:none;
-			position: fixed;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			z-index: 10000;
-			background: rgba(2,2,4,0.86);
-			backdrop-filter: blur(12px);
-			-webkit-backdrop-filter: blur(12px);
-			border-top: 1px solid rgba(255,255,255,0.10);
-			padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
-		}
-		.bottomNavInner{
-			display:grid;
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-			gap: 10px;
-		}
-		.bottomNav a{
-			min-width: 0;
-			display:flex;
-			flex-direction: column;
-			align-items:center;
-			justify-content:center;
-			gap: 6px;
-			padding: 10px 6px;
-			border-radius: 14px;
-			border: 1px solid rgba(255,255,255,0.10);
-			background: rgba(255,255,255,0.03);
-			color: rgba(255,255,255,0.90);
-			text-decoration: none;
-		}
-		.bottomNav a:active{ transform: translateY(1px); }
-		.mobileIcon{
-			width: 22px;
-			height: 22px;
-			display:block;
-			object-fit: contain;
-			border-radius: 8px;
-		}
-		.bottomNav .navLabel{
-			font-size: 11px;
-			line-height: 1;
-			color: rgba(255,255,255,0.72);
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			max-width: 100%;
-		}
-
-		.sectionTitle{
-			margin: 0 0 16px;
-			font-size: 28px;
-			line-height: 1.15;
-			letter-spacing: -0.025em;
-		}
-		.sectionTitle.center{ text-align:center; }
-
-		/* ===== Hero ===== */
-		.hero{ padding: 26px 0 10px; }
-		.heroGrid{
-			display:grid;
-			grid-template-columns: 1.05fr 1fr;
-			gap: 42px;
-			align-items: center;
-		}
-		.heroMedia{ position: relative; }
-		.heroMedia::before{
-			content:"";
-			position:absolute;
-			inset:-14px;
-			border-radius: 26px;
-			background: linear-gradient(135deg, rgba(114,139,225,0.22), rgba(246,85,52,0.14));
-			filter: blur(16px);
-			opacity: 0.9;
-			z-index: 0;
-			transition: opacity 260ms ease, filter 260ms ease;
-		}
-		.heroMedia.is-hovered::before{ opacity: 1; filter: blur(18px); }
-		.heroImage{
-			position: relative;
-			z-index: 1;
-			width: 100%;
-			aspect-ratio: 1 / 1;
-			border-radius: 22px;
-			overflow: hidden;
-			background: rgba(255,255,255,0.04);
-			border: 1px solid rgba(255,255,255,0.10);
-			transform-style: preserve-3d;
-			transition: transform 260ms cubic-bezier(.2,.8,.2,1), box-shadow 260ms cubic-bezier(.2,.8,.2,1);
-		}
-		.heroImage img{
-			width:100%;
-			height:100%;
-			object-fit: cover;
-			object-position: 50% 45%;
-			display:block;
-		}
-		.kicker{
-			display:inline-flex;
-			align-items:center;
-			gap:10px;
-			color: var(--muted);
-			font-size: 13px;
-			letter-spacing: 0.02em;
-			text-transform: uppercase;
-		}
-		.kickerDot{
-			width:10px; height:10px; border-radius:50%;
-			background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
-			animation: neonBreathBlue 6.5s ease-in-out infinite;
-		}
-		.heroTitle{
-			margin: 10px 0 12px;
-			font-size: 44px;
-			line-height: 1.05;
-			letter-spacing: -0.03em;
-		}
-		.lede{
-			margin: 0 0 18px;
-			color: var(--muted);
-			font-size: 16px;
-			max-width: 60ch;
-		}
-		.ctaRow{
-			display:flex;
-			gap:12px;
-			flex-wrap:wrap;
-			align-items:center;
-			margin-top: 16px;
-		}
-
-		/* ===== Social proof ===== */
-		.socialProof{ padding: 14px 0 0; }
-		.logoRow{
-			display: grid;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-			gap: 14px;
-			align-items: center;
-			margin-top: 10px;
-		}
-		.logoSlot{
-			height: 72px;
-			border-radius: 16px;
-			border: 1px dashed rgba(255,255,255,0.20);
-			background: rgba(255,255,255,0.03);
-			display:flex;
-			align-items:center;
-			justify-content:center;
-			padding: 14px 18px;
-			overflow: hidden;
-		}
-		.logoSlot img{
-			max-height: 44px;
-			max-width: 220px;
-			width: auto;
-			height: auto;
-			object-fit: contain;
-			display:block;
-			opacity: 0.92;
-		}
-		/* SimplyDepo ~2x larger */
-		.logoSlot img.logo-simplydepo{
-			max-height: 88px;
-			max-width: 360px;
-			transform: scale(1.25);
-			transform-origin: center;
-			opacity: 0.98;
-		}
-		.afterSocialSpacer{ height: 54px; }
-
-		/* ===== Testimonials ===== */
-		.testimonials{ padding: 0; }
-		.carousel{ margin-top: 16px; position: relative; user-select: none; }
-		.carouselViewport{ overflow: hidden; padding: 14px 0 18px; cursor: grab; }
-		.carouselViewport.dragging{ cursor: grabbing; }
-		.carouselTrack{
-			display: flex;
-			gap: 18px;
-			will-change: transform;
-			transform: translate3d(0,0,0);
-			transition: transform 520ms cubic-bezier(.2,.95,.2,1);
-			padding: 0 calc(50% - 280px);
-		}
-		.carouselSlide{
-			flex: 0 0 560px;
-			max-width: 560px;
-			display:flex;
-			justify-content:center;
-			transition: transform 420ms cubic-bezier(.2,.8,.2,1), opacity 420ms cubic-bezier(.2,.8,.2,1);
-			opacity: 0.42;
-			transform: scale(0.90);
-		}
-		.carouselSlide.is-active{ opacity: 1; transform: scale(1); }
-
-		.quoteCard{
-			width: 100%;
-			border-radius: 22px;
-			border: 1px solid var(--card-border);
-			background: var(--card-bg);
-			padding: 24px 22px 20px;
-			text-align: left;
-		}
-		.quoteHeader{
-			display:flex;
-			flex-direction: row;
-			align-items:center;
-			justify-content:flex-start;
-			gap: 12px;
-			margin-bottom: 12px;
-		}
-		.avatarImg{
-			width: 56px; height: 56px; border-radius: 999px;
-			object-fit: cover; object-position: 50% 35%;
-			display:block;
-			border: 1px solid rgba(255,255,255,0.18);
-			box-shadow: 0 0 0 1px rgba(114,139,225,0.20), 0 0 18px rgba(114,139,225,0.12);
-			flex: 0 0 auto;
-		}
-		.quoteMeta{ display:flex; flex-direction: column; gap: 2px; }
-		.quoteName{ font-size: 14px; font-weight: 750; color: rgba(255,255,255,0.92); line-height: 1.2; }
-		.quoteTitle{ font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.2; }
-		.quoteText{ margin: 0; color: rgba(255,255,255,0.78); font-size: 16px; line-height: 1.75; padding-top: 2px; }
-
-		.carouselArrows{ position: absolute; inset: 0; pointer-events: none; }
-		.arrowBtn{
-			pointer-events: auto;
-			position: absolute;
-			top: 50%; transform: translateY(-50%);
-			width: 42px; height: 42px;
-			border-radius: 999px;
-			border: 1px solid rgba(255,255,255,0.14);
-			background: rgba(255,255,255,0.04);
-			color: rgba(255,255,255,0.88);
-			cursor: pointer;
-			display:flex; align-items:center; justify-content:center;
-		}
-		.arrowBtn:hover{ background: rgba(255,255,255,0.06); }
-		.arrowBtn:disabled{ opacity: 0.35; cursor: not-allowed; }
-		.arrowPrev{ left: 0; }
-		.arrowNext{ right: 0; }
-
-		.dots{ display:flex; justify-content:center; gap: 8px; margin-top: 10px; }
-		.dot{
-			width: 8px; height: 8px; border-radius: 999px;
-			background: rgba(255,255,255,0.25);
-			border: 1px solid rgba(255,255,255,0.10);
-			cursor: pointer;
-		}
-		.dot.active{ background: rgba(114,139,225,0.95); box-shadow: 0 0 18px rgba(114,139,225,0.35); }
-
-		/* ===== Why cards ===== */
-		.whyChoose{ padding: 54px 0 0; }
-		.whyGrid{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
-
-		.whyCard{
-			border-radius: 18px;
-			overflow: hidden;
-			border: 1px solid rgba(255,255,255,0.10);
-			background: rgba(255,255,255,0.03);
-			display:flex; flex-direction: column;
-			min-height: 330px;
-			transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease;
-		}
-		.whyCard:hover{
-			border-color: rgba(246,85,52,0.35);
-			box-shadow:
-				0 0 0 1px rgba(246,85,52,0.22),
-				0 0 26px rgba(246,85,52,0.20),
-				0 0 60px rgba(197,26,15,0.14);
-			transform: translateY(-2px);
-			transition-delay: 0ms;
-		}
-		.whyArt{ aspect-ratio: 2 / 3; background: rgba(255,255,255,0.02); display:block; min-height: 190px; overflow: hidden; }
-		.whyArt img{ width: 100%; height: 100%; display:block; object-fit: cover; object-position: 50% 50%; transition: transform 300ms cubic-bezier(.2,.8,.2,1), filter 300ms cubic-bezier(.2,.8,.2,1); }
-		.whyCard:hover .whyArt img{ transform: scale(1.045); filter: contrast(1.04) saturate(1.03); }
-		.whyBody{ background: rgba(255,255,255,0.96); color: rgba(10,14,22,0.92); padding: 14px 14px 16px; flex: 1 1 auto; }
-		.whyBody h3{ margin: 0 0 6px; font-size: 14px; letter-spacing: -0.01em; }
-		.whyBody p{ margin: 0; font-size: 13px; line-height: 1.45; color: rgba(10,14,22,0.62); }
-
-		/* ===== Skills ===== */
-		.skillsUse{ padding: 54px 0 0; }
-		.skillsGrid{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
-
-		details.skillCard{ border-radius: 18px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 16px 18px; }
-		details.skillCard summary{
-			list-style: none;
-			cursor: pointer;
-			display:flex; align-items:flex-start; justify-content: space-between;
-			gap: 14px;
-		}
-		details.skillCard summary::-webkit-details-marker{ display:none; }
-		.skillHead{ display:flex; align-items:center; gap: 12px; }
-		.skillIcon{
-			width: 40px; height: 40px; border-radius: 14px;
-			border: 1px solid rgba(255,255,255,0.12);
-			background: rgba(255,255,255,0.03);
-			display:block;
-			object-fit: contain;
-			padding: 7px;
-			flex: 0 0 auto;
-			transition: transform 220ms cubic-bezier(.2,.8,.2,1);
-		}
-		details.skillCard[open] .skillIcon{ transform: scale(1.06); }
-		.skillTitleWrap h3{ margin: 0 0 4px; font-size: 16px; letter-spacing: -0.01em; }
-		.skillTitleWrap p{ margin: 0; color: rgba(255,255,255,0.70); font-size: 13px; line-height: 1.55; }
-		.sumIcon{
-			flex: 0 0 auto;
-			width: 28px; height: 28px; border-radius: 999px;
-			border: 1px solid rgba(255,255,255,0.14);
-			background: rgba(255,255,255,0.03);
-			display:flex; align-items:center; justify-content:center;
-			color: rgba(255,255,255,0.70);
-			margin-top: 6px;
-			transition: transform 220ms ease;
-		}
-		details.skillCard[open] .sumIcon{ transform: rotate(45deg); }
-		.skillExpanded{ margin-top: 14px; }
-		.splitBullets{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; color: rgba(255,255,255,0.74); font-size: 14px; line-height: 1.6; }
-		.bItem{ border-left: 2px solid rgba(114,139,225,0.40); padding-left: 10px; }
-
-		/* ===== Calendar (YouCanBookMe) ===== */
-		.calendarEmbed{ padding-top: 18px; }
-		.calendarCard{ border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); overflow: hidden; }
-		.calendarFrameWrap{ background: rgba(255,255,255,0.04); border-radius: 20px; overflow: hidden; padding: 16px; }
-
-		.footer{
-			padding-top: 54px;
-			color: var(--muted);
-			font-size: 13px;
-			display:flex;
-			gap: 10px;
-			align-items:center;
-			flex-wrap: wrap;
-			border: 0;
-		}
-
-		@media (max-width: 1100px){
-			.carouselTrack{ padding: 0 calc(50% - 240px); }
-			.carouselSlide{ flex-basis: 480px; max-width: 480px; }
-			.whyGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-			.skillsGrid{ grid-template-columns: 1fr; }
-			.splitBullets{ grid-template-columns: 1fr; }
-		}
-
-		@media (max-width: 900px){
-			.heroTitle{ font-size: 38px; }
-			.heroGrid{ grid-template-columns: 1fr; gap: 18px; }
-			.sectionTitle{ font-size: 26px; }
-			.brand{ min-width: unset; }
-			:root{ --header-h: 96px; }
-			.page{ padding-top: calc(var(--header-h) + 18px); }
-		}
-
-		/* Mobile + touch devices: ALWAYS enable native swipe for quotes */
-		@media (hover: none) and (pointer: coarse){
-			.carouselViewport{
-				overflow-x: auto !important;
-				-webkit-overflow-scrolling: touch;
-				scroll-snap-type: x mandatory;
-				padding: 14px 0 18px;
-				cursor: auto !important;
-			}
-			.carouselViewport::-webkit-scrollbar{ display:none; }
-			.carouselTrack{
-				padding: 0 16px !important;
-				transform: none !important;
-				transition: none !important;
-			}
-			.carouselSlide{
-				flex: 0 0 86% !important;
-				max-width: 86% !important;
-				scroll-snap-align: center;
-				opacity: 1 !important;
-				transform: none !important;
-			}
-			.carouselArrows{ display:none !important; }
-			.dots{ display:none !important; }
-		}
-
-		@media (max-width: 720px){
-			.siteHeader{ display:none; }
-			.bottomNav{ display:block; }
-
-			.page{
-				padding-top: 22px;
-				padding-bottom: calc(90px + var(--bottom-nav-h));
-			}
-
-			/* Logos */
-			.logoRow{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-			.logoSlot{ height: 64px; padding: 10px 12px; border-radius: 14px; }
-			.logoSlot img{ max-height: 38px; max-width: 180px; }
-			.logoSlot img.logo-simplydepo{
-				max-height: 64px;
-				max-width: 260px;
-				transform: scale(1.25);
-			}
-
-			.afterSocialSpacer{ height: 36px; }
-
-			/* Why section: compact 2x2 */
-			.whyGrid{
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 10px;
-			}
-			.whyCard{
-				min-height: 0;
-				border-radius: 16px;
-			}
-			.whyArt{ min-height: 120px; }
-			.whyBody{ padding: 10px 10px 12px; }
-			.whyBody h3{ font-size: 13px; margin-bottom: 4px; }
-			.whyBody p{ font-size: 12px; line-height: 1.35; }
+			*,*::before,*::after{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+			.marqueeTrack{ animation: none; flex-wrap: wrap; justify-content:center; width:auto; }
+			.marqueeGroup[aria-hidden="true"]{ display:none; }
+			.grain{ display:none; }
 		}
 	</style>
 </head>
@@ -691,520 +603,875 @@
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 
-	<header class="siteHeader">
+	<a class="skip" href="#main">Skip to content</a>
+
+	<div class="ambient" aria-hidden="true">
+		<div class="orb o1"></div>
+		<div class="orb o2"></div>
+		<div class="orb o3"></div>
+	</div>
+	<div class="grain" aria-hidden="true"></div>
+	<div class="cursorGlow" aria-hidden="true"></div>
+	<div class="progress" aria-hidden="true"></div>
+
+	<header class="header" id="top">
 		<div class="headerInner">
-			<div class="nav">
-				<div class="brand">
-					<strong>Valentine Osnovyanenko</strong>
-					<span>Marketing Partner</span>
-				</div>
-
-				<nav class="navlinks" aria-label="Primary">
-					<a href="#references">References</a>
-					<a href="#why-me">Why Me</a>
-					<a href="#skills">Skills</a>
-
-					<a class="btn is-cta" href="#calendar">Book a meeting</a>
-
-					<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
-						<span class="icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-								<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
-							</svg>
-						</span>
-						Request CV
-					</a>
-				</nav>
-			</div>
+			<a class="brand" href="#hero" data-scroll>
+				<span class="brandMark"><img src="assets/val-os.webp" alt="" width="30" height="30" /></span>
+				<span>Valentine Osnovyanenko<small>Marketing Partner</small></span>
+			</a>
+			<nav class="navLinks" aria-label="Primary">
+				<a class="lnk" href="#cases" data-scroll>Case studies</a>
+				<a class="lnk" href="#references" data-scroll>References</a>
+				<a class="lnk" href="#why-me" data-scroll>Why me</a>
+				<a class="lnk" href="#skills" data-scroll>Skills</a>
+				<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer" style="height:40px;padding:0 16px;font-size:14.5px;margin:0 4px">
+					<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/></svg>
+					Connect
+				</a>
+				<a class="btn sm magnetic" href="#calendar" data-scroll>Book a call</a>
+			</nav>
 		</div>
 	</header>
 
-	<nav class="bottomNav" aria-label="Mobile menu">
-		<div class="bottomNavInner">
-			<a href="#why-me">
-				<img class="mobileIcon" src="assets/why-me-mobile.webp" alt="" aria-hidden="true" />
-				<span class="navLabel">Why Me</span>
-			</a>
-			<a href="#calendar">
-				<img class="mobileIcon" src="assets/meeting-mobile.webp" alt="" aria-hidden="true" />
-				<span class="navLabel">Book Meeting</span>
-			</a>
-			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
-				<img class="mobileIcon" src="assets/cv-mobile.webp" alt="" aria-hidden="true" />
-				<span class="navLabel">Request CV</span>
-			</a>
-		</div>
-	</nav>
-
-	<main class="page">
-		<section class="hero heroEntrance" id="hero" aria-label="Hero">
-			<div class="heroGrid">
-				<div class="heroMedia">
-					<div class="heroImage">
-						<img src="assets/val-os.webp" alt="Photo of Valentine" />
-					</div>
-				</div>
-
+	<main id="main">
+		<!-- HERO -->
+		<section class="hero" id="hero" aria-label="Intro">
+			<div class="wrap heroGrid">
 				<div>
-					<div class="kicker"><span class="kickerDot"></span> Fractional / Contract</div>
-					<h1 class="heroTitle">Marketing Partner for Founders &amp; CEOs</h1>
+					<div class="status" data-hero-fade><span class="pulse" aria-hidden="true"></span>Open to full-time, contract &amp; fractional roles</div>
 
-					<p class="lede">
+					<h1 class="heroTitle" data-split>
+						<span class="line"><span class="word red">Marketing</span> <span class="word red">partner</span></span>
+						<span class="line"><span class="word">for</span> <span class="word">founders</span></span>
+						<span class="line"><span class="word">&amp;</span> <span class="word">CEOs</span></span>
+					</h1>
+
+					<p class="lede" data-hero-fade>
 						Driving revenue growth and building impactful brand awareness. Let’s craft a tailored growth strategy
 						to position your business as a market leader.
 					</p>
 
-					<div class="ctaRow">
-						<a class="btn is-cta" href="#calendar">Book a meeting</a>
-
+					<div class="ctaRow" data-hero-fade>
+						<a class="btn magnetic" href="#calendar" data-scroll>Book a meeting <span class="arrow" aria-hidden="true">→</span></a>
 						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
-							<span class="icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-									<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
-								</svg>
-							</span>
-							Request CV
+							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/></svg>
+							Connect on LinkedIn
 						</a>
 					</div>
+
+					<div class="heroMeta" data-hero-fade>
+						<div><strong><span data-count="4">4</span>×</strong><span>ARR growth at Label Your Data</span></div>
+						<div><strong>B2B</strong><span>SaaS, security, data &amp; fintech</span></div>
+						<div><strong>RevOps</strong><span>HubSpot &amp; Notion</span></div>
+					</div>
+				</div>
+
+				<div class="portrait" data-portrait>
+					<div class="portraitGlow" aria-hidden="true"></div>
+					<div class="portraitCard">
+						<img src="assets/val-os.webp" alt="Valentine Osnovyanenko" width="1213" height="1241" fetchpriority="high" />
+					</div>
+					<div class="portraitRing" aria-hidden="true"></div>
+					<div class="portraitTag" aria-hidden="true">
+						<b class="gradText">4×</b>
+						<span>ARR increase<br />with inbound</span>
+					</div>
+					<div class="portraitTag t2" aria-hidden="true">
+						<span class="ico">
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+						</span>
+						<span>B2B tech<br />&amp; SaaS</span>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="socialProof" aria-label="Social proof">
-			<h2 class="sectionTitle center">Trusted by Challengers</h2>
-			<div class="logoRow" aria-label="Logos">
-				<div class="logoSlot"><img src="assets/42dm-logo-bw.webp" alt="42DM"></div>
-				<div class="logoSlot"><img src="assets/hackenproof-logo-bw.webp" alt="HackenProof"></div>
-				<div class="logoSlot"><img class="logo-simplydepo" src="assets/simplydepo.webp" alt="SimplyDepo"></div>
-				<div class="logoSlot"><img src="assets/label-your-data-logo-bw.webp" alt="Label Your Data"></div>
-			</div>
-		</section>
-
-		<div class="afterSocialSpacer" aria-hidden="true"></div>
-
-		<section class="testimonials" id="references" aria-label="Testimonials">
-			<h2 class="sectionTitle center">“Always eager to take on new challenges”</h2>
-
-			<div class="carousel" data-carousel>
-				<div class="carouselViewport" data-viewport>
-					<div class="carouselTrack" data-track>
-						<div class="carouselSlide">
-							<article class="quoteCard">
-								<div class="quoteHeader">
-									<img class="avatarImg" src="assets/kate-vasylenko.webp" alt="Kate Vasylenko" />
-									<div class="quoteMeta">
-										<div class="quoteName">Kate Vasylenko</div>
-										<div class="quoteTitle">Founder of 42DM</div>
-									</div>
-								</div>
-								<p class="quoteText">
-									“He has a natural talent for mentoring colleagues and sharing his knowledge and expertise to help them grow in their own roles.”
-								</p>
-							</article>
-						</div>
-
-						<div class="carouselSlide">
-							<article class="quoteCard">
-								<div class="quoteHeader">
-									<img class="avatarImg" src="assets/dmytro-matviiv.webp" alt="Dmytro Matviiv" />
-									<div class="quoteMeta">
-										<div class="quoteName">Dmytro Matviiv</div>
-										<div class="quoteTitle">CEO of HackenProof</div>
-									</div>
-								</div>
-								<p class="quoteText">
-									“Valentine brought structure and focus to our marketing. He clarified messaging for both B2B and the hacker community, grew Twitter with consistently valuable posts, and rebuilt the blog into an SEO channel that drove high-intent organic traffic.”
-								</p>
-							</article>
-						</div>
-
-						<div class="carouselSlide">
-							<article class="quoteCard">
-								<div class="quoteHeader">
-									<img class="avatarImg" src="assets/ivan-khymych.webp" alt="Ivan Khymych" />
-									<div class="quoteMeta">
-										<div class="quoteName">Ivan Khymych</div>
-										<div class="quoteTitle">Founder of SimplyDepo</div>
-									</div>
-								</div>
-								<p class="quoteText">
-									“Val brought strong technical depth to product marketing by implementing HTML tags, aligning data collection across the stack, and using AI like a data scientist to keep our data clean and actionable.”
-								</p>
-							</article>
-						</div>
-
-						<div class="carouselSlide">
-							<article class="quoteCard">
-								<div class="quoteHeader">
-									<img class="avatarImg" src="assets/karyna-naminas.jpeg" alt="Karyna Naminas" />
-									<div class="quoteMeta">
-										<div class="quoteName">Karyna Naminas</div>
-										<div class="quoteTitle">CEO of Label Your Data</div>
-									</div>
-								</div>
-								<p class="quoteText">
-									“Val built our inbound lead-generation engine and helped drive a 4× ARR increase. He also led our RevOps transformation across HubSpot and Notion, bringing strategic clarity and executional rigor.”
-								</p>
-							</article>
-						</div>
+		<!-- LOGOS -->
+		<section class="logos" aria-label="Companies I've worked with">
+			<div class="logosLabel">Trusted by challengers</div>
+			<div class="marquee">
+				<div class="marqueeTrack">
+					<div class="marqueeGroup">
+						<img src="assets/42dm-logo-bw.webp" alt="42DM" width="571" height="215" />
+						<img src="assets/hackenproof-logo-bw.webp" alt="HackenProof" width="1070" height="374" />
+						<img src="assets/simplydepo.webp" alt="SimplyDepo" width="1832" height="1308" class="tall" />
+						<img src="assets/label-your-data-logo-bw.webp" alt="Label Your Data" width="485" height="240" />
+						<img src="assets/42dm-logo-bw.webp" alt="" width="571" height="215" />
+						<img src="assets/hackenproof-logo-bw.webp" alt="" width="1070" height="374" />
+						<img src="assets/simplydepo.webp" alt="" width="1832" height="1308" class="tall" />
+						<img src="assets/label-your-data-logo-bw.webp" alt="" width="485" height="240" />
+					</div>
+					<div class="marqueeGroup" aria-hidden="true">
+						<img src="assets/42dm-logo-bw.webp" alt="" width="571" height="215" />
+						<img src="assets/hackenproof-logo-bw.webp" alt="" width="1070" height="374" />
+						<img src="assets/simplydepo.webp" alt="" width="1832" height="1308" class="tall" />
+						<img src="assets/label-your-data-logo-bw.webp" alt="" width="485" height="240" />
+						<img src="assets/42dm-logo-bw.webp" alt="" width="571" height="215" />
+						<img src="assets/hackenproof-logo-bw.webp" alt="" width="1070" height="374" />
+						<img src="assets/simplydepo.webp" alt="" width="1832" height="1308" class="tall" />
+						<img src="assets/label-your-data-logo-bw.webp" alt="" width="485" height="240" />
 					</div>
 				</div>
+			</div>
+		</section>
 
-				<div class="carouselArrows" aria-hidden="false">
-					<button class="arrowBtn arrowPrev" type="button" data-prev aria-label="Previous testimonial">‹</button>
-					<button class="arrowBtn arrowNext" type="button" data-next aria-label="Next testimonial">›</button>
+		<!-- REFERENCES -->
+		<section class="section" id="references" aria-labelledby="refs-title">
+			<div class="wrap">
+				<div class="sectionHead">
+					<h2 class="h2" id="refs-title" data-split>
+						<span class="line"><span class="word blue">“Always</span> <span class="word blue">eager</span> <span class="word blue">to</span> <span class="word blue">take</span> <span class="word blue">on</span></span>
+						<span class="line"><span class="word blue">new</span> <span class="word blue">challenges”</span></span>
+					</h2>
 				</div>
 
-				<div class="dots" data-dots aria-label="Carousel dots"></div>
-			</div>
-		</section>
-
-		<section class="whyChoose" id="why-me" aria-label="Why Companies Choose Me">
-			<h2 class="sectionTitle center">Why Companies Choose Me</h2>
-
-			<div class="whyGrid">
-				<article class="whyCard">
-					<div class="whyArt"><img src="assets/agency-background.webp" alt="Agency background illustration"></div>
-					<div class="whyBody">
-						<h3>Agency Background</h3>
-						<p>That’s 3× more exposure to industries than working for a single product or service company.</p>
-					</div>
-				</article>
-
-				<article class="whyCard">
-					<div class="whyArt"><img src="assets/genuine-enthusiasm.webp" alt="Genuine enthusiasm illustration"></div>
-					<div class="whyBody">
-						<h3>Genuine Enthusiasm</h3>
-						<p>I don’t fake interest to get a foot in the door. Curiosity is what drives me most to grow the business.</p>
-					</div>
-				</article>
-
-				<article class="whyCard">
-					<div class="whyArt"><img src="assets/agile-contribution.webp" alt="Agile contribution illustration"></div>
-					<div class="whyBody">
-						<h3>Agile Contribution</h3>
-						<p>Depending on the growth stage, I can be the hands-on generalist or step up as the team leader.</p>
-					</div>
-				</article>
-
-				<article class="whyCard">
-					<div class="whyArt"><img src="assets/soft-skills.webp" alt="Soft skills illustration"></div>
-					<div class="whyBody">
-						<h3>Soft Skills</h3>
-						<p>I will keep us aligned on vision and execution, staying open to ideas – may the best one win.</p>
-					</div>
-				</article>
-			</div>
-		</section>
-
-		<section class="skillsUse" id="skills" aria-label="Use My Skills for Your Business">
-			<h2 class="sectionTitle center">Use My Skills for Your Business</h2>
-
-			<div class="skillsGrid">
-				<details class="skillCard">
-					<summary>
-						<div class="skillHead">
-							<img class="skillIcon" src="assets/commercial-streamlining.webp" alt="Commercial Streamlining icon" />
-							<div class="skillTitleWrap">
-								<h3>Commercial Streamlining</h3>
-								<p>Merging teams and tools into one operating system.</p>
+				<div class="bento">
+					<article class="card quote q-lyd" data-reveal>
+						<div>
+							<div class="bigStat">
+								<span class="num"><span data-count="4">4</span><span class="numX">×</span></span>
+								<span class="lbl">ARR increase<br />from inbound</span>
 							</div>
 						</div>
-						<div class="sumIcon" aria-hidden="true">+</div>
-					</summary>
-					<div class="skillExpanded">
-						<div class="splitBullets">
-							<div class="bItem">Merging marketing, sales, and support tasks into workflows</div>
-							<div class="bItem">Building compact teams, one goal per teammate</div>
-							<div class="bItem">Using AI as a data scientist copilot</div>
+						<blockquote>Val built our inbound lead-generation engine and helped drive a 4× ARR increase. He also led our RevOps transformation across HubSpot and Notion, bringing strategic clarity and executional rigor.</blockquote>
+						<div class="who">
+							<img src="assets/karyna-naminas.jpeg" alt="" width="48" height="48" loading="lazy" />
+							<div><b>Karyna Naminas</b><span>CEO, Label Your Data</span></div>
 						</div>
-					</div>
-				</details>
+					</article>
 
-				<details class="skillCard">
-					<summary>
-						<div class="skillHead">
-							<img class="skillIcon" src="assets/plg.webp" alt="Product‑Led Growth icon" />
-							<div class="skillTitleWrap">
-								<h3>Product‑Led Growth</h3>
-								<p>Improving activation, conversion, and retention.</p>
-							</div>
+					<article class="card quote q-kate" data-reveal>
+						<div class="tagRow"><span class="tag">Mentoring</span><span class="tag">Team growth</span></div>
+						<blockquote>He has a natural talent for mentoring colleagues and sharing his knowledge and expertise to help them grow in their own roles.</blockquote>
+						<div class="who">
+							<img src="assets/kate-vasylenko.webp" alt="" width="48" height="48" loading="lazy" />
+							<div><b>Kate Vasylenko</b><span>Founder, 42DM</span></div>
 						</div>
-						<div class="sumIcon" aria-hidden="true">+</div>
-					</summary>
-					<div class="skillExpanded">
-						<div class="splitBullets">
-							<div class="bItem">Creating a feedback loop on product‑market fit</div>
-							<div class="bItem">Recycling product features into public demos</div>
-							<div class="bItem">Improving in‑product conversion rates</div>
-						</div>
-					</div>
-				</details>
+					</article>
 
-				<details class="skillCard">
-					<summary>
-						<div class="skillHead">
-							<img class="skillIcon" src="assets/inbound.webp" alt="Inbound Marketing icon" />
-							<div class="skillTitleWrap">
-								<h3>Inbound Marketing</h3>
-								<p>Building demand through content and distribution.</p>
-							</div>
+					<article class="card quote q-dmytro" data-reveal>
+						<div class="tagRow"><span class="tag">Messaging</span><span class="tag">SEO</span><span class="tag">Community</span></div>
+						<blockquote>Valentine brought structure and focus to our marketing. He clarified messaging for both B2B and the hacker community, grew Twitter with consistently valuable posts, and rebuilt the blog into an SEO channel that drove high-intent organic traffic.</blockquote>
+						<div class="who">
+							<img src="assets/dmytro-matviiv.webp" alt="" width="48" height="48" loading="lazy" />
+							<div><b>Dmytro Matviiv</b><span>CEO, HackenProof</span></div>
 						</div>
-						<div class="sumIcon" aria-hidden="true">+</div>
-					</summary>
-					<div class="skillExpanded">
-						<div class="splitBullets">
-							<div class="bItem">Preparing creative brand awareness ads</div>
-							<div class="bItem">Distributing valuable content</div>
-							<div class="bItem">Promoting thought leadership</div>
-						</div>
-					</div>
-				</details>
-			</div>
-		</section>
+					</article>
 
-		<section class="calendarEmbed" id="calendar" aria-label="Calendar">
-			<div class="calendarCard" id="calendarCard">
-				<div class="calendarFrameWrap">
-					<script src="https://embed.ycb.me" async="true" data-domain="osnovyanenko" data-content="all" data-displaymode="auto"></script>
+					<article class="card quote q-ivan" data-reveal>
+						<div class="tagRow"><span class="tag">Tracking</span><span class="tag">Data</span><span class="tag">AI</span></div>
+						<blockquote>Val brought strong technical depth to product marketing by implementing HTML tags, aligning data collection across the stack, and using AI like a data scientist to keep our data clean and actionable.</blockquote>
+						<div class="who">
+							<img src="assets/ivan-khymych.webp" alt="" width="48" height="48" loading="lazy" />
+							<div><b>Ivan Khymych</b><span>Founder, SimplyDepo</span></div>
+						</div>
+					</article>
 				</div>
 			</div>
 		</section>
 
-		<footer class="footer">
-			<span>© 2026 Valentine Osnovyanenko</span>
-			<span>·</span>
-			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">LinkedIn</a>
-		</footer>
+		<!-- CASE STUDIES -->
+		<section class="section" id="cases" aria-labelledby="cases-title" style="padding-top:0">
+			<div class="wrap">
+				<div class="card csBox" data-reveal>
+					<div class="csHead">
+						<div>
+							<h2 class="csAsk" id="cases-title"><label for="cs-industry">What's <span class="blue">your industry</span>?</label></h2>
+							<p class="csHint">Pick one to see real projects with real numbers.</p>
+						</div>
+						<div class="csSelectWrap">
+							<select id="cs-industry" class="csSelect">
+								<option value="" selected disabled>Choose industry</option>
+								<option value="ai">AI &amp; data</option>
+								<option value="blockchain">Blockchain</option>
+								<option value="cyber">Cybersecurity</option>
+								<option value="fintech">Fintech</option>
+								<option value="logistics">Logistics</option>
+								<option value="b2b">B2B (all projects)</option>
+							</select>
+						</div>
+					</div>
+					<div class="csTabs" role="tablist" aria-label="Case studies" hidden></div>
+					<div class="csCases" aria-live="polite">
+						<article class="csCase" data-ind="ai" id="case-label-your-data" aria-label="Label Your Data">
+							<div class="csMeta">
+								<h3>Label Your Data</h3>
+								<span>AI data annotation · B2B</span>
+								<span>Marketing Director, 2023–2025</span>
+							</div>
+							<div class="csGrid">
+								<div class="csCol csChallenge">
+									<span class="csLabel">Challenge</span>
+									<p>Introduce a digital lead funnel and turn a service business into a product one.</p>
+								</div>
+								<div class="csCol csSolution">
+									<span class="csLabel">Solution</span>
+									<p>See how this approach could apply to your business.</p>
+									<a class="btn sm" href="#calendar" data-scroll data-cta="case-solution" data-case="label-your-data">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+										Discuss on a call
+									</a>
+								</div>
+								<div class="csCol csResults">
+									<span class="csLabel">Results</span>
+									<ul>
+									<li><b>4×</b><span>ARR growth in two years</span></li>
+									<li><b>Top 10</b><span>Product of the Day on Product Hunt</span></li>
+									</ul>
+								</div>
+							</div>
+						</article>
+						<article class="csCase" data-ind="cyber" id="case-soc-prime" aria-label="SOC Prime">
+							<div class="csMeta">
+								<h3>SOC Prime</h3>
+								<span>Cybersecurity SaaS · B2B</span>
+								<span>Senior Marketer, 2025–2026</span>
+							</div>
+							<div class="csGrid">
+								<div class="csCol csChallenge">
+									<span class="csLabel">Challenge</span>
+									<ul class="csList">
+										<li>Technical open-source product launch</li>
+										<li>Product value hidden from new visitors</li>
+									</ul>
+								</div>
+								<div class="csCol csSolution">
+									<span class="csLabel">Solution</span>
+									<p>See how this approach could apply to your business.</p>
+									<a class="btn sm" href="#calendar" data-scroll data-cta="case-solution" data-case="soc-prime">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+										Discuss on a call
+									</a>
+								</div>
+								<div class="csCol csResults">
+									<span class="csLabel">Results</span>
+									<ul>
+									<li><b>$2.5M</b><span>sales pipeline value</span></li>
+									<li><b>2×</b><span>organic signups</span></li>
+									</ul>
+								</div>
+							</div>
+						</article>
+						<article class="csCase" data-ind="cyber" id="case-hackenproof" aria-label="HackenProof">
+							<div class="csMeta">
+								<h3>HackenProof</h3>
+								<span>Cybersecurity · bug bounty platform</span>
+								<span>Head of Marketing, 2022–2023</span>
+							</div>
+							<div class="csGrid">
+								<div class="csCol csChallenge">
+									<span class="csLabel">Challenge</span>
+									<p>No online B2B lead generation, and a small community of researchers.</p>
+								</div>
+								<div class="csCol csSolution">
+									<span class="csLabel">Solution</span>
+									<p>See how this approach could apply to your business.</p>
+									<a class="btn sm" href="#calendar" data-scroll data-cta="case-solution" data-case="hackenproof">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+										Discuss on a call
+									</a>
+								</div>
+								<div class="csCol csResults">
+									<span class="csLabel">Results</span>
+									<ul>
+									<li><b>6×</b><span>monthly client acquisition</span></li>
+									<li><b>25×</b><span>monthly signups, 200 to 5,000</span></li>
+									<li><b>5</b><span>clients from 3 months of SEO</span></li>
+									</ul>
+								</div>
+							</div>
+						</article>
+						<article class="csCase" data-ind="fintech" id="case-tickstar" aria-label="Tickstar">
+							<div class="csMeta">
+								<h3>Tickstar</h3>
+								<span>Fintech SaaS · PEPPOL e-invoicing</span>
+								<span>Client work at 42DM</span>
+							</div>
+							<div class="csGrid">
+								<div class="csCol csChallenge">
+									<span class="csLabel">Challenge</span>
+									<p>Win clients in a new EU market with almost no search presence.</p>
+								</div>
+								<div class="csCol csSolution">
+									<span class="csLabel">Solution</span>
+									<p>See how this approach could apply to your business.</p>
+									<a class="btn sm" href="#calendar" data-scroll data-cta="case-solution" data-case="tickstar">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+										Discuss on a call
+									</a>
+								</div>
+								<div class="csCol csResults">
+									<span class="csLabel">Results</span>
+									<ul>
+									<li><b>28</b><span>clients in six months</span></li>
+									<li><b>Top 5</b><span>Google position for the target topic</span></li>
+									<li><b>$37</b><span>cost per lead on LinkedIn</span></li>
+									</ul>
+								</div>
+							</div>
+						</article>
+						<article class="csCase" data-ind="fintech" id="case-alpha-fintech" aria-label="Alpha Fintech">
+							<div class="csMeta">
+								<h3>Alpha Fintech</h3>
+								<span>Fintech · cloud acquiring</span>
+								<span>Client work at 42DM</span>
+							</div>
+							<div class="csGrid">
+								<div class="csCol csChallenge">
+									<span class="csLabel">Challenge</span>
+									<p>Buyers didn&#x27;t trust cloud acquiring, and every lead had to cost under $40.</p>
+								</div>
+								<div class="csCol csSolution">
+									<span class="csLabel">Solution</span>
+									<p>See how this approach could apply to your business.</p>
+									<a class="btn sm" href="#calendar" data-scroll data-cta="case-solution" data-case="alpha-fintech">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+										Discuss on a call
+									</a>
+								</div>
+								<div class="csCol csResults">
+									<span class="csLabel">Results</span>
+									<ul>
+									<li><b>300+</b><span>leads in two months</span></li>
+									<li><b>$35</b><span>cost per lead</span></li>
+									</ul>
+								</div>
+							</div>
+						</article>
+						<article class="csCase" data-ind="logistics" id="case-agistix" aria-label="Agistix">
+							<div class="csMeta">
+								<h3>Agistix</h3>
+								<span>Logistics SaaS · supply chain visibility</span>
+								<span>Client work at 42DM</span>
+							</div>
+							<div class="csGrid">
+								<div class="csCol csChallenge">
+									<span class="csLabel">Challenge</span>
+									<p>Expand the website and bring in leads without a big media budget.</p>
+								</div>
+								<div class="csCol csSolution">
+									<span class="csLabel">Solution</span>
+									<p>See how this approach could apply to your business.</p>
+									<a class="btn sm" href="#calendar" data-scroll data-cta="case-solution" data-case="agistix">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+										Discuss on a call
+									</a>
+								</div>
+								<div class="csCol csResults">
+									<span class="csLabel">Results</span>
+									<ul>
+									<li><b>+300%</b><span>traffic in a year</span></li>
+									<li><b>15+</b><span>SEO leads in three months</span></li>
+									<li><b>$22</b><span>cost per LinkedIn lead</span></li>
+									</ul>
+								</div>
+							</div>
+						</article>
+						<article class="csCase" data-ind="blockchain" id="case-blockster" aria-label="Blockster">
+							<div class="csMeta">
+								<h3>Blockster</h3>
+								<span>Blockchain · Web3 platform</span>
+								<span>Digital Marketing Manager, 2021</span>
+							</div>
+							<div class="csGrid">
+								<div class="csCol csChallenge">
+									<span class="csLabel">Challenge</span>
+									<p>Build an audience for a new Web3 platform before launch, then keep users coming back.</p>
+								</div>
+								<div class="csCol csSolution">
+									<span class="csLabel">Solution</span>
+									<p>See how this approach could apply to your business.</p>
+									<a class="btn sm" href="#calendar" data-scroll data-cta="case-solution" data-case="blockster">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+										Discuss on a call
+									</a>
+								</div>
+								<div class="csCol csResults">
+									<span class="csLabel">Results</span>
+									<ul>
+									<li><b>300k</b><span>waitlist signups</span></li>
+									<li><b>$1M</b><span>raised in the token sale (IDO)</span></li>
+									<li><b>8%</b><span>day-30 retention</span></li>
+									</ul>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- WHY ME -->
+		<section class="why" id="why-me" aria-labelledby="why-title">
+			<div class="wrap whyMobileHead" style="display:none">
+				<h2 class="h2">Why <span class="blue">companies</span> choose <span class="red">me</span></h2>
+			</div>
+			<div class="whyPin" data-why-pin>
+				<div class="whyTrack" data-why-track>
+					<div class="whyIntro">
+						<h2 class="h2" id="why-title">Why <span class="blue">companies</span> choose <span class="red">me</span></h2>
+						<p style="color:var(--muted);margin:20px 0 0;font-size:18px">Four reasons founders bring me in, and keep me around.</p>
+					</div>
+
+					<article class="whyCard">
+						<img src="assets/agency-background.webp" alt="" width="800" height="1200" loading="lazy" />
+						<div class="body">
+							<div class="idx">01 / 04</div>
+							<h3>Agency background</h3>
+							<p>Three times more exposure to industries than working for a single product or service company.</p>
+						</div>
+					</article>
+					<article class="whyCard">
+						<img src="assets/genuine-enthusiasm.webp" alt="" width="800" height="1200" loading="lazy" />
+						<div class="body">
+							<div class="idx">02 / 04</div>
+							<h3>Genuine enthusiasm</h3>
+							<p>I don't fake interest to get a foot in the door. Curiosity is what drives me to grow the business.</p>
+						</div>
+					</article>
+					<article class="whyCard">
+						<img src="assets/agile-contribution.webp" alt="" width="800" height="1200" loading="lazy" />
+						<div class="body">
+							<div class="idx">03 / 04</div>
+							<h3>Agile contribution</h3>
+							<p>Depending on your growth stage, I'm the hands-on generalist or the one leading the team.</p>
+						</div>
+					</article>
+					<article class="whyCard">
+						<img src="assets/soft-skills.webp" alt="" width="800" height="1200" loading="lazy" />
+						<div class="body">
+							<div class="idx">04 / 04</div>
+							<h3>Soft skills</h3>
+							<p>I keep us aligned on vision and execution and stay open to ideas. May the best one win.</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- SKILLS -->
+		<section class="section" id="skills" aria-labelledby="skills-title">
+			<div class="wrap">
+				<div class="sectionHead">
+					<h2 class="h2" id="skills-title" data-split>
+						<span class="line"><span class="word red">Use</span> <span class="word red">my</span> <span class="word red">skills</span> <span class="word red">for</span></span>
+						<span class="line"><span class="word blue">your</span> <span class="word blue">business</span></span>
+					</h2>
+				</div>
+
+				<div class="stack">
+					<article class="skill" style="--i:0">
+						<div>
+							<div class="skillTop"><img class="skillIcon" src="assets/commercial-streamlining.webp" alt="" width="56" height="56" loading="lazy" /><span class="skillNum">01</span></div>
+							<h3>Commercial streamlining</h3>
+							<p class="sub">Merging teams and tools into one operating system.</p>
+						</div>
+						<ul class="bullets">
+							<li>Merging marketing, sales and support tasks into workflows</li>
+							<li>Building compact teams, one goal per teammate</li>
+							<li>Using MCP connectors to make AI actionable</li>
+						</ul>
+					</article>
+
+					<article class="skill" style="--i:1">
+						<div>
+							<div class="skillTop"><img class="skillIcon" src="assets/plg.webp" alt="" width="56" height="56" loading="lazy" /><span class="skillNum">02</span></div>
+							<h3>Product-led growth</h3>
+							<p class="sub">Improving activation, conversion and retention.</p>
+						</div>
+						<ul class="bullets">
+							<li>Creating a feedback loop on product-market fit</li>
+							<li>Recycling product features into public demos</li>
+							<li>Improving in-product conversion rates</li>
+						</ul>
+					</article>
+
+					<article class="skill" style="--i:2">
+						<div>
+							<div class="skillTop"><img class="skillIcon" src="assets/inbound.webp" alt="" width="56" height="56" loading="lazy" /><span class="skillNum">03</span></div>
+							<h3>Inbound marketing</h3>
+							<p class="sub">Building demand through content and distribution.</p>
+						</div>
+						<ul class="bullets">
+							<li>Preparing creative brand awareness ads</li>
+							<li>Distributing valuable content</li>
+							<li>Promoting thought leadership</li>
+						</ul>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- PROCESS -->
+		<section class="section" aria-labelledby="process-title" style="padding-top:0">
+			<div class="wrap">
+				<div class="sectionHead">
+					<h2 class="h2" id="process-title" data-split>
+						<span class="line"><span class="word">From</span> <span class="word">first</span> <span class="word">call</span></span>
+						<span class="line"><span class="word">to</span> <span class="word red">first</span> <span class="word red">results</span></span>
+					</h2>
+				</div>
+
+				<div class="steps" data-steps>
+					<div class="stepsLine" aria-hidden="true"><i></i></div>
+					<div class="step">
+						<div class="stepDot">01</div>
+						<h3>Intro call</h3>
+						<p>We talk about your product, your stage and where growth is stuck. No pitch deck needed.</p>
+					</div>
+					<div class="step">
+						<div class="stepDot">02</div>
+						<h3>Growth plan</h3>
+						<p>I map the channels, funnel and data you already have, and pick the few bets worth making first.</p>
+					</div>
+					<div class="step">
+						<div class="stepDot">03</div>
+						<h3>Build &amp; ship</h3>
+						<p>Full-time, contract or fractional, I run the work with your team and report on what moved.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA / CALENDAR -->
+		<section class="section cta" id="calendar" aria-labelledby="cta-title" style="padding-top:0">
+			<div class="wrap">
+				<h2 class="ctaTitle" id="cta-title" data-split>
+					<span class="line"><span class="word">Let's</span> <span class="word">talk</span></span>
+					<span class="line"><span class="word red">growth</span></span>
+				</h2>
+				<p class="sectionHeadP" data-reveal>Pick a time that works for you. One short call is usually enough to tell whether I can help.</p>
+
+				<div class="calendarCard" data-reveal>
+					<div class="calendarInner" data-lenis-prevent>
+						<script src="https://embed.ycb.me" async="true" data-domain="osnovyanenko" data-content="all" data-displaymode="auto"></script>
+					</div>
+				</div>
+				<p class="ctaAlt">Rather start with a message? <a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">Connect on LinkedIn</a></p>
+			</div>
+		</section>
 	</main>
+
+	<footer class="footer">
+		<div class="wrap">
+			<div class="wordmark" aria-hidden="true" data-wordmark>Osnovyanenko</div>
+			<div class="footRow">
+				<span>© 2026 Valentine Osnovyanenko</span>
+				<nav aria-label="Footer">
+					<a href="#references" data-scroll>References</a>
+					<a href="#skills" data-scroll>Skills</a>
+					<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">LinkedIn</a>
+				</nav>
+			</div>
+		</div>
+	</footer>
+
+	<div class="mobileCta" data-mobile-cta>
+		<a class="btn" href="#calendar" data-scroll>Book a meeting</a>
+		<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer" aria-label="Connect on LinkedIn">
+			<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/></svg>
+			Connect
+		</a>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+	<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
 	<script>
 		(function(){
-			const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+			const hasGsap = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
 
-			function setHeroVisible(){
-				const hero = document.querySelector(".heroEntrance");
-				if (!hero) return;
-				hero.classList.add("is-visible");
+			/* ---------- Smooth scroll ---------- */
+			let lenis = null;
+			if (!reduceMotion && typeof window.Lenis !== "undefined"){
+				lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+				if (hasGsap){
+					lenis.on("scroll", ScrollTrigger.update);
+					gsap.ticker.add(time => lenis.raf(time * 1000));
+					gsap.ticker.lagSmoothing(0);
+				} else {
+					const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
+					requestAnimationFrame(raf);
+				}
 			}
 
-			function initRevealOnScroll(){
-				const targets = [];
+			document.querySelectorAll("a[data-scroll]").forEach(a => {
+				a.addEventListener("click", e => {
+					const id = a.getAttribute("href");
+					const target = id && id.startsWith("#") ? document.querySelector(id) : null;
+					if (!target) return;
+					e.preventDefault();
+					if (lenis) lenis.scrollTo(target, { offset: id === "#calendar" ? -40 : -10 });
+					else target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+					history.replaceState(null, "", id);
+				});
+			});
 
-				const sections = [
-					document.querySelector(".socialProof"),
-					document.querySelector(".testimonials"),
-					document.querySelector(".whyChoose"),
-					document.querySelector(".skillsUse"),
-					document.querySelector(".calendarEmbed")
-				].filter(Boolean);
+			/* ---------- Header hide on scroll down, progress bar, mobile CTA ---------- */
+			const header = document.querySelector(".header");
+			const progress = document.querySelector(".progress");
+			const mobileCta = document.querySelector("[data-mobile-cta]");
+			const calendar = document.getElementById("calendar");
+			let lastY = window.scrollY;
+			function onScroll(){
+				const y = window.scrollY;
+				const max = document.documentElement.scrollHeight - window.innerHeight;
+				progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+				header.classList.toggle("is-hidden", y > lastY && y > 400);
+				const calTop = calendar.getBoundingClientRect().top;
+				mobileCta.classList.toggle("is-on", y > window.innerHeight * 0.7 && calTop > window.innerHeight * 0.6);
+				lastY = y;
+			}
+			window.addEventListener("scroll", onScroll, { passive: true });
+			onScroll();
 
-				sections.forEach(sec => {
-					sec.classList.add("reveal");
-					sec.dataset.stagger = "1";
-					sec.style.setProperty("--stagger", "0ms");
-					targets.push(sec);
+			/* ---------- Cursor glow + spotlight cards + magnetic buttons ---------- */
+			if (finePointer && !reduceMotion){
+				document.documentElement.classList.add("has-cursor");
+				const glow = document.querySelector(".cursorGlow");
+				let gx = innerWidth / 2, gy = innerHeight / 2, tx = gx, ty = gy;
+				window.addEventListener("pointermove", e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+				(function loop(){
+					gx += (tx - gx) * 0.12; gy += (ty - gy) * 0.12;
+					glow.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
+					requestAnimationFrame(loop);
+				})();
+
+				document.querySelectorAll(".card").forEach(card => {
+					card.addEventListener("pointermove", e => {
+						const r = card.getBoundingClientRect();
+						card.style.setProperty("--sx", `${e.clientX - r.left}px`);
+						card.style.setProperty("--sy", `${e.clientY - r.top}px`);
+					});
 				});
 
-				document.querySelectorAll(".whyCard").forEach((el, i) => {
-					el.classList.add("reveal");
-					el.dataset.stagger = "1";
-					el.style.setProperty("--stagger", `${i * 1000}ms`);
-					targets.push(el);
+				document.querySelectorAll(".btn").forEach(btn => {
+					btn.addEventListener("pointermove", e => {
+						const r = btn.getBoundingClientRect();
+						btn.style.setProperty("--bx", `${e.clientX - r.left}px`);
+						btn.style.setProperty("--by", `${e.clientY - r.top}px`);
+					});
 				});
 
-				document.querySelectorAll("details.skillCard").forEach((el, i) => {
-					el.classList.add("reveal");
-					el.dataset.stagger = "1";
-					el.style.setProperty("--stagger", `${i * 150}ms`);
-					targets.push(el);
+				document.querySelectorAll(".magnetic").forEach(el => {
+					el.addEventListener("pointermove", e => {
+						const r = el.getBoundingClientRect();
+						const dx = (e.clientX - (r.left + r.width / 2)) * 0.25;
+						const dy = (e.clientY - (r.top + r.height / 2)) * 0.35;
+						el.style.transform = `translate(${dx}px, ${dy}px)`;
+					});
+					el.addEventListener("pointerleave", () => {
+						el.style.transition = "transform .5s cubic-bezier(.2,.8,.2,1)";
+						el.style.transform = "";
+						setTimeout(() => { el.style.transition = ""; }, 500);
+					});
 				});
 
-				if (reduceMotion){
-					targets.forEach(el => el.classList.add("is-visible"));
+				/* Portrait tilt + light */
+				const portrait = document.querySelector("[data-portrait]");
+				const pCard = portrait && portrait.querySelector(".portraitCard");
+				if (pCard){
+					portrait.addEventListener("pointermove", e => {
+						const r = pCard.getBoundingClientRect();
+						const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+						pCard.style.transform = `rotateX(${(py - .5) * -8}deg) rotateY(${(px - .5) * 10}deg)`;
+						pCard.style.setProperty("--mx", `${px * 100}%`);
+						pCard.style.setProperty("--my", `${py * 100}%`);
+					});
+					portrait.addEventListener("pointerleave", () => { pCard.style.transform = ""; });
+				}
+			}
+
+			/* ---------- Case studies: industry dropdown ---------- */
+			const csBox = document.querySelector(".csBox");
+			const csSelect = document.getElementById("cs-industry");
+			const csTabs = document.querySelector(".csTabs");
+			const csCases = [...document.querySelectorAll(".csCase")];
+			function showCase(card){
+				csCases.forEach(c => c.hidden = c !== card);
+				csTabs.querySelectorAll(".csTab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.target === card.id)));
+				if (hasGsap && !reduceMotion) gsap.fromTo(card, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, ease: "expo.out", overwrite: true });
+				if (hasGsap) ScrollTrigger.refresh();
+			}
+			function pickIndustry(ind){
+				const list = csCases.filter(c => ind === "b2b" || c.dataset.ind === ind);
+				csBox.classList.remove("is-empty");
+				csTabs.innerHTML = "";
+				csTabs.hidden = list.length < 2;
+				list.forEach(card => {
+					const tab = document.createElement("button");
+					tab.type = "button"; tab.className = "csTab"; tab.role = "tab";
+					tab.dataset.target = card.id;
+					tab.textContent = card.querySelector("h3").textContent;
+					tab.addEventListener("click", () => showCase(card));
+					csTabs.appendChild(tab);
+				});
+				showCase(list[0]);
+				if (window.dataLayer) window.dataLayer.push({ event: "case_industry", case_industry: ind });
+			}
+			/* Without JS every case stays visible; with JS the card starts at the question */
+			csCases.forEach(c => c.hidden = true);
+			csBox.classList.add("is-empty");
+			csSelect.addEventListener("change", () => pickIndustry(csSelect.value));
+
+			if (!hasGsap || reduceMotion) return;
+
+			gsap.registerPlugin(ScrollTrigger);
+			const mm = gsap.matchMedia();
+
+			/* ---------- Hero intro ---------- */
+			const heroWords = document.querySelectorAll(".heroTitle .word");
+			const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+			tl.from(heroWords, { yPercent: 115, rotate: 4, duration: 1.3, stagger: 0.07 }, 0.15)
+			  .from("[data-hero-fade]", { y: 24, autoAlpha: 0, duration: 1, stagger: 0.09 }, 0.35)
+			  .from(".portraitCard", { clipPath: "inset(100% 0% 0% 0% round 28px)", duration: 1.5, ease: "expo.inOut" }, 0)
+			  .from(".portraitCard img", { scale: 1.35, duration: 1.8, ease: "expo.out" }, 0.3)
+			  .from(".portraitTag", { y: 30, autoAlpha: 0, duration: 1, stagger: 0.15 }, 0.9)
+			  .from(".portraitGlow, .portraitRing", { autoAlpha: 0, duration: 1.4 }, 0.8)
+			  .from(".header .headerInner", { y: -30, autoAlpha: 0, duration: 1 }, 0.2);
+
+			/* Hero parallax out */
+			gsap.to(".hero .heroGrid > div:first-child", { yPercent: -12, autoAlpha: 0.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "center center", end: "bottom top", scrub: true } });
+
+			/* ---------- Split headline reveals ---------- */
+			document.querySelectorAll("[data-split]").forEach(el => {
+				if (el.classList.contains("heroTitle")) return;
+				gsap.from(el.querySelectorAll(".word"), {
+					yPercent: 115, rotate: 3, duration: 1.1, ease: "expo.out", stagger: 0.06,
+					scrollTrigger: { trigger: el, start: "top 85%" }
+				});
+			});
+
+			/* ---------- Generic reveals ---------- */
+			gsap.set("[data-reveal]", { autoAlpha: 0 });
+			ScrollTrigger.batch("[data-reveal]", {
+				start: "top 88%",
+				onEnter: batch => gsap.fromTo(batch, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: "expo.out", stagger: 0.12, overwrite: true })
+			});
+
+			/* ---------- Counters ---------- */
+			/* The hero counter runs on load; counters inside a card stay empty until the card is well in view,
+			   so the count happens in front of the reader instead of off-screen */
+			document.querySelectorAll("[data-count]").forEach(el => {
+				const end = parseFloat(el.dataset.count);
+				const card = el.closest(".card");
+				if (card){
+					/* Card counter: the whole "2×" starts small and blue, grows into a red "4×" */
+					const obj = { v: 2 };
+					const blue = getComputedStyle(document.documentElement).getPropertyValue("--blue").trim();
+					const red = getComputedStyle(document.documentElement).getPropertyValue("--orange").trim();
+					const num = el.closest(".num");
+					const parts = [el, num.querySelector(".numX")];
+					el.textContent = "2";
+					gsap.set(parts, { color: blue });
+					gsap.set(num, { scale: 0.7 });
+					ScrollTrigger.create({
+						trigger: card, start: "top 60%", once: true,
+						onEnter: () => gsap.timeline({ delay: 0.25 })
+							.to(obj, { v: end, duration: 0.9, ease: "power1.inOut", onUpdate: () => { el.textContent = Math.round(obj.v); } }, 0)
+							.to(parts, { color: red, duration: 0.9, ease: "power2.inOut" }, 0)
+							.to(num, { scale: 1, duration: 0.9, ease: "power2.inOut" }, 0)
+					});
 					return;
 				}
+				const obj = { v: 1 };
+				ScrollTrigger.create({
+					trigger: el, start: "top 90%", once: true,
+					onEnter: () => gsap.to(obj, { v: end, duration: 1.6, ease: "power3.out", onUpdate: () => { el.textContent = Math.round(obj.v); } })
+				});
+			});
 
-				const io = new IntersectionObserver((entries) => {
-					entries.forEach(entry => {
-						if (entry.isIntersecting){
-							entry.target.classList.add("is-visible");
-							io.unobserve(entry.target);
-						}
-					});
-				}, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+			/* ---------- Why me: horizontal pin on desktop ---------- */
+			mm.add("(min-width: 901px)", () => {
+				const pin = document.querySelector("[data-why-pin]");
+				const track = document.querySelector("[data-why-track]");
+				const dist = () => Math.max(0, track.scrollWidth - window.innerWidth);
 
-				targets.forEach(el => io.observe(el));
-			}
-
-			/* Hero tilt (desktop only) */
-			(function heroTilt(){
-				if (reduceMotion) return;
-
-				const media = document.querySelector(".heroMedia");
-				const imgWrap = document.querySelector(".heroImage");
-				if (!media || !imgWrap) return;
-
-				const isTouch = ("ontouchstart" in window) || (navigator.maxTouchPoints > 0);
-				if (isTouch) return;
-
-				let raf = 0;
-				let rect = null;
-
-				function onMove(e){
-					if (!rect) rect = imgWrap.getBoundingClientRect();
-					const px = (e.clientX - rect.left) / rect.width;
-					const py = (e.clientY - rect.top) / rect.height;
-
-					const tiltX = (py - 0.5) * -6;
-					const tiltY = (px - 0.5) *  8;
-					const lift  = -2;
-
-					cancelAnimationFrame(raf);
-					raf = requestAnimationFrame(() => {
-						imgWrap.style.transform = `translateY(${lift}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-					});
-				}
-
-				function onEnter(){
-					media.classList.add("is-hovered");
-					rect = imgWrap.getBoundingClientRect();
-				}
-
-				function onLeave(){
-					media.classList.remove("is-hovered");
-					rect = null;
-					cancelAnimationFrame(raf);
-					imgWrap.style.transform = "";
-				}
-
-				imgWrap.addEventListener("mouseenter", onEnter);
-				imgWrap.addEventListener("mousemove", onMove);
-				imgWrap.addEventListener("mouseleave", onLeave);
-			})();
-
-			/* Desktop carousel ONLY when not touch-capable (fix: prevents breaking swipe on tablets) */
-			(function initCarouselDesktop(){
-				const isTouch = ("ontouchstart" in window) || (navigator.maxTouchPoints > 0) ||
-					(window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches);
-
-				if (isTouch) return; // <-- critical fix
-
-				const root = document.querySelector('[data-carousel]');
-				if (!root) return;
-
-				const track = root.querySelector('[data-track]');
-				const viewport = root.querySelector('[data-viewport]');
-				const slides = Array.from(root.querySelectorAll('.carouselSlide'));
-				const prevBtn = root.querySelector('[data-prev]');
-				const nextBtn = root.querySelector('[data-next]');
-				const dotsWrap = root.querySelector('[data-dots]');
-
-				let index = 0;
-
-				if (dotsWrap) dotsWrap.innerHTML = "";
-
-				const dots = slides.map((_, i) => {
-					const d = document.createElement('button');
-					d.type = 'button';
-					d.className = 'dot';
-					d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
-					d.addEventListener('click', () => goTo(i));
-					dotsWrap.appendChild(d);
-					return d;
+				const tween = gsap.to(track, {
+					x: () => -dist(), ease: "none",
+					scrollTrigger: { trigger: pin, start: "center center", end: () => "+=" + dist(), pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1 }
 				});
 
-				function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
-
-				function setActive(){
-					slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
-					dots.forEach((d, i) => d.classList.toggle('active', i === index));
-					if (prevBtn) prevBtn.disabled = index === 0;
-					if (nextBtn) nextBtn.disabled = index === slides.length - 1;
-				}
-
-				function updateTransform(animate = true){
-					const slideW = slides[0].getBoundingClientRect().width;
-					const gap = parseFloat(getComputedStyle(track).gap || '0');
-					const step = slideW + gap;
-					const x = step * index;
-
-					if (!animate) track.style.transition = 'none';
-					else track.style.transition = 'transform 520ms cubic-bezier(.2,.95,.2,1)';
-
-					track.style.transform = `translate3d(${-x}px,0,0)`;
-
-					if (!animate){
-						void track.offsetHeight;
-						track.style.transition = 'transform 520ms cubic-bezier(.2,.95,.2,1)';
-					}
-				}
-
-				function goTo(i, animate = true){
-					index = clamp(i, 0, slides.length - 1);
-					setActive();
-					updateTransform(animate);
-				}
-
-				if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
-				if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
-
-				let isDown = false;
-				let startX = 0;
-				let startTranslate = 0;
-
-				function currentTranslateX(){
-					const m = new DOMMatrixReadOnly(getComputedStyle(track).transform);
-					return m.m41;
-				}
-
-				function pointerDown(clientX){
-					isDown = true;
-					viewport.classList.add('dragging');
-					startX = clientX;
-					startTranslate = currentTranslateX();
-					track.style.transition = 'none';
-				}
-
-				function pointerMove(clientX){
-					if (!isDown) return;
-					const dx = clientX - startX;
-					track.style.transform = `translate3d(${startTranslate + dx}px,0,0)`;
-				}
-
-				function pointerUp(){
-					if (!isDown) return;
-					isDown = false;
-					viewport.classList.remove('dragging');
-
-					const slideW = slides[0].getBoundingClientRect().width;
-					const gap = parseFloat(getComputedStyle(track).gap || '0');
-					const step = slideW + gap;
-
-					const tx = currentTranslateX();
-					const rawIndex = Math.round((-tx) / step);
-
-					goTo(rawIndex, true);
-				}
-
-				viewport.addEventListener('mousedown', (e) => { e.preventDefault(); pointerDown(e.clientX); });
-				window.addEventListener('mousemove', (e) => pointerMove(e.clientX));
-				window.addEventListener('mouseup', pointerUp);
-
-				window.addEventListener('resize', () => goTo(index, false));
-				goTo(index, false);
-			})();
-
-			/* Hero first, then reveal observers */
-			document.addEventListener("DOMContentLoaded", () => {
-				setHeroVisible();
-
-				if (reduceMotion){
-					initRevealOnScroll();
-				} else {
-					setTimeout(initRevealOnScroll, 980);
-				}
+				track.querySelectorAll(".whyCard").forEach(card => {
+					gsap.fromTo(card.querySelector("img"), { xPercent: -6 }, {
+						xPercent: 6, ease: "none",
+						scrollTrigger: { trigger: card, containerAnimation: tween, start: "left right", end: "right left", scrub: true }
+					});
+					gsap.from(card, {
+						yPercent: 12, rotate: 3, autoAlpha: 0.3, ease: "none",
+						scrollTrigger: { trigger: card, containerAnimation: tween, start: "left 105%", end: "left 60%", scrub: true }
+					});
+				});
 			});
+			mm.add("(max-width: 900px)", () => {
+				gsap.from(".whyCard", { y: 60, autoAlpha: 0, duration: 1, ease: "expo.out", stagger: 0.1, scrollTrigger: { trigger: ".whyPin", start: "top 85%" } });
+			});
+
+			/* ---------- Skills: stacking cards shrink as next arrives ---------- */
+			mm.add("(min-width: 901px)", () => {
+				const cards = gsap.utils.toArray(".skill");
+				cards.forEach((card, i) => {
+					const next = cards[i + 1];
+					if (!next) return;
+					const shade = document.createElement("div");
+					shade.className = "skillShade";
+					card.appendChild(shade);
+					/* Starts when the next card begins to overlap this one, ends when it has settled on top */
+					const st = {
+						trigger: next, scrub: 0.6, invalidateOnRefresh: true,
+						start: () => `top ${96 + i * 18 + card.offsetHeight}px`,
+						end: () => `top ${96 + (i + 1) * 18}px`
+					};
+					gsap.to(card, { scale: 0.95 + i * 0.01, ease: "none", scrollTrigger: st });
+					gsap.to(shade, { opacity: 0.5, ease: "none", scrollTrigger: { ...st } });
+				});
+			});
+			gsap.utils.toArray(".skill .bullets li").forEach(li => {
+				gsap.from(li, { x: 30, autoAlpha: 0, duration: .9, ease: "expo.out", scrollTrigger: { trigger: li, start: "top 92%" } });
+			});
+
+			/* ---------- Process line ---------- */
+			/* Clip-path reveal (not scale) so the colour split stays pinned to circle 02 while the line grows */
+			const steps = gsap.utils.toArray(".step");
+			const stepsLine = document.querySelector(".stepsLine");
+			let dotAt = [0, 0.5, 1];
+			function measureSteps(vertical){
+				const lr = stepsLine.getBoundingClientRect();
+				const len = vertical ? lr.height : lr.width;
+				dotAt = steps.map(st => {
+					const d = st.querySelector(".stepDot").getBoundingClientRect();
+					return ((vertical ? d.top + d.height / 2 - lr.top : d.left + d.width / 2 - lr.left) / len);
+				});
+				stepsLine.style.setProperty("--split", (dotAt[1] * len) + "px");
+			}
+			function lightSteps(p){ steps.forEach((st, i) => st.classList.toggle("is-on", p >= dotAt[i] - 0.01)); }
+			mm.add({ desktop: "(min-width: 901px)", mobile: "(max-width: 900px)" }, ctx => {
+				const vertical = ctx.conditions.mobile;
+				const hidden = vertical ? "inset(0% 0% 100% 0%)" : "inset(0% 100% 0% 0%)";
+				gsap.fromTo(".stepsLine i", { clipPath: hidden }, {
+					clipPath: "inset(0% 0% 0% 0%)", ease: "none",
+					scrollTrigger: {
+						trigger: "[data-steps]", scrub: true,
+						start: vertical ? "top 70%" : "top 75%", end: vertical ? "bottom 60%" : "top 35%",
+						onRefresh: () => measureSteps(vertical),
+						onUpdate: self => lightSteps(self.progress)
+					}
+				});
+			});
+			gsap.from(".step", { y: 40, autoAlpha: 0, duration: 1, ease: "expo.out", stagger: 0.12, scrollTrigger: { trigger: "[data-steps]", start: "top 85%" } });
+
+			/* ---------- Footer wordmark ---------- */
+			gsap.from("[data-wordmark]", { yPercent: 60, autoAlpha: 0, ease: "none", scrollTrigger: { trigger: ".footer", start: "top bottom", end: "bottom bottom", scrub: true } });
+
+			/* Re-measure once the calendar embed and images settle */
+			window.addEventListener("load", () => ScrollTrigger.refresh());
+			if ("ResizeObserver" in window){
+				let t; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(() => ScrollTrigger.refresh(), 200); }).observe(document.querySelector(".calendarInner"));
+			}
 		})();
 	</script>
 </body>

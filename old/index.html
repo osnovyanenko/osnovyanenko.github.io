@@ -1,0 +1,1212 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="robots" content="noindex" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>Valentine Osnovyanenko: Marketing Partner for SaaS Founders</title>
+	<meta name="description" content="Find out how Val Osnovyanenko can be useful for your product business." />
+
+	<link rel="icon" href="../assets/val-os.ico" />
+
+	<!-- Google Tag Manager -->
+	<script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-WDK7FTB2');
+	</script>
+	<!-- End Google Tag Manager -->
+
+	<style>
+		:root{
+			--bg: #020204;
+
+			--text: rgba(255,255,255,0.92);
+			--muted: rgba(255,255,255,0.68);
+
+			--accent: #728BE1;
+			--accent2: #F65534;
+			--accent3: #C51A0F;
+
+			--link: #9AAAF0;
+			--max: 1080px;
+
+			--card-bg: rgba(255,255,255,0.03);
+			--card-border: rgba(255,255,255,0.12);
+
+			--header-h: 84px;
+			--bottom-nav-h: 74px;
+		}
+
+		*{ box-sizing:border-box; }
+		html,body{ height:100%; }
+		html{ scroll-behavior: smooth; }
+
+		body{
+			margin:0;
+			font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+			color: var(--text);
+			background: var(--bg);
+			line-height:1.5;
+			overflow-x: hidden;
+			position: relative;
+		}
+
+		/* Background */
+		body::before{
+			content:"";
+			position: fixed;
+			inset: 0;
+			z-index: -2;
+			pointer-events: none;
+			background:
+				radial-gradient(900px 520px at 12% 10%, rgba(114,139,225,0.18), transparent 60%),
+				radial-gradient(820px 520px at 88% 16%, rgba(246,85,52,0.12), transparent 58%),
+				radial-gradient(900px 640px at 60% 92%, rgba(197,26,15,0.08), transparent 60%),
+				var(--bg);
+		}
+
+		/* Subtle scanlines */
+		body::after{
+			content:"";
+			position: fixed;
+			inset: 0;
+			z-index: -1;
+			pointer-events: none;
+			background:
+				repeating-linear-gradient(
+					to bottom,
+					rgba(255,255,255,0.018) 0px,
+					rgba(255,255,255,0.018) 1px,
+					rgba(0,0,0,0) 3px,
+					rgba(0,0,0,0) 6px
+				);
+			mix-blend-mode: overlay;
+			opacity: 0.25;
+			animation: scanMove 14s linear infinite;
+		}
+		@keyframes scanMove{
+			0%{ transform: translateY(0); }
+			100%{ transform: translateY(18px); }
+		}
+
+		@media (prefers-reduced-motion: reduce){
+			*{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+		}
+
+		hr{ display:none !important; }
+		a{ color: var(--link); text-decoration:none; }
+		a:hover{ text-decoration:underline; }
+
+		/* ===== Buttons ===== */
+		.btn, .btnGhost{
+			display:inline-flex;
+			align-items:center;
+			justify-content:center;
+			gap: 10px;
+			padding: 12px 16px;
+			border-radius: 14px;
+			text-decoration:none;
+			white-space: nowrap;
+			outline: none;
+			-webkit-tap-highlight-color: transparent;
+			transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
+			color: rgba(255,255,255,0.96);
+		}
+
+		.btn{
+			border: 1px solid rgba(114,139,225,0.45);
+			background: linear-gradient(180deg, rgba(114,139,225,0.95), rgba(114,139,225,0.82));
+			font-weight: 700;
+		}
+
+		.btnGhost{
+			border: 1px solid rgba(255,255,255,0.14);
+			background: rgba(255,255,255,0.04);
+			font-weight: 650;
+		}
+
+		.btn:hover,
+		.btnGhost:hover{
+			text-decoration: none;
+			border-color: rgba(246,85,52,0.80);
+			background: linear-gradient(180deg, rgba(246,85,52,0.98), rgba(197,26,15,0.88));
+			color: rgba(255,255,255,0.98);
+			box-shadow:
+				0 0 0 1px rgba(246,85,52,0.38),
+				0 0 26px rgba(246,85,52,0.55),
+				0 0 60px rgba(197,26,15,0.35);
+		}
+
+		@keyframes neonBreathBlue{
+			0%, 100%{ box-shadow: 0 0 0 rgba(114,139,225,0.0); opacity: 0.95; }
+			50%{ box-shadow: 0 0 22px rgba(114,139,225,0.35); opacity: 1; }
+		}
+		.btn.is-cta{
+			box-shadow: 0 0 0 1px rgba(114,139,225,0.18);
+			animation: neonBreathBlue 8s ease-in-out infinite;
+		}
+		.btn.is-cta:hover{
+			animation: none;
+			border-color: rgba(246,85,52,0.80);
+			background: linear-gradient(180deg, rgba(246,85,52,0.98), rgba(197,26,15,0.88));
+			color: rgba(255,255,255,0.98);
+			box-shadow:
+				0 0 0 1px rgba(246,85,52,0.38),
+				0 0 26px rgba(246,85,52,0.55),
+				0 0 60px rgba(197,26,15,0.35);
+		}
+
+		.btn:active,
+		.btnGhost:active{ transform: translateY(1px); }
+
+		.btn:focus-visible,
+		.btnGhost:focus-visible{
+			box-shadow:
+				0 0 0 2px rgba(114,139,225,0.55),
+				0 0 26px rgba(114,139,225,0.25);
+		}
+
+		.icon{ width: 18px; height: 18px; display:inline-block; }
+		.icon svg{ width: 18px; height: 18px; display:block; }
+
+		/* ===== Reveal on scroll ===== */
+		.reveal{
+			opacity: 0;
+			transform: translateY(16px);
+			filter: blur(10px);
+			transition:
+				opacity 980ms cubic-bezier(.2,.8,.2,1),
+				transform 980ms cubic-bezier(.2,.8,.2,1),
+				filter 980ms cubic-bezier(.2,.8,.2,1);
+			will-change: opacity, transform, filter;
+		}
+		.reveal[data-stagger]{ transition-delay: var(--stagger, 0ms); }
+		.reveal.is-visible{
+			opacity: 1;
+			transform: translateY(0);
+			filter: blur(0);
+			transition-delay: 0ms;
+		}
+		.whyCard.reveal{
+			transform: translateY(22px);
+			transition-duration: 1100ms;
+		}
+
+		/* ===== Hero premium entrance ===== */
+		.heroEntrance{
+			opacity: 0;
+			transform: translateY(14px);
+			filter: blur(10px);
+		}
+		.heroEntrance.is-visible{
+			opacity: 1;
+			transform: translateY(0);
+			filter: blur(0);
+			transition:
+				opacity 950ms cubic-bezier(.2,.8,.2,1),
+				transform 950ms cubic-bezier(.2,.8,.2,1),
+				filter 950ms cubic-bezier(.2,.8,.2,1);
+		}
+		.heroEntrance .heroMedia::before{
+			opacity: 0.35;
+			transition: opacity 1100ms cubic-bezier(.2,.8,.2,1), filter 1100ms cubic-bezier(.2,.8,.2,1);
+		}
+		.heroEntrance.is-visible .heroMedia::before{ opacity: 0.9; }
+
+		/* ===== Header (desktop) ===== */
+		.siteHeader{
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 9999;
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			background: rgba(2,2,4,0.76);
+			border-bottom: 1px solid rgba(255,255,255,0.08);
+		}
+		.headerInner{
+			max-width: var(--max);
+			margin: 0 auto;
+			padding: 14px 20px;
+			min-height: 84px;
+			display:flex;
+			align-items:center;
+		}
+		.page{
+			max-width: var(--max);
+			margin: 0 auto;
+			padding: calc(var(--header-h) + 28px) 20px 90px;
+		}
+		.nav{
+			width: 100%;
+			display:flex;
+			align-items:center;
+			justify-content:space-between;
+			gap:16px;
+		}
+		.brand{
+			display:flex;
+			flex-direction:column;
+			gap:2px;
+			min-width: 260px;
+		}
+		.brand strong{ font-size:16px; letter-spacing:-0.01em; }
+		.brand span{ font-size:13px; color: var(--muted); }
+		.navlinks{
+			display:flex;
+			gap:16px;
+			flex-wrap:wrap;
+			font-size:14px;
+			align-items:center;
+			justify-content:flex-end;
+		}
+		.navlinks a{ color: rgba(255,255,255,0.86); }
+
+		/* ===== Mobile bottom nav ===== */
+		.bottomNav{
+			display:none;
+			position: fixed;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 10000;
+			background: rgba(2,2,4,0.86);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-top: 1px solid rgba(255,255,255,0.10);
+			padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+		}
+		.bottomNavInner{
+			display:grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 10px;
+		}
+		.bottomNav a{
+			min-width: 0;
+			display:flex;
+			flex-direction: column;
+			align-items:center;
+			justify-content:center;
+			gap: 6px;
+			padding: 10px 6px;
+			border-radius: 14px;
+			border: 1px solid rgba(255,255,255,0.10);
+			background: rgba(255,255,255,0.03);
+			color: rgba(255,255,255,0.90);
+			text-decoration: none;
+		}
+		.bottomNav a:active{ transform: translateY(1px); }
+		.mobileIcon{
+			width: 22px;
+			height: 22px;
+			display:block;
+			object-fit: contain;
+			border-radius: 8px;
+		}
+		.bottomNav .navLabel{
+			font-size: 11px;
+			line-height: 1;
+			color: rgba(255,255,255,0.72);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 100%;
+		}
+
+		.sectionTitle{
+			margin: 0 0 16px;
+			font-size: 28px;
+			line-height: 1.15;
+			letter-spacing: -0.025em;
+		}
+		.sectionTitle.center{ text-align:center; }
+
+		/* ===== Hero ===== */
+		.hero{ padding: 26px 0 10px; }
+		.heroGrid{
+			display:grid;
+			grid-template-columns: 1.05fr 1fr;
+			gap: 42px;
+			align-items: center;
+		}
+		.heroMedia{ position: relative; }
+		.heroMedia::before{
+			content:"";
+			position:absolute;
+			inset:-14px;
+			border-radius: 26px;
+			background: linear-gradient(135deg, rgba(114,139,225,0.22), rgba(246,85,52,0.14));
+			filter: blur(16px);
+			opacity: 0.9;
+			z-index: 0;
+			transition: opacity 260ms ease, filter 260ms ease;
+		}
+		.heroMedia.is-hovered::before{ opacity: 1; filter: blur(18px); }
+		.heroImage{
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			aspect-ratio: 1 / 1;
+			border-radius: 22px;
+			overflow: hidden;
+			background: rgba(255,255,255,0.04);
+			border: 1px solid rgba(255,255,255,0.10);
+			transform-style: preserve-3d;
+			transition: transform 260ms cubic-bezier(.2,.8,.2,1), box-shadow 260ms cubic-bezier(.2,.8,.2,1);
+		}
+		.heroImage img{
+			width:100%;
+			height:100%;
+			object-fit: cover;
+			object-position: 50% 45%;
+			display:block;
+		}
+		.kicker{
+			display:inline-flex;
+			align-items:center;
+			gap:10px;
+			color: var(--muted);
+			font-size: 13px;
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+		}
+		.kickerDot{
+			width:10px; height:10px; border-radius:50%;
+			background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
+			animation: neonBreathBlue 6.5s ease-in-out infinite;
+		}
+		.heroTitle{
+			margin: 10px 0 12px;
+			font-size: 44px;
+			line-height: 1.05;
+			letter-spacing: -0.03em;
+		}
+		.lede{
+			margin: 0 0 18px;
+			color: var(--muted);
+			font-size: 16px;
+			max-width: 60ch;
+		}
+		.ctaRow{
+			display:flex;
+			gap:12px;
+			flex-wrap:wrap;
+			align-items:center;
+			margin-top: 16px;
+		}
+
+		/* ===== Social proof ===== */
+		.socialProof{ padding: 14px 0 0; }
+		.logoRow{
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 14px;
+			align-items: center;
+			margin-top: 10px;
+		}
+		.logoSlot{
+			height: 72px;
+			border-radius: 16px;
+			border: 1px dashed rgba(255,255,255,0.20);
+			background: rgba(255,255,255,0.03);
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			padding: 14px 18px;
+			overflow: hidden;
+		}
+		.logoSlot img{
+			max-height: 44px;
+			max-width: 220px;
+			width: auto;
+			height: auto;
+			object-fit: contain;
+			display:block;
+			opacity: 0.92;
+		}
+		/* SimplyDepo ~2x larger */
+		.logoSlot img.logo-simplydepo{
+			max-height: 88px;
+			max-width: 360px;
+			transform: scale(1.25);
+			transform-origin: center;
+			opacity: 0.98;
+		}
+		.afterSocialSpacer{ height: 54px; }
+
+		/* ===== Testimonials ===== */
+		.testimonials{ padding: 0; }
+		.carousel{ margin-top: 16px; position: relative; user-select: none; }
+		.carouselViewport{ overflow: hidden; padding: 14px 0 18px; cursor: grab; }
+		.carouselViewport.dragging{ cursor: grabbing; }
+		.carouselTrack{
+			display: flex;
+			gap: 18px;
+			will-change: transform;
+			transform: translate3d(0,0,0);
+			transition: transform 520ms cubic-bezier(.2,.95,.2,1);
+			padding: 0 calc(50% - 280px);
+		}
+		.carouselSlide{
+			flex: 0 0 560px;
+			max-width: 560px;
+			display:flex;
+			justify-content:center;
+			transition: transform 420ms cubic-bezier(.2,.8,.2,1), opacity 420ms cubic-bezier(.2,.8,.2,1);
+			opacity: 0.42;
+			transform: scale(0.90);
+		}
+		.carouselSlide.is-active{ opacity: 1; transform: scale(1); }
+
+		.quoteCard{
+			width: 100%;
+			border-radius: 22px;
+			border: 1px solid var(--card-border);
+			background: var(--card-bg);
+			padding: 24px 22px 20px;
+			text-align: left;
+		}
+		.quoteHeader{
+			display:flex;
+			flex-direction: row;
+			align-items:center;
+			justify-content:flex-start;
+			gap: 12px;
+			margin-bottom: 12px;
+		}
+		.avatarImg{
+			width: 56px; height: 56px; border-radius: 999px;
+			object-fit: cover; object-position: 50% 35%;
+			display:block;
+			border: 1px solid rgba(255,255,255,0.18);
+			box-shadow: 0 0 0 1px rgba(114,139,225,0.20), 0 0 18px rgba(114,139,225,0.12);
+			flex: 0 0 auto;
+		}
+		.quoteMeta{ display:flex; flex-direction: column; gap: 2px; }
+		.quoteName{ font-size: 14px; font-weight: 750; color: rgba(255,255,255,0.92); line-height: 1.2; }
+		.quoteTitle{ font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.2; }
+		.quoteText{ margin: 0; color: rgba(255,255,255,0.78); font-size: 16px; line-height: 1.75; padding-top: 2px; }
+
+		.carouselArrows{ position: absolute; inset: 0; pointer-events: none; }
+		.arrowBtn{
+			pointer-events: auto;
+			position: absolute;
+			top: 50%; transform: translateY(-50%);
+			width: 42px; height: 42px;
+			border-radius: 999px;
+			border: 1px solid rgba(255,255,255,0.14);
+			background: rgba(255,255,255,0.04);
+			color: rgba(255,255,255,0.88);
+			cursor: pointer;
+			display:flex; align-items:center; justify-content:center;
+		}
+		.arrowBtn:hover{ background: rgba(255,255,255,0.06); }
+		.arrowBtn:disabled{ opacity: 0.35; cursor: not-allowed; }
+		.arrowPrev{ left: 0; }
+		.arrowNext{ right: 0; }
+
+		.dots{ display:flex; justify-content:center; gap: 8px; margin-top: 10px; }
+		.dot{
+			width: 8px; height: 8px; border-radius: 999px;
+			background: rgba(255,255,255,0.25);
+			border: 1px solid rgba(255,255,255,0.10);
+			cursor: pointer;
+		}
+		.dot.active{ background: rgba(114,139,225,0.95); box-shadow: 0 0 18px rgba(114,139,225,0.35); }
+
+		/* ===== Why cards ===== */
+		.whyChoose{ padding: 54px 0 0; }
+		.whyGrid{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+
+		.whyCard{
+			border-radius: 18px;
+			overflow: hidden;
+			border: 1px solid rgba(255,255,255,0.10);
+			background: rgba(255,255,255,0.03);
+			display:flex; flex-direction: column;
+			min-height: 330px;
+			transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease;
+		}
+		.whyCard:hover{
+			border-color: rgba(246,85,52,0.35);
+			box-shadow:
+				0 0 0 1px rgba(246,85,52,0.22),
+				0 0 26px rgba(246,85,52,0.20),
+				0 0 60px rgba(197,26,15,0.14);
+			transform: translateY(-2px);
+			transition-delay: 0ms;
+		}
+		.whyArt{ aspect-ratio: 2 / 3; background: rgba(255,255,255,0.02); display:block; min-height: 190px; overflow: hidden; }
+		.whyArt img{ width: 100%; height: 100%; display:block; object-fit: cover; object-position: 50% 50%; transition: transform 300ms cubic-bezier(.2,.8,.2,1), filter 300ms cubic-bezier(.2,.8,.2,1); }
+		.whyCard:hover .whyArt img{ transform: scale(1.045); filter: contrast(1.04) saturate(1.03); }
+		.whyBody{ background: rgba(255,255,255,0.96); color: rgba(10,14,22,0.92); padding: 14px 14px 16px; flex: 1 1 auto; }
+		.whyBody h3{ margin: 0 0 6px; font-size: 14px; letter-spacing: -0.01em; }
+		.whyBody p{ margin: 0; font-size: 13px; line-height: 1.45; color: rgba(10,14,22,0.62); }
+
+		/* ===== Skills ===== */
+		.skillsUse{ padding: 54px 0 0; }
+		.skillsGrid{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+
+		details.skillCard{ border-radius: 18px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 16px 18px; }
+		details.skillCard summary{
+			list-style: none;
+			cursor: pointer;
+			display:flex; align-items:flex-start; justify-content: space-between;
+			gap: 14px;
+		}
+		details.skillCard summary::-webkit-details-marker{ display:none; }
+		.skillHead{ display:flex; align-items:center; gap: 12px; }
+		.skillIcon{
+			width: 40px; height: 40px; border-radius: 14px;
+			border: 1px solid rgba(255,255,255,0.12);
+			background: rgba(255,255,255,0.03);
+			display:block;
+			object-fit: contain;
+			padding: 7px;
+			flex: 0 0 auto;
+			transition: transform 220ms cubic-bezier(.2,.8,.2,1);
+		}
+		details.skillCard[open] .skillIcon{ transform: scale(1.06); }
+		.skillTitleWrap h3{ margin: 0 0 4px; font-size: 16px; letter-spacing: -0.01em; }
+		.skillTitleWrap p{ margin: 0; color: rgba(255,255,255,0.70); font-size: 13px; line-height: 1.55; }
+		.sumIcon{
+			flex: 0 0 auto;
+			width: 28px; height: 28px; border-radius: 999px;
+			border: 1px solid rgba(255,255,255,0.14);
+			background: rgba(255,255,255,0.03);
+			display:flex; align-items:center; justify-content:center;
+			color: rgba(255,255,255,0.70);
+			margin-top: 6px;
+			transition: transform 220ms ease;
+		}
+		details.skillCard[open] .sumIcon{ transform: rotate(45deg); }
+		.skillExpanded{ margin-top: 14px; }
+		.splitBullets{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; color: rgba(255,255,255,0.74); font-size: 14px; line-height: 1.6; }
+		.bItem{ border-left: 2px solid rgba(114,139,225,0.40); padding-left: 10px; }
+
+		/* ===== Calendar (YouCanBookMe) ===== */
+		.calendarEmbed{ padding-top: 18px; }
+		.calendarCard{ border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); overflow: hidden; }
+		.calendarFrameWrap{ background: rgba(255,255,255,0.04); border-radius: 20px; overflow: hidden; padding: 16px; }
+
+		.footer{
+			padding-top: 54px;
+			color: var(--muted);
+			font-size: 13px;
+			display:flex;
+			gap: 10px;
+			align-items:center;
+			flex-wrap: wrap;
+			border: 0;
+		}
+
+		@media (max-width: 1100px){
+			.carouselTrack{ padding: 0 calc(50% - 240px); }
+			.carouselSlide{ flex-basis: 480px; max-width: 480px; }
+			.whyGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+			.skillsGrid{ grid-template-columns: 1fr; }
+			.splitBullets{ grid-template-columns: 1fr; }
+		}
+
+		@media (max-width: 900px){
+			.heroTitle{ font-size: 38px; }
+			.heroGrid{ grid-template-columns: 1fr; gap: 18px; }
+			.sectionTitle{ font-size: 26px; }
+			.brand{ min-width: unset; }
+			:root{ --header-h: 96px; }
+			.page{ padding-top: calc(var(--header-h) + 18px); }
+		}
+
+		/* Mobile + touch devices: ALWAYS enable native swipe for quotes */
+		@media (hover: none) and (pointer: coarse){
+			.carouselViewport{
+				overflow-x: auto !important;
+				-webkit-overflow-scrolling: touch;
+				scroll-snap-type: x mandatory;
+				padding: 14px 0 18px;
+				cursor: auto !important;
+			}
+			.carouselViewport::-webkit-scrollbar{ display:none; }
+			.carouselTrack{
+				padding: 0 16px !important;
+				transform: none !important;
+				transition: none !important;
+			}
+			.carouselSlide{
+				flex: 0 0 86% !important;
+				max-width: 86% !important;
+				scroll-snap-align: center;
+				opacity: 1 !important;
+				transform: none !important;
+			}
+			.carouselArrows{ display:none !important; }
+			.dots{ display:none !important; }
+		}
+
+		@media (max-width: 720px){
+			.siteHeader{ display:none; }
+			.bottomNav{ display:block; }
+
+			.page{
+				padding-top: 22px;
+				padding-bottom: calc(90px + var(--bottom-nav-h));
+			}
+
+			/* Logos */
+			.logoRow{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+			.logoSlot{ height: 64px; padding: 10px 12px; border-radius: 14px; }
+			.logoSlot img{ max-height: 38px; max-width: 180px; }
+			.logoSlot img.logo-simplydepo{
+				max-height: 64px;
+				max-width: 260px;
+				transform: scale(1.25);
+			}
+
+			.afterSocialSpacer{ height: 36px; }
+
+			/* Why section: compact 2x2 */
+			.whyGrid{
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 10px;
+			}
+			.whyCard{
+				min-height: 0;
+				border-radius: 16px;
+			}
+			.whyArt{ min-height: 120px; }
+			.whyBody{ padding: 10px 10px 12px; }
+			.whyBody h3{ font-size: 13px; margin-bottom: 4px; }
+			.whyBody p{ font-size: 12px; line-height: 1.35; }
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDK7FTB2"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<header class="siteHeader">
+		<div class="headerInner">
+			<div class="nav">
+				<div class="brand">
+					<strong>Valentine Osnovyanenko</strong>
+					<span>Marketing Partner</span>
+				</div>
+
+				<nav class="navlinks" aria-label="Primary">
+					<a href="#references">References</a>
+					<a href="#why-me">Why Me</a>
+					<a href="#skills">Skills</a>
+
+					<a class="btn is-cta" href="#calendar">Book a meeting</a>
+
+					<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+						<span class="icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+								<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
+							</svg>
+						</span>
+						Request CV
+					</a>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<nav class="bottomNav" aria-label="Mobile menu">
+		<div class="bottomNavInner">
+			<a href="#why-me">
+				<img class="mobileIcon" src="../assets/why-me-mobile.webp" alt="" aria-hidden="true" />
+				<span class="navLabel">Why Me</span>
+			</a>
+			<a href="#calendar">
+				<img class="mobileIcon" src="../assets/meeting-mobile.webp" alt="" aria-hidden="true" />
+				<span class="navLabel">Book Meeting</span>
+			</a>
+			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+				<img class="mobileIcon" src="../assets/cv-mobile.webp" alt="" aria-hidden="true" />
+				<span class="navLabel">Request CV</span>
+			</a>
+		</div>
+	</nav>
+
+	<main class="page">
+		<section class="hero heroEntrance" id="hero" aria-label="Hero">
+			<div class="heroGrid">
+				<div class="heroMedia">
+					<div class="heroImage">
+						<img src="../assets/val-os.webp" alt="Photo of Valentine" />
+					</div>
+				</div>
+
+				<div>
+					<div class="kicker"><span class="kickerDot"></span> Fractional / Contract</div>
+					<h1 class="heroTitle">Marketing Partner for Founders &amp; CEOs</h1>
+
+					<p class="lede">
+						Driving revenue growth and building impactful brand awareness. Let’s craft a tailored growth strategy
+						to position your business as a market leader.
+					</p>
+
+					<div class="ctaRow">
+						<a class="btn is-cta" href="#calendar">Book a meeting</a>
+
+						<a class="btnGhost" href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">
+							<span class="icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+									<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.8v2.12h.06c.53-1 1.83-2.12 3.77-2.12 4.03 0 4.77 2.65 4.77 6.1v9.42h-4v-8.35c0-1.99-.03-4.55-2.77-4.55-2.77 0-3.19 2.17-3.19 4.41v8.49h-4V7.98z"/>
+								</svg>
+							</span>
+							Request CV
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="socialProof" aria-label="Social proof">
+			<h2 class="sectionTitle center">Trusted by Challengers</h2>
+			<div class="logoRow" aria-label="Logos">
+				<div class="logoSlot"><img src="../assets/42dm-logo-bw.webp" alt="42DM"></div>
+				<div class="logoSlot"><img src="../assets/hackenproof-logo-bw.webp" alt="HackenProof"></div>
+				<div class="logoSlot"><img class="logo-simplydepo" src="../assets/simplydepo.webp" alt="SimplyDepo"></div>
+				<div class="logoSlot"><img src="../assets/label-your-data-logo-bw.webp" alt="Label Your Data"></div>
+			</div>
+		</section>
+
+		<div class="afterSocialSpacer" aria-hidden="true"></div>
+
+		<section class="testimonials" id="references" aria-label="Testimonials">
+			<h2 class="sectionTitle center">“Always eager to take on new challenges”</h2>
+
+			<div class="carousel" data-carousel>
+				<div class="carouselViewport" data-viewport>
+					<div class="carouselTrack" data-track>
+						<div class="carouselSlide">
+							<article class="quoteCard">
+								<div class="quoteHeader">
+									<img class="avatarImg" src="../assets/kate-vasylenko.webp" alt="Kate Vasylenko" />
+									<div class="quoteMeta">
+										<div class="quoteName">Kate Vasylenko</div>
+										<div class="quoteTitle">Founder of 42DM</div>
+									</div>
+								</div>
+								<p class="quoteText">
+									“He has a natural talent for mentoring colleagues and sharing his knowledge and expertise to help them grow in their own roles.”
+								</p>
+							</article>
+						</div>
+
+						<div class="carouselSlide">
+							<article class="quoteCard">
+								<div class="quoteHeader">
+									<img class="avatarImg" src="../assets/dmytro-matviiv.webp" alt="Dmytro Matviiv" />
+									<div class="quoteMeta">
+										<div class="quoteName">Dmytro Matviiv</div>
+										<div class="quoteTitle">CEO of HackenProof</div>
+									</div>
+								</div>
+								<p class="quoteText">
+									“Valentine brought structure and focus to our marketing. He clarified messaging for both B2B and the hacker community, grew Twitter with consistently valuable posts, and rebuilt the blog into an SEO channel that drove high-intent organic traffic.”
+								</p>
+							</article>
+						</div>
+
+						<div class="carouselSlide">
+							<article class="quoteCard">
+								<div class="quoteHeader">
+									<img class="avatarImg" src="../assets/ivan-khymych.webp" alt="Ivan Khymych" />
+									<div class="quoteMeta">
+										<div class="quoteName">Ivan Khymych</div>
+										<div class="quoteTitle">Founder of SimplyDepo</div>
+									</div>
+								</div>
+								<p class="quoteText">
+									“Val brought strong technical depth to product marketing by implementing HTML tags, aligning data collection across the stack, and using AI like a data scientist to keep our data clean and actionable.”
+								</p>
+							</article>
+						</div>
+
+						<div class="carouselSlide">
+							<article class="quoteCard">
+								<div class="quoteHeader">
+									<img class="avatarImg" src="../assets/karyna-naminas.jpeg" alt="Karyna Naminas" />
+									<div class="quoteMeta">
+										<div class="quoteName">Karyna Naminas</div>
+										<div class="quoteTitle">CEO of Label Your Data</div>
+									</div>
+								</div>
+								<p class="quoteText">
+									“Val built our inbound lead-generation engine and helped drive a 4× ARR increase. He also led our RevOps transformation across HubSpot and Notion, bringing strategic clarity and executional rigor.”
+								</p>
+							</article>
+						</div>
+					</div>
+				</div>
+
+				<div class="carouselArrows" aria-hidden="false">
+					<button class="arrowBtn arrowPrev" type="button" data-prev aria-label="Previous testimonial">‹</button>
+					<button class="arrowBtn arrowNext" type="button" data-next aria-label="Next testimonial">›</button>
+				</div>
+
+				<div class="dots" data-dots aria-label="Carousel dots"></div>
+			</div>
+		</section>
+
+		<section class="whyChoose" id="why-me" aria-label="Why Companies Choose Me">
+			<h2 class="sectionTitle center">Why Companies Choose Me</h2>
+
+			<div class="whyGrid">
+				<article class="whyCard">
+					<div class="whyArt"><img src="../assets/agency-background.webp" alt="Agency background illustration"></div>
+					<div class="whyBody">
+						<h3>Agency Background</h3>
+						<p>That’s 3× more exposure to industries than working for a single product or service company.</p>
+					</div>
+				</article>
+
+				<article class="whyCard">
+					<div class="whyArt"><img src="../assets/genuine-enthusiasm.webp" alt="Genuine enthusiasm illustration"></div>
+					<div class="whyBody">
+						<h3>Genuine Enthusiasm</h3>
+						<p>I don’t fake interest to get a foot in the door. Curiosity is what drives me most to grow the business.</p>
+					</div>
+				</article>
+
+				<article class="whyCard">
+					<div class="whyArt"><img src="../assets/agile-contribution.webp" alt="Agile contribution illustration"></div>
+					<div class="whyBody">
+						<h3>Agile Contribution</h3>
+						<p>Depending on the growth stage, I can be the hands-on generalist or step up as the team leader.</p>
+					</div>
+				</article>
+
+				<article class="whyCard">
+					<div class="whyArt"><img src="../assets/soft-skills.webp" alt="Soft skills illustration"></div>
+					<div class="whyBody">
+						<h3>Soft Skills</h3>
+						<p>I will keep us aligned on vision and execution, staying open to ideas – may the best one win.</p>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section class="skillsUse" id="skills" aria-label="Use My Skills for Your Business">
+			<h2 class="sectionTitle center">Use My Skills for Your Business</h2>
+
+			<div class="skillsGrid">
+				<details class="skillCard">
+					<summary>
+						<div class="skillHead">
+							<img class="skillIcon" src="../assets/commercial-streamlining.webp" alt="Commercial Streamlining icon" />
+							<div class="skillTitleWrap">
+								<h3>Commercial Streamlining</h3>
+								<p>Merging teams and tools into one operating system.</p>
+							</div>
+						</div>
+						<div class="sumIcon" aria-hidden="true">+</div>
+					</summary>
+					<div class="skillExpanded">
+						<div class="splitBullets">
+							<div class="bItem">Merging marketing, sales, and support tasks into workflows</div>
+							<div class="bItem">Building compact teams, one goal per teammate</div>
+							<div class="bItem">Using AI as a data scientist copilot</div>
+						</div>
+					</div>
+				</details>
+
+				<details class="skillCard">
+					<summary>
+						<div class="skillHead">
+							<img class="skillIcon" src="../assets/plg.webp" alt="Product‑Led Growth icon" />
+							<div class="skillTitleWrap">
+								<h3>Product‑Led Growth</h3>
+								<p>Improving activation, conversion, and retention.</p>
+							</div>
+						</div>
+						<div class="sumIcon" aria-hidden="true">+</div>
+					</summary>
+					<div class="skillExpanded">
+						<div class="splitBullets">
+							<div class="bItem">Creating a feedback loop on product‑market fit</div>
+							<div class="bItem">Recycling product features into public demos</div>
+							<div class="bItem">Improving in‑product conversion rates</div>
+						</div>
+					</div>
+				</details>
+
+				<details class="skillCard">
+					<summary>
+						<div class="skillHead">
+							<img class="skillIcon" src="../assets/inbound.webp" alt="Inbound Marketing icon" />
+							<div class="skillTitleWrap">
+								<h3>Inbound Marketing</h3>
+								<p>Building demand through content and distribution.</p>
+							</div>
+						</div>
+						<div class="sumIcon" aria-hidden="true">+</div>
+					</summary>
+					<div class="skillExpanded">
+						<div class="splitBullets">
+							<div class="bItem">Preparing creative brand awareness ads</div>
+							<div class="bItem">Distributing valuable content</div>
+							<div class="bItem">Promoting thought leadership</div>
+						</div>
+					</div>
+				</details>
+			</div>
+		</section>
+
+		<section class="calendarEmbed" id="calendar" aria-label="Calendar">
+			<div class="calendarCard" id="calendarCard">
+				<div class="calendarFrameWrap">
+					<script src="https://embed.ycb.me" async="true" data-domain="osnovyanenko" data-content="all" data-displaymode="auto"></script>
+				</div>
+			</div>
+		</section>
+
+		<footer class="footer">
+			<span>© 2026 Valentine Osnovyanenko</span>
+			<span>·</span>
+			<a href="https://www.linkedin.com/in/osnovyanenko/" target="_blank" rel="noreferrer">LinkedIn</a>
+		</footer>
+	</main>
+
+	<script>
+		(function(){
+			const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+			function setHeroVisible(){
+				const hero = document.querySelector(".heroEntrance");
+				if (!hero) return;
+				hero.classList.add("is-visible");
+			}
+
+			function initRevealOnScroll(){
+				const targets = [];
+
+				const sections = [
+					document.querySelector(".socialProof"),
+					document.querySelector(".testimonials"),
+					document.querySelector(".whyChoose"),
+					document.querySelector(".skillsUse"),
+					document.querySelector(".calendarEmbed")
+				].filter(Boolean);
+
+				sections.forEach(sec => {
+					sec.classList.add("reveal");
+					sec.dataset.stagger = "1";
+					sec.style.setProperty("--stagger", "0ms");
+					targets.push(sec);
+				});
+
+				document.querySelectorAll(".whyCard").forEach((el, i) => {
+					el.classList.add("reveal");
+					el.dataset.stagger = "1";
+					el.style.setProperty("--stagger", `${i * 1000}ms`);
+					targets.push(el);
+				});
+
+				document.querySelectorAll("details.skillCard").forEach((el, i) => {
+					el.classList.add("reveal");
+					el.dataset.stagger = "1";
+					el.style.setProperty("--stagger", `${i * 150}ms`);
+					targets.push(el);
+				});
+
+				if (reduceMotion){
+					targets.forEach(el => el.classList.add("is-visible"));
+					return;
+				}
+
+				const io = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting){
+							entry.target.classList.add("is-visible");
+							io.unobserve(entry.target);
+						}
+					});
+				}, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+
+				targets.forEach(el => io.observe(el));
+			}
+
+			/* Hero tilt (desktop only) */
+			(function heroTilt(){
+				if (reduceMotion) return;
+
+				const media = document.querySelector(".heroMedia");
+				const imgWrap = document.querySelector(".heroImage");
+				if (!media || !imgWrap) return;
+
+				const isTouch = ("ontouchstart" in window) || (navigator.maxTouchPoints > 0);
+				if (isTouch) return;
+
+				let raf = 0;
+				let rect = null;
+
+				function onMove(e){
+					if (!rect) rect = imgWrap.getBoundingClientRect();
+					const px = (e.clientX - rect.left) / rect.width;
+					const py = (e.clientY - rect.top) / rect.height;
+
+					const tiltX = (py - 0.5) * -6;
+					const tiltY = (px - 0.5) *  8;
+					const lift  = -2;
+
+					cancelAnimationFrame(raf);
+					raf = requestAnimationFrame(() => {
+						imgWrap.style.transform = `translateY(${lift}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+					});
+				}
+
+				function onEnter(){
+					media.classList.add("is-hovered");
+					rect = imgWrap.getBoundingClientRect();
+				}
+
+				function onLeave(){
+					media.classList.remove("is-hovered");
+					rect = null;
+					cancelAnimationFrame(raf);
+					imgWrap.style.transform = "";
+				}
+
+				imgWrap.addEventListener("mouseenter", onEnter);
+				imgWrap.addEventListener("mousemove", onMove);
+				imgWrap.addEventListener("mouseleave", onLeave);
+			})();
+
+			/* Desktop carousel ONLY when not touch-capable (fix: prevents breaking swipe on tablets) */
+			(function initCarouselDesktop(){
+				const isTouch = ("ontouchstart" in window) || (navigator.maxTouchPoints > 0) ||
+					(window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches);
+
+				if (isTouch) return; // <-- critical fix
+
+				const root = document.querySelector('[data-carousel]');
+				if (!root) return;
+
+				const track = root.querySelector('[data-track]');
+				const viewport = root.querySelector('[data-viewport]');
+				const slides = Array.from(root.querySelectorAll('.carouselSlide'));
+				const prevBtn = root.querySelector('[data-prev]');
+				const nextBtn = root.querySelector('[data-next]');
+				const dotsWrap = root.querySelector('[data-dots]');
+
+				let index = 0;
+
+				if (dotsWrap) dotsWrap.innerHTML = "";
+
+				const dots = slides.map((_, i) => {
+					const d = document.createElement('button');
+					d.type = 'button';
+					d.className = 'dot';
+					d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+					d.addEventListener('click', () => goTo(i));
+					dotsWrap.appendChild(d);
+					return d;
+				});
+
+				function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+				function setActive(){
+					slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+					dots.forEach((d, i) => d.classList.toggle('active', i === index));
+					if (prevBtn) prevBtn.disabled = index === 0;
+					if (nextBtn) nextBtn.disabled = index === slides.length - 1;
+				}
+
+				function updateTransform(animate = true){
+					const slideW = slides[0].getBoundingClientRect().width;
+					const gap = parseFloat(getComputedStyle(track).gap || '0');
+					const step = slideW + gap;
+					const x = step * index;
+
+					if (!animate) track.style.transition = 'none';
+					else track.style.transition = 'transform 520ms cubic-bezier(.2,.95,.2,1)';
+
+					track.style.transform = `translate3d(${-x}px,0,0)`;
+
+					if (!animate){
+						void track.offsetHeight;
+						track.style.transition = 'transform 520ms cubic-bezier(.2,.95,.2,1)';
+					}
+				}
+
+				function goTo(i, animate = true){
+					index = clamp(i, 0, slides.length - 1);
+					setActive();
+					updateTransform(animate);
+				}
+
+				if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
+				if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
+
+				let isDown = false;
+				let startX = 0;
+				let startTranslate = 0;
+
+				function currentTranslateX(){
+					const m = new DOMMatrixReadOnly(getComputedStyle(track).transform);
+					return m.m41;
+				}
+
+				function pointerDown(clientX){
+					isDown = true;
+					viewport.classList.add('dragging');
+					startX = clientX;
+					startTranslate = currentTranslateX();
+					track.style.transition = 'none';
+				}
+
+				function pointerMove(clientX){
+					if (!isDown) return;
+					const dx = clientX - startX;
+					track.style.transform = `translate3d(${startTranslate + dx}px,0,0)`;
+				}
+
+				function pointerUp(){
+					if (!isDown) return;
+					isDown = false;
+					viewport.classList.remove('dragging');
+
+					const slideW = slides[0].getBoundingClientRect().width;
+					const gap = parseFloat(getComputedStyle(track).gap || '0');
+					const step = slideW + gap;
+
+					const tx = currentTranslateX();
+					const rawIndex = Math.round((-tx) / step);
+
+					goTo(rawIndex, true);
+				}
+
+				viewport.addEventListener('mousedown', (e) => { e.preventDefault(); pointerDown(e.clientX); });
+				window.addEventListener('mousemove', (e) => pointerMove(e.clientX));
+				window.addEventListener('mouseup', pointerUp);
+
+				window.addEventListener('resize', () => goTo(index, false));
+				goTo(index, false);
+			})();
+
+			/* Hero first, then reveal observers */
+			document.addEventListener("DOMContentLoaded", () => {
+				setHeroVisible();
+
+				if (reduceMotion){
+					initRevealOnScroll();
+				} else {
+					setTimeout(initRevealOnScroll, 980);
+				}
+			});
+		})();
+	</script>
+</body>
+</html>
