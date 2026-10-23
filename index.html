@@ -1143,9 +1143,9 @@
 				<p class="sectionHeadP" data-reveal>Pick a time that works for you. One short call is usually enough to tell whether I can help.</p>
 
 				<div class="calendarCard" data-reveal>
-					<div class="calendarInner" data-lenis-prevent>
+					<div class="calendarInner">
 						<!-- Google Calendar Appointment Scheduling begin -->
-						<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fl52OMBKffQzG6Ab0-1T44N7-qT4r7Y-CHiF5Ng45bqBUEyb_xkbgIy85i07xo9O3FeZu5Fjz?gv=true" style="border: 0" width="100%" height="600" frameborder="0" title="Book a meeting with Valentine"></iframe>
+						<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fl52OMBKffQzG6Ab0-1T44N7-qT4r7Y-CHiF5Ng45bqBUEyb_xkbgIy85i07xo9O3FeZu5Fjz?gv=true" style="border: 0" width="100%" height="740" frameborder="0" scrolling="no" title="Book a meeting with Valentine" data-gcal></iframe>
 						<!-- end Google Calendar Appointment Scheduling -->
 					</div>
 				</div>
@@ -1211,6 +1211,17 @@
 					history.replaceState(null, "", id);
 				});
 			});
+
+			/* ---------- Booking calendar: tall enough to never scroll inside ----------
+			   Google's page is cross-origin, so its height can't be read; these are its measured
+			   heights (with a day selected) for each layout it switches between by iframe width */
+			const gcal = document.querySelector("[data-gcal]");
+			function sizeCalendar(){
+				const w = gcal.clientWidth;
+				gcal.height = w >= 620 ? 740 : w >= 600 ? 925 : w >= 330 ? 1390 : 1500;
+			}
+			sizeCalendar();
+			window.addEventListener("resize", sizeCalendar);
 
 			/* ---------- Header hide on scroll down, progress bar, mobile CTA ---------- */
 			const header = document.querySelector(".header");
